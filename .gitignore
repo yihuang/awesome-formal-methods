@@ -1,0 +1,25 @@
+# Lean / Lake build artifacts
+.lake/
+*.olean
+*.ilean
+*.trace
+/build/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# TLA+ Toolbox / TLC state space output
+*.states/
+states/
+*.out
+.tlc/
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~

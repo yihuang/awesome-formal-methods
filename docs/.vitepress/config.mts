@@ -1,4 +1,21 @@
 import { defineConfig } from 'vitepress'
+import { readFileSync } from 'node:fs'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+/**
+ * TextMate grammars for languages Shiki does not bundle.
+ *
+ * Shiki ships ~300 grammars (including `lean`, `python`, `rust`, `bash`, `solidity`,
+ * `coq`), but not TLA+ or Dafny. Those two are vendored under `grammars/` with their
+ * upstream URLs, commit SHAs and MIT notices recorded in `grammars/README.md`.
+ *
+ * Reading them with `fs` rather than `import ... with { type: 'json' }` keeps this
+ * config independent of the bundler's JSON-import semantics.
+ */
+const grammarDir = resolve(dirname(fileURLToPath(import.meta.url)), 'grammars')
+const grammar = (file: string) =>
+  JSON.parse(readFileSync(resolve(grammarDir, file), 'utf8'))
 
 // GitHub Pages project site: https://yihuang.github.io/awesome-formal-methods/
 // If you rename the repo or move to a user/org site (yihuang.github.io),
@@ -62,7 +79,12 @@ export default defineConfig({
     theme: { light: 'github-light', dark: 'github-dark' },
     anchor: {
       slugify: githubSlugify
-    }
+    },
+    // `name` is the fence label; the grammar's own `scopeName` is independent of it.
+    languages: [
+      { ...grammar('tlaplus.tmLanguage.json'), name: 'tla', aliases: ['tlaplus'] },
+      { ...grammar('dafny.tmLanguage.json'), name: 'dafny', aliases: ['dfy'] }
+    ]
   },
 
   themeConfig: {

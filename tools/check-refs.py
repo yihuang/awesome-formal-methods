@@ -40,6 +40,7 @@ MAX_MISSING_DEFAULT = 0
 DOCS = Path("docs")
 
 # Pages that are navigation or conventions, and legitimately do not carry sources.
+# Build-configuration docs under .vitepress/ are skipped outright (see audit()).
 EXEMPT = {
     # navigation and section indexes (no claims of their own)
     "docs/index.md",
@@ -78,6 +79,11 @@ def audit() -> tuple[list[dict], Counter]:
     rows = []
     domains: Counter = Counter()
     for path in sorted(DOCS.rglob("*.md")):
+        # .vitepress/ is build configuration, not published wiki content. Its docs
+        # (e.g. grammars/README.md) cite upstream sources, but they are engineering
+        # notes, not pages that need a References section.
+        if ".vitepress" in path.parts:
+            continue
         rel = path.relative_to(Path.cwd()).as_posix() if path.is_absolute() else path.as_posix()
         text = path.read_text(encoding="utf-8", errors="replace")
         prose = strip_code(text)

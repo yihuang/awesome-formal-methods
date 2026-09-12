@@ -114,7 +114,10 @@ def check(root: Path) -> int:
                 # VitePress publishes only what is under docs/. A relative link from a
                 # docs/ page that resolves above docs/ exists on disk but 404s on the
                 # built site, so catch it here rather than at build time.
-                if DOCS_ROOT is not None and DOCS_ROOT in md.parents:
+                # .vitepress/ is build config, not published content — its files may
+                # legitimately reference repo-root files (LICENSE, package.json, ...).
+                is_build_config = ".vitepress" in md.parts
+                if DOCS_ROOT is not None and DOCS_ROOT in md.parents and not is_build_config:
                     try:
                         resolved.relative_to(DOCS_ROOT)
                     except ValueError:

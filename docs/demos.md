@@ -85,7 +85,7 @@ axiom the_axiom_of_belief : 1 = 2                 -- an assumption smuggled in
 
 So real proof engineering requires a CI gate. Here it is, and here is it failing:
 
-```
+```shellsession
 $ ./scripts/check-no-sorry.sh
 Scanning Lean sources under: .../demos/lean
 
@@ -112,7 +112,7 @@ That generalises far beyond mathematics. See [AI → FM § the tooling layer](04
 
 ## 3. The trusted base
 
-```
+```shellsession
 $ lake build
 info: Demo.lean:123:0: 'myMax_ge_both' depends on axioms: [propext, Classical.choice, Quot.sound]
 info: Demo.lean:124:0: 'append_nil'    depends on axioms: [propext]

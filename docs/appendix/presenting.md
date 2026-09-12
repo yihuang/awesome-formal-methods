@@ -5,8 +5,12 @@
 > different.** It is for readers who want to *present* the material: a tech talk, a brown-bag
 > session, a reading group, or an internal training slot. Skip it if that isn't you.
 
-The wiki is organised as knowledge, not as a script. This appendix reorganises the same material
-into a narrative with timings. Two things to know before you use it:
+**A built deck exists:** ▶ [AI Made Code Cheap. Trust Is Still Expensive.](https://yihuang.github.io/awesome-formal-methods/slides/) —
+built with [Slidev](https://sli.dev/) from [`slides/slides.md`](https://github.com/yihuang/awesome-formal-methods/tree/main/slides),
+and it deploys as part of this site.
+
+The rest of this appendix is the outline behind it: the same material reorganised into a narrative
+with timings. Two things to know before you use it:
 
 - **Pick one spine and commit.** Mixing them produces a survey, not a talk.
 - **Every claim traces back to a wiki page.** If a slide needs more depth than the outline gives,

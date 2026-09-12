@@ -27,6 +27,14 @@ features:
     details: A Lean 4 project that builds, three zero-dependency Python demos, and TLA+ specs. Every claim that could be executed, was.
 ---
 
+## The talk
+
+A 45-minute Slidev deck built from this wiki — philosophy first, evidence second, one actionable ask.
+
+**▶ [AI Made Code Cheap. Trust Is Still Expensive.](https://yihuang.github.io/awesome-formal-methods/slides/)**
+
+---
+
 ## The thesis
 
 > For fifty years formal methods were the expensive, exotic option you reached for only in avionics

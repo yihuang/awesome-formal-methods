@@ -8,9 +8,14 @@
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "check:links": "python3 tools/check-links.py",
-    "grammars:list": "node tools/list-grammars.mjs"
+    "grammars:list": "node tools/list-grammars.mjs",
+    "slides:dev": "slidev slides/slides.md",
+    "slides:build": "slidev build slides/slides.md --out ../docs/public/slides --base /awesome-formal-methods/slides/",
+    "build:all": "npm run slides:build && npm run docs:build"
   },
   "devDependencies": {
+    "@slidev/cli": "^52.19.1",
+    "@slidev/theme-default": "^0.25.0",
     "markdown-it-mathjax3": "^4.3.2",
     "vitepress": "^1.6.4"
   },

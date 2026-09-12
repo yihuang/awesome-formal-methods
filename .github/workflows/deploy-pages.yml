@@ -62,6 +62,11 @@ jobs:
       - name: Check reference coverage (ratchet)
         run: python3 tools/check-refs.py
 
+      # The deck is a separate Slidev SPA that lands in docs/public/slides/,
+      # which VitePress then copies verbatim into the site.
+      - name: Build the slide deck
+        run: npm run slides:build
+
       - name: Run zero-dependency Python demos
         run: |
           python3 demos/python/dpll_sat.py

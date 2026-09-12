@@ -9,6 +9,7 @@
 node_modules/
 docs/.vitepress/dist/
 docs/.vitepress/cache/
+docs/public/slides/
 .vitepress/cache/
 *.log
 npm-debug.log*

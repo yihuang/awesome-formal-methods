@@ -1,7 +1,7 @@
 # Logics: the languages specs are written in
 
 > **TL;DR.** Formal methods are built on a small number of logical languages. Knowing which one
-> you're in tells you what the tool can express and where it will hit a wall. For the talk you
+> you're in tells you what the tool can express and where it will hit a wall. You
 > need five: propositional/FO logic, Hoare logic, temporal logic, separation logic, and type
 > theory. Everything else is a variant.
 
@@ -67,7 +67,7 @@ CONSEQUENCE     P' → P    {P} C {Q}    Q → Q'
                         {P'} C {Q'}
 ```
 
-Two things to notice, and both are slide-worthy:
+Two things to notice, and both are notable:
 
 1. **Assignment runs backwards.** The precondition is the postcondition with the assigned
    expression substituted. Reasoning about imperative code is *backward* reasoning.
@@ -129,7 +129,7 @@ good target for formal verification ([hardware-crypto.md](../03-applications/har
 [05-tools/catalog.md](../05-tools/catalog.md)).
 
 Turing Award 2025 context: Reynolds, O'Hearn, and Yang shared the 2025 ACM A.M. Turing Award for
-separation logic. ⚠️ *Verify the exact citation text and year wording before it goes on a slide.*
+separation logic. ⚠️ *Verify the exact citation text and year wording before relying on this.*
 
 ---
 
@@ -209,8 +209,8 @@ it — a *specification* enforced with zero runtime cost.
    lightweight formal verification you already run.
 ```
 
-**Key insight for the talk:** the audience is *already doing formal methods* and doesn't call it
-that. The talk is about turning up the dial from "types" to "properties", not about switching to
+**Key insight:** most engineers are *already doing formal methods* and don't call it
+that. This wiki is about turning up the dial from "types" to "properties", not about switching to
 a new religion.
 
 ---

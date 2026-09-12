@@ -155,7 +155,7 @@ engineering judgement, not advocating a technology.
 
 ---
 
-## The adoption narrative to rehearse
+## The adoption narrative
 
 If someone asks "how did this go at AWS?", the answer is the template:
 
@@ -191,4 +191,4 @@ adoption and abandonment.
 
 ---
 
-Next → [objections.md](objections.md): the answers you'll need in the Q&A.
+Next → [objections.md](objections.md): the answers you'll need.

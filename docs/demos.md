@@ -231,15 +231,15 @@ See [Distributed systems](03-applications/distributed-systems.md).
 
 ---
 
-## Demo hygiene (for a live talk)
+## If you demo these live
 
 - **Pre-run the demo.** Live demos fail live.
 - **Have a recording.** A GIF of `lake build` + the check script is enough.
-- **Have the output pasted into a backup slide.** If the laptop misbehaves, you lose nothing.
+- **Keep the output pasted somewhere.** If the laptop misbehaves, you lose nothing.
 - **The highest-impact demo is the specification gap**, because it takes ten seconds, needs no
   toolchain, and lands viscerally: *the useless function passes.*
 
-| Talk segment | Demo | What to say |
+| Idea being shown | Demo | What to point out |
 |---|---|---|
 | "A proof is a program" | Lean §0 | "`1 + 1 = 2` is a *type*. `rfl` is a term inhabiting it." |
 | "This is what a spec looks like" | Lean §1 | "One line of spec; `omega` discharges it. Same pipeline as Dafny, just smaller." |

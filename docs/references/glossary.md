@@ -1,6 +1,6 @@
 # Glossary
 
-Every term the talk uses, defined once, in the order you'd encounter them.
+Every term this wiki uses, defined once, in the order you'd encounter them.
 
 ---
 

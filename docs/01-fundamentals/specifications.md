@@ -37,7 +37,7 @@ climb:
 | 4 | **Functional correctness** ("output = the mathematically specified answer") | high | everything above + wrong results |
 | 5 | **Security / information-flow** ("no secret leaks to low clearance") | highest | side channels, non-interference |
 
-The talk's actionable ask is **rung 1–2**. seL4 is rung 4–5 and cost ~20 person-years.
+The actionable starting point is **rung 1–2**. seL4 is rung 4–5 and cost ~20 person-years.
 
 ---
 
@@ -102,7 +102,7 @@ Almost every real spec is a conjunction: `safety ∧ liveness`. AWS's framing is
 > significantly less error prone than the ad hoc 'what might go wrong?' approach."
 > — *Use of Formal Methods at AWS* ([PDF](https://lamport.azurewebsites.net/tla/formal-methods-amazon.pdf))
 
-That last sentence is worth a slide: **formal specification inverts the debugging mindset.** You
+That last sentence is worth emphasising: **formal specification inverts the debugging mindset.** You
 don't enumerate failure modes; you state the success condition and let a machine search for
 counterexamples.
 
@@ -150,7 +150,7 @@ Three flavours of the gap, each with a real failure:
    proofs assume an `n ≥ 3f+1` bound; violate it in production and the theorem is inapplicable,
    not false.
 
-**Slide-ready phrasing:** *"A proof is a contract between your model and your property. It tells
+**In one line:** *"A proof is a contract between your model and your property. It tells
 you nothing about either."*
 
 ---

@@ -1,6 +1,6 @@
 # Bibliography
 
-Organised for usefulness, not completeness. ⭐ = worth reading yourself before giving the talk.
+Organised for usefulness, not completeness. ⭐ = the highest-value items.
 
 ---
 
@@ -8,7 +8,7 @@ Organised for usefulness, not completeness. ⭐ = worth reading yourself before 
 
 1. ⭐ **Newcombe, Rath, Zhang, Munteanu, Brooker, Deardeuff — *Use of Formal Methods at Amazon Web
    Services*** (2014; CACM version 2015). The single best practitioner document in the field, and
-   the source of half the quotes in the talk.
+   the source of half the quotes in this wiki.
    [PDF](https://lamport.azurewebsites.net/tla/formal-methods-amazon.pdf) ·
    [CACM](https://cacm.acm.org/research/how-amazon-web-services-uses-formal-methods/)
 2. ⭐ **Amazon Science — *How we built Cedar with automated reasoning and differential testing*.**

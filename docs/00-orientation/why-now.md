@@ -71,7 +71,7 @@ For each of these, formal methods offer something testing structurally cannot: a
 
 ---
 
-## The honest counter-arguments (put these in the talk, don't hide them)
+## The honest counter-arguments
 
 | Objection | Reality |
 |---|---|
@@ -83,7 +83,7 @@ For each of these, formal methods offer something testing structurally cannot: a
 
 ---
 
-## The one-slide version
+## The short version
 
 ```
         THEN                                NOW
@@ -93,6 +93,6 @@ For each of these, formal methods offer something testing structurally cannot: a
   → FM = avionics + silicon         → FM = the missing half of AI-assisted engineering
 ```
 
-**Ask of the audience:** don't adopt a proof assistant tomorrow. Adopt the *habit* of writing one
+**The practical ask:** don't adopt a proof assistant tomorrow. Adopt the *habit* of writing one
 precise property that must hold for all inputs, and use the cheapest tool that can check it. That
 is the entire on-ramp ([lightweight-fm.md](../03-applications/lightweight-fm.md)).

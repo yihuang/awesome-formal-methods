@@ -7,11 +7,11 @@
 | [hardware-crypto.md](hardware-crypto.md) | **Where FM is already standard.** Silicon equivalence checking, FDIV, HACL*/EverCrypt, constant-time caveats. |
 | [safety-critical.md](safety-critical.md) | **Where regulation drives it.** DO-178C/DO-333, certification credit, and the stereotype to dismantle. |
 | [lightweight-fm.md](lightweight-fm.md) | **The on-ramp.** The rungs from types to TLA+, with code, that an ordinary team can climb. |
-| [adoption-gap.md](adoption-gap.md) | **The honesty.** Why this 50-year-old technology mostly didn't reach the audience — and what AI changes. |
+| [adoption-gap.md](adoption-gap.md) | **The honesty.** Why this 50-year-old technology mostly didn't reach most engineers — and what AI changes. |
 
 ---
 
-## The narrative order for the talk
+## Suggested reading order
 
 ```
    1. It works          → case-studies.md        (credibility)

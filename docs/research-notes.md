@@ -65,7 +65,7 @@ These are worth keeping, because two of them are demos in their own right.
 
 **Pattern across 1–3:** the *property* was wrong three times and the *proof/search* was wrong zero
 times. That is the specification gap showing up in the act of writing this repo, which is the most
-honest possible evidence for the talk's central claim.
+honest possible evidence for this wiki's central claim.
 
 ---
 
@@ -93,12 +93,12 @@ honest possible evidence for the talk's central claim.
 
 - **Adoption-gap claims.** I reference "empirical software-engineering work documenting
   hesitation/stereotypes" and the aerospace adoption surveys, but **did not pin a single specific
-  study with a page citation.** ⚠️ *Before the talk, choose one study and cite it precisely.*
+  study with a page citation.** ⚠️ *Pick one study and cite it precisely before relying on this.*
   Candidates to check: Woodcock et al. 2009 (ACM CSUR), Bicarregui et al. FM 2009, and the
   aerospace contractor/customer/certification-authority survey.
 - **Astrée / Airbus A340** — the ~132,000 lines of C and "absence of runtime errors" are
   well-attested (Cousot et al., ESOP 2005). The precise **false-alarm rate** is hedged in the wiki
-  as "low after domain-specific tuning". Don't put a number on a slide without reading the paper.
+  as "low after domain-specific tuning". Don't repeat the number without reading the paper.
 - **CompCert "zero bugs"** in the Csmith study — accurate for the version and (restricted C
   subset) tested. The wiki states this caveat explicitly. Keep the caveat if you use the number.
 - **Harmonic Aristotle** "gold-medal-equivalent on IMO 2025 problems with Lean-verified proofs" —
@@ -106,11 +106,11 @@ honest possible evidence for the talk's central claim.
 - **Leiden Declaration** — existence and general content confirmed; the claim that it was
   "endorsed by the IMU" comes from secondary reporting. ⚠️ verify.
 - **Separation logic → 2025 ACM A.M. Turing Award** — asserted in
-  `docs/01-fundamentals/logics.md` with an explicit ⚠️ *verify the exact citation before it goes on
-  a slide*. This one is plausible but was **not** confirmed against the ACM announcement.
+  `docs/01-fundamentals/logics.md` with an explicit ⚠️ *verify the exact citation before relying on
+  it*. This one is plausible but was **not** confirmed against the ACM announcement.
 - **"Verified RISC-V cores in Coq/Isabelle"** — flagged ⚠️ in the wiki as needing a check.
 
-### 🔴 Low confidence — do not put on a slide without verification
+### 🔴 Low confidence — verify before repeating
 
 | Item | Problem |
 |---|---|
@@ -130,14 +130,12 @@ honest possible evidence for the talk's central claim.
 
 | Gap | Why it matters | Next step |
 |---|---|---|
-| **No slides** | Only [the slide outline](slides/outline.md) exists (with minute-by-minute timing), not a deck. | Build the deck from the outline; it is deliberately detailed enough to be transcribable. |
-| **No diagrams/images** | The talk needs ~5 visuals: the five-families map, the propose/check loop, the four AI-risk layers, the ladder, the inversion chart. | All are described in text; convert to SVG and check them into `docs/public/`. |
+| **No diagrams/images** | Good diagrams are missing: the five-families map, the propose/check loop, the four AI-risk layers, the specification ladder, the inversion chart. All exist only as ASCII art. | Convert to SVG and check them into `docs/public/`. |
 | **No recorded demo** | Live demos fail live. | Record `lake build` + `check-no-sorry.sh` + `pbt_spec_gap.py`. |
-| **No speaker notes with measured timings** | The outline has estimates, not measured ones. | Rehearse and adjust. |
 | **Only DuckDuckGo search available** | Narrower sourcing than ideal. | Re-run discovery with a funded provider; especially for the adoption-gap studies. |
 | **TLA+ specs unexecuted** | Syntax is hand-verified, not machine-verified. | Install the TLA+ Toolbox and run `RetryIdempotency.tla` + `Mutex.tla`; paste the real TLC output into the files. |
-| **No verified-code demo in Rust** | Kani is the most likely-to-be-adopted tool for this audience and has no demo. | Add `demos/rust/` with a `cargo kani` example. |
-| **No Chinese-language version** | If the audience is a Chinese big-tech org, artifacts may need translation. | Ask; this is an open question (§7). |
+| **No verified-code demo in Rust** | Kani is the most likely-to-be-adopted tool for this topic and has no demo. | Add `demos/rust/` with a `cargo kani` example. |
+| **No translated version** | The wiki is English-only. | A Chinese translation would widen its reach considerably; see §7. |
 | **No quiz/exercise** | A hands-on component would strengthen adoption. | Consider a 20-minute “write one property” exercise. |
 
 ---
@@ -148,11 +146,11 @@ Recorded so they can be revisited:
 
 1. **The wiki leads with counterexamples and admits limits early.** The `limits.md` and
    `adoption-gap.md` pages are placed before the AI-era payoff. This is intentional: technical
-   audiences discount a technology pitch that hasn't stated its failure modes.
+   engineers discount a technology pitch that hasn't stated its failure modes.
 2. **AWS's framing is quoted verbatim and repeatedly.** "Debugging Designs" and "exhaustively
    testable pseudo-code" are treated as load-bearing, not as colour.
 3. **Three of my own specification bugs were kept, not hidden.** They are the strongest available
-   evidence for the talk's central claim about the specification gap.
+   evidence for this wiki's central claim about the specification gap.
 4. **Vendor claims are labelled as vendor claims.** Vendor scale figures (Cedar's check volume,
    Anthropic's delegation statistic) carry inline caveats rather than being dropped, because they
    are directionally useful and the direction is corroborated.
@@ -164,24 +162,23 @@ Recorded so they can be revisited:
 
 ---
 
-## 7. Open questions for the talk owner
+## 7. Open questions
 
-These determine the final shape and are **not** answerable from research:
+Editorial decisions that are **not** answerable from research, and where the wiki is thinnest:
 
-1. **Audience and level mix** — mid/senior SWEs? infra/distributed? AI/ML? mixed? This changes
-   which case studies and which rung of the ladder gets the emphasis.
-2. **Talk length** — 30 / 45 / 60 minutes. `slides/outline.md` covers all three.
-3. **Language** — English, Chinese, or bilingual?
-4. **Demo appetite** — live demo (risky, high impact) or recorded (safe, less energy)?
-5. **How much math** — is the audience comfortable with `{P}C{Q}` notation and temporal operators,
-   or should everything be prose?
-6. **Hands-on component** — is there appetite for a follow-up workshop where people write their
-   first property-based test or TLA+ spec?
-7. **Which claim is the spine?** Two candidates are laid out in `slides/outline.md` (Spine A: "the
-   economics changed"; Spine B: "the 70-year reunion").
-8. **Is there an internal incident** that could replace the generic AWS/Cedar examples with
-   something the audience recognises? This is the single highest-leverage adaptation available —
-   AWS's own adoption started from a real bug class.
+1. **How much mathematics?** The pages assume you can read `{P}C{Q}` and `G(p → F q)`. A
+   prose-only track for readers without that background would widen its reach considerably.
+2. **Rust coverage.** Kani is the most likely-to-be-adopted tool for working engineers and has no
+   demo. `demos/rust/` with a `cargo kani` example is the highest-value addition.
+3. **Tool-choice depth.** `05-tools/choosing.md` gives heuristics but no worked examples. A
+   "here is a real component and here is which tool I'd pick and why" walkthrough is missing.
+4. **Verification economics.** The wiki asserts the cost curve has moved but carries no
+   side-by-side cost data (engineer-days per rung, re-verification cost). That is the claim most
+   in need of hard numbers.
+5. **Failure case studies.** `limits.md` covers failure *modes*; it has few documented cases of
+   verification projects that were abandoned or that shipped a bug anyway. Those exist and would
+   be valuable.
+6. **Translation.** English-only today.
 
 ---
 

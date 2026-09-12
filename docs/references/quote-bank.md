@@ -1,6 +1,6 @@
 # Quote bank
 
-Slide-ready, sourced, and attributed. Sorted by where they fit in the talk.
+Sourced and attributed, grouped by theme.
 
 ---
 
@@ -13,7 +13,7 @@ Slide-ready, sourced, and attributed. Sorted by where they fit in the talk.
 
 ---
 
-## The cost objection (use these together — they're the strongest pair in the talk)
+## The cost objection (use these together — they're the strongest pair here)
 
 > "In industry, formal methods have a reputation of requiring a huge amount of training and effort
 > to verify a tiny piece of relatively straightforward code, so the return on investment is only
@@ -137,7 +137,7 @@ speed argument, not a safety argument.
 
 ---
 
-## Eyebrow-raising numbers (each needs a source on the slide)
+## Eyebrow-raising numbers (each needs its source)
 
 | Number | Claim | Source |
 |---|---|---|
@@ -158,7 +158,7 @@ speed argument, not a safety argument.
 
 ---
 
-## Nature's agreement quote (use for the AI-era slide)
+## Nature's agreement quote
 
 > "The fact that the program can come up with a non-obvious construction like this is very
 > impressive, and well beyond what I thought was state of the art."
@@ -189,7 +189,7 @@ Pick one. Don't use all three.
 
 Don't quote Dijkstra's "Program testing can be used to show the presence of bugs, but never to show
 their absence" unless you're ready to defend it. It's true, it's famous, and it's been used to
-dismiss testing so many times that audiences reflexively discount it. Use this instead:
+dismiss testing so many times that engineers reflexively discount it. Use this instead:
 
 > "Testing is necessary and stays necessary. The question is what it structurally cannot do:
 > quantify over all inputs, all interleavings, and all adversary perturbations."

@@ -3,7 +3,7 @@
 | Page | Contents |
 |---|---|
 | [timeline.md](timeline.md) | Dated table 1666→2026, with "why it matters" for each entry |
-| [narrative.md](narrative.md) | The storytelling version: three acts, one twist, delivery notes |
+| [narrative.md](narrative.md) | The story-shaped version: three acts, one twist, one moral |
 
 ## The three-act summary
 
@@ -33,5 +33,5 @@ strangers.
 - Yang et al., *Finding and Understanding Bugs in C Compilers*, PLDI (2011) — the Csmith study.
 - Cousot et al., *The ASTRÉE Analyzer*, ESOP (2005).
 
-⚠️ *Items flagged in the timeline still need a final source check before they go on a slide; see
+⚠️ *Items flagged in the timeline still need a source check before you rely on them; see
 [RESEARCH-NOTES.md](../research-notes.md).*

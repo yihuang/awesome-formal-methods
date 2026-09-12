@@ -19,7 +19,7 @@ the map.
 | **Action** | agent tool calls, API calls | this action is permitted by policy; the plan is safe before execution | runtime enforcement (AgentSpec), shields, proof-carrying actions |
 | **System** | multi-agent trace, whole pipeline | non-interference; no information leak; invariant holds over all executions | hyperproperties, temporal-logic monitors, refinement |
 
-**Slide-ready:** *"AI safety is not one problem. It's four problems at four layers, and formal
+**In short:** *"AI safety is not one problem. It's four problems at four layers, and formal
 methods have something different to offer at each — always narrow, always precise."*
 
 ---
@@ -131,7 +131,7 @@ policy encoding, with the stated goals of detecting hallucinations, surfacing un
 assumptions, and explaining why correct statements are correct
 ([AWS docs](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-automated-reasoning-checks.html)).
 
-**Why this is a landmark example for the talk:**
+**Why this is a landmark example:**
 
 1. **It replaces a probabilistic check with a sound one** — a categorical difference, not a
    quality improvement.
@@ -162,7 +162,7 @@ An agent with tools performs irreversible actions: `DELETE`, `transfer_funds`, `
 > (e.g. credit card checks before a transaction is authorized)."
 > — *Guardians of the Agents*, ACM Queue ([source](https://queue.acm.org/detail.cfm?id=3762990))
 
-That quote is a slide on its own. Note the analogy: **we already do proof-carrying authorization in
+That quote stands on its own. Note the analogy: **we already do proof-carrying authorization in
 finance.** The novelty is the author, not the mechanism.
 
 ### The mechanisms
@@ -188,7 +188,7 @@ This is genuinely the sweet spot for teams today, because:
 - Temporal logic is the right language for it: `G(refund ⇒ F(audit_log))`,
   `G(spend(x) ⇒ total_spend ≤ budget)`, `G(tool_call) ⇒ authorized(actor, tool))`.
 
-**Slide-worthy framing:** *"You already run assertions on your service. Runtime verification is
+**The framing that lands:** *"You already run assertions on your service. Runtime verification is
 assertions on your agent's decisions — with the properties written in a logic rather than in
 `if` statements."*
 
@@ -206,7 +206,7 @@ Beyond a single action, the interesting properties are about *sets of executions
 | **Monotonicity / no-regression** | a policy update never widens permissions | property of a policy *family*, not one policy |
 | **Fairness / non-discrimination guarantees** | decisions satisfy a formal fairness predicate | requires a formal model of the decision |
 
-**Why this matters for the talk:** it's the most rigorous answer to "what can formal methods do
+**Why this matters:** it's the most rigorous answer to "what can formal methods do
 about AI safety?" The honest answer is: *it can guarantee containment properties that hold
 regardless of whether the model is aligned.* That's a qualitatively stronger guarantee than any
 behavioural eval, and it's why "defence in depth" for AI is not just more layers of classifiers —
@@ -238,7 +238,7 @@ correct, and the guarantee only holds inside that model. See
 
 ## 8. What does NOT work yet
 
-Be aggressive about this section — overselling is the fastest way to lose an ML audience.
+Be aggressive about this section — overselling is the fastest way to lose an ML reader.
 
 | Claim you should NOT make | Reality |
 |---|---|
@@ -278,11 +278,11 @@ Ordered by return on effort:
    correlated ways with the model they guard; formal checks fail differently, which is the point.
 7. **Keep the specification next to the code, in the repo, in CI.** A guardrail that isn't
    continuously checked is documentation
-   ([anti-patterns](../01-fundamentals/limits.md#5-anti-patterns-to-name-so-the-audience-recognises-them-at-work)).
+   ([anti-patterns](../01-fundamentals/limits.md#5-anti-patterns-to-recognise-at-work)).
 
 ---
 
-## 10. The generative-AI irony, as a closing slide
+## 10. The generative-AI irony
 
 ```
      The AI era made two things true at once:

@@ -3,7 +3,7 @@
 | Page | Contents |
 |---|---|
 | [adoption-playbook.md](adoption-playbook.md) | The staged 0→3 ladder with cost/payoff at each rung, metrics, and explicit exit criteria |
-| [objections.md](objections.md) | Ten objections with honest answers — the Q&A prep |
+| [objections.md](objections.md) | Ten objections with honest answers |
 
 ## The two ideas that matter
 
@@ -25,7 +25,7 @@
 
 ## The one-page checklist
 
-Hand this out at the end of the talk. See
+A version you can hand to a colleague:
 [adoption-playbook.md § One-page checklist](adoption-playbook.md#one-page-checklist-to-hand-out).
 
 ## The framing to copy verbatim from AWS

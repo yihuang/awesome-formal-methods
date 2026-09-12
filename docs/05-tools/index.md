@@ -5,7 +5,7 @@
 | [catalog.md](catalog.md) | ~40 tools in nine families, with maturity, learning curve, and "pick this if" |
 | [choosing.md](choosing.md) | Decision tree, selection heuristics, install commands, selection anti-patterns |
 
-## The one-slide version
+## The short version
 
 > **Pick the cheapest tool that can check the property you actually care about, and put it in CI.**
 > **If it can't produce a counterexample, your team will abandon it within a sprint.**

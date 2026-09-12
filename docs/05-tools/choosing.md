@@ -146,7 +146,7 @@ cargo install --locked kani-verifier && cargo kani setup
 pip install z3-solver        # or the standalone binary from github.com/Z3Prover/z3
 ```
 
-⚠️ *Install commands change; verify against the project's own site before putting them on a slide.*
+⚠️ *Install commands change; verify against the project's own site before relying on them.*
 
 **The one-hour starter for a Java/Go/Python/Rust engineer:** don't install anything. Write three
 property-based tests for the function that last broke production. See
@@ -154,7 +154,7 @@ property-based tests for the function that last broke production. See
 
 ---
 
-## The slide to show this section
+## The takeaway
 
 > **"Pick the cheapest tool that can check the property you actually care about, and put it in
 > CI. If it can't produce a counterexample, your team will abandon it in a sprint."**

@@ -1,7 +1,7 @@
 # The narrative arc
 
-How to *tell* this history in a talk, rather than reciting [timeline.md](timeline.md).
-Budget: 6–8 minutes. Three acts, one twist, one moral.
+[timeline.md](timeline.md) gives the dates. This page gives the *story* — three acts, one twist,
+one moral. Same history, told so that its shape is visible.
 
 ---
 
@@ -14,9 +14,9 @@ Budget: 6–8 minutes. Three acts, one twist, one moral.
 >
 > Which means: the first thing we ever asked a computer to do with 'intelligence' was **formal
 > reasoning**. Seventy years later we're back here — except now the prover is a neural network and
-> the checker is a proof kernel. This talk is about the loop between those two things."
+> the checker is a proof kernel. The interesting part is the loop between those two things."
 
-That's the twist the audience doesn't expect, and it reframes the whole talk: **AI and formal
+That's the twist most readers don't expect, and it reframes the whole subject: **AI and formal
 methods are not rivals.** They were born in the same room.
 
 ---
@@ -29,7 +29,7 @@ methods are not rivals.** They were born in the same room.
 - **1936 Turing/Church:** no algorithm decides whether any program halts.
 - **1953 Rice:** *every* non-trivial semantic property of programs is undecidable.
 
-*Slide cue:* the word "undecidable" appearing three times. Let it sink in.
+**Key point:** the word "undecidable" appearing three times. Let it sink in.
 
 > "So the mathematically honest position in 1953 was: verification is impossible. And then a bunch
 > of people did it anyway."
@@ -42,7 +42,7 @@ what they're supposed to do. So:
 - **1969 Hoare:** triples `{P}C{Q}` — reasoning as a logic, not an art.
 - **1975 Dijkstra:** `wp(C,Q)` — turn the logic into an *algorithm*.
 
-*Slide cue:* the Hoare triple, large, with the assignment axiom. This 4-line rule set is the
+**Key point:** the Hoare triple, large, with the assignment axiom. This 4-line rule set is the
 most reused artifact in the field.
 
 > "The ladder they built has one missing rung: the loop invariant. You have to supply it. There is
@@ -75,7 +75,7 @@ everywhere, mostly invisibly.
 - **1994: Pentium FDIV.** A division-table bug in floating-point hardware. Public, expensive,
   and it changed industry behaviour: formal equivalence checking became standard practice in chip
   design, and Intel's own floating-point division algorithm was later verified in HOL Light.
-- Today formal verification is *routine* in chip design — the audience's laptops contain verified
+- Today formal verification is *routine* in chip design — readers' laptops contain verified
   arithmetic they've never thought about.
 
 **Beat 5. Safety-critical, because certification requires it.**
@@ -85,7 +85,7 @@ everywhere, mostly invisibly.
 - **DO-178C/DO-333** made formal methods an accepted (not required) means of compliance in
   avionics. The Paris Métro Line 14 was built with the B method and opened in 1998.
 
-*Slide cue:* "the software flying your last flight was, in places, proved."
+**Key point:** "the software flying your last flight was, in places, proved."
 
 **Beat 6. The verified artifacts.** A short parade:
 
@@ -116,7 +116,7 @@ attacks.
 
 ## Act III — AI flips the economics and creates the demand (2020–2026)
 
-Two directions, and the talk should be explicit that they are different stories with the same
+Two directions, and it's worth being explicit that they are different stories with the same
 engine.
 
 **Beat 8. AI → FM: the rung the ladder was missing.**
@@ -162,7 +162,7 @@ Evidence ladder:
 
 ---
 
-## The moral (one slide, then stop)
+## The moral
 
 ```
    Act I    we can't decide everything       → so we built approximations
@@ -183,13 +183,17 @@ Evidence ladder:
 
 ---
 
-## Delivery notes
+## The shape to remember
 
-- **Don't** present the timeline as a list of names. Present it as: *ceiling → ladder → escape →
-  shipping → economics flip.*
-- **Do** put the Hoare triple and the Logic Theorist date on slides; they're the two
-  highest-surprise-per-pixel artifacts in the history.
-- **Trim first under time pressure:** Beat 5 (safety-critical) and the B-method detail. Keep the
-  Logic Theorist twist, the FDIV story, CompCert's zero, and AlphaProof.
-- If the audience is old enough, ask "who remembers the Pentium FDIV bug?" — FDIV is a rare
-  piece of FM history that engineers have *personal* memory of, and it makes the abstract concrete.
+If you take one thing from this page, take the shape rather than the dates:
+
+```
+   Act I    we can't decide everything       → so we built approximations
+   Act II   those approximations worked,      → but only for small, critical, stable artifacts
+            in the shadows
+   Act III  AI made proposal cheap            → so verification became the bottleneck
+            and made new things to verify    → so verification became the product
+```
+
+*Presenting this material?* The appendix has
+[a presentation outline](../appendix/presenting.md) built on this structure, with timings.

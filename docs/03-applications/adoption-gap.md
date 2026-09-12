@@ -1,9 +1,8 @@
 # The adoption gap: why FM is 50 years old and still not mainstream
 
 > **TL;DR.** The technology works. The adoption hasn't happened. Understanding *why* is both the
-> most credible part of the talk and the source of the actual blocking issues you'll hit. Never
-> give a formal-methods talk without this section — audiences discount everything else if you
-> oversell.
+> most credible part of this wiki and the source of the actual blocking issues you'll hit.
+> Don't skip it — engineers discount everything else if you oversell.
 
 ---
 
@@ -138,19 +137,18 @@ creates a new source of demand.
 
 ---
 
-## What the talk should do with this page
+## Where this page sits
 
-Use it in this order:
+Read in this order and the argument builds:
 
-1. **Then:** the case studies (it works).
-2. **Now:** this page — the gap, named honestly (it mostly didn't reach you).
-3. **Next:** the AI-era chapter (economics changed, demand created).
-4. **Ask:** the lightweight ladder (here's your one-step move).
+1. [Case studies](case-studies.md) first — it works, here are the receipts.
+2. This page — the gap, named honestly (it mostly didn't reach you).
+3. The [AI era](../04-ai-era/index.md) — the economics changed and the demand was created.
+4. [Lightweight FM](lightweight-fm.md) — the one-step move.
 
-That sequence is "credible → honest → timely → actionable" and it's the strongest structure
-available for this talk.
+That sequence is *credible → honest → timely → actionable*.
 
-**One more slide-worthy framing:** FM's adoption pattern mirrors *type systems*. In 1995, static
+**One more notable framing:** FM's adoption pattern mirrors *type systems*. In 1995, static
 types were widely seen as academic overhead. Today they're the default in new languages and
 nobody calls TypeScript "formal methods". **The successful outcome for this field is not that
 people adopt "formal methods" — it's that the ideas become invisible infrastructure.** Rust's

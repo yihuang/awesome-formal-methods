@@ -1,12 +1,11 @@
 # Case studies: where it actually shipped
 
-Seven proof points, ordered so the talk can escalate from "small and irreplaceable" to "runs a
-billion times a day". Each entry has **the claim**, **the numbers**, **the pattern to steal**, and
-**the honest caveat**.
+Seven proof points, ordered from "small and irreplaceable" to "runs a billion times a day". Each
+entry has **the claim**, **the numbers**, **the pattern to steal**, and **the honest caveat**.
 
 > Source note: figures below come from project sites, the projects' own papers, and
 > [verifiedsoftware.dev/case-studies](https://verifiedsoftware.dev/case-studies/). Vendor-published
-> numbers are marked. Verify ⚠️ items before they become a slide.
+> numbers are marked. Verify ⚠️ items before you repeat them.
 
 ---
 
@@ -32,7 +31,7 @@ behaved — which is exactly why the team later added binary verification and an
 assumptions section. Also: subsequent changes are much cheaper to re-verify *because* the proof
 infrastructure exists. Don't quote the 20 person-years without that second half.
 
-**Talk use:** the "ceiling" example for cost, and the best illustration of refinement.
+**Why it matters:** the "ceiling" example for cost, and the best illustration of refinement.
 
 ---
 
@@ -80,7 +79,7 @@ field.
 > "Software engineers more readily grasp the concept and practical value of TLA+ if we dub it:
 > **Exhaustively testable pseudo-code**."
 
-**The two quotes worth the whole slide:**
+**The two quotes that carry the argument:**
 
 > "In industry, formal methods have a reputation of requiring a huge amount of training and effort
 > to verify a tiny piece of relatively straightforward code, so the return on investment is only
@@ -105,7 +104,7 @@ performance-obsessed engineering org interested.
 > to correctly implement the (broken) design."
 
 Also surprising and underused: TLA+ turned out to be **excellent for data modelling** — designing
-relational/NoSQL schemas. Cheap slide aside for a big-tech audience.
+relational/NoSQL schemas — a cheap and underused win.
 
 **Source:** [Use of Formal Methods at Amazon Web Services (PDF)](https://lamport.azurewebsites.net/tla/formal-methods-amazon.pdf),
 and CACM's *How Amazon Web Services Uses Formal Methods*.
@@ -163,7 +162,7 @@ exchange) used across Windows and Azure. Microsoft is progressively verifying im
 Lean 4, producing machine-checked proofs that the code correctly implements its cryptographic
 specification.
 
-**Why crypto is the ideal FM target** (good slide material):
+**Why crypto is the ideal FM target:**
 
 > "Cryptographic code is rarely modified, universally depended upon, and catastrophic when wrong.
 > Cryptographic bugs don't crash your program — they silently compromise security. A single
@@ -199,7 +198,7 @@ abstracts away the bug's precondition, can produce a "verified" result that is w
 sounds. Which is why the field cares so much about the trusted base and explicit assumptions — and
 why "we verified it" should always be followed by "**under these assumptions, with this bound**".
 
-**Talk use:** the credibility slide. Using it shows you're not selling magic.
+**Why it matters:** it's the credibility check. Citing it shows you're not selling magic.
 
 ---
 
@@ -229,7 +228,7 @@ verification gives you *one specific guarantee* — don't oversell it as "the mo
 
 ## Cross-case synthesis: the four conditions for a good verification target
 
-Every success above satisfies the same four conditions. This is the most useful slide in the
+Every success above satisfies the same four conditions. This is the most useful table in the
 applications section — it turns case studies into a decision procedure.
 
 | Condition | Why | Best examples |
@@ -258,5 +257,5 @@ anything where performance/emergence is the actual risk. Users of FM need to be 
       Lean/Isabelle/Rocq + refinement
 ```
 
-**Ask of the audience:** pick pattern 1 or 2. Nobody in the room is going to do pattern 3 this
+**The practical ask:** pick pattern 1 or 2. You are almost certainly not going to do pattern 3 this
 quarter, and pretending otherwise loses credibility.

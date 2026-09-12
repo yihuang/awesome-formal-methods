@@ -1,9 +1,9 @@
 # Hardware and cryptography: the domains where FM is already standard
 
 > **TL;DR.** These are the two places where formal verification is not an experiment — it's the
-> normal way of working, or close to it. Use them in the talk to answer "does anyone actually do
-> this?" The answer is: your CPU, your TLS connection, and your cloud provider's key management
-> already depend on it.
+> normal way of working, or close to it. They answer "does anyone actually do this?" — and the
+> answer is that your CPU, your TLS connection, and your cloud provider's key management already
+> depend on it.
 
 ---
 
@@ -34,7 +34,7 @@ A flaw in the SRT division lookup table returned incorrect results for certain f
 divisions. It was publicly embarrassing and expensive, and it is the standard historical reason
 cited for the adoption of formal methods in hardware.
 
-The deeper consequence is worth a slide:
+The deeper consequence is worth emphasising:
 
 > After FDIV, Intel didn't just add testing — it started *proving* things. **John Harrison** at
 > Intel formalised IEEE-754 binary floating-point arithmetic in **HOL Light** and verified the
@@ -44,7 +44,7 @@ The deeper consequence is worth a slide:
 That's the full arc: public catastrophe → practice change → and eventually the *theorem proving*
 that the field's more pessimistic observers said would never pay off in industry.
 
-**Lesson for the talk:** the adoption driver was a **specific, expensive, public failure** plus the
+**The lesson:** the adoption driver was a **specific, expensive, public failure** plus the
 structural impossibility of patching. Look for that combination in your own organisation; that's
 where the appetite will exist.
 
@@ -115,9 +115,9 @@ What exists in this space:
 | **Fault injection** | formal models of glitching; countermeasure verification |
 | **Protocol-level security** | symbolic protocol verifiers (ProVerif, Tamarin) and cryptographic proof assistants (CryptoVerif, EasyCrypt) — a *different* FM subfield |
 
-**Slide-worthy nuance:** "formally verified crypto" usually means *functionally correct and, if
+**The nuance that matters:** "formally verified crypto" usually means *functionally correct and, if
 you're lucky, constant-time*. It does not mean "secure against an attacker with physical access."
-Be precise; security audiences will catch over-claiming immediately.
+Be precise; security engineers will catch over-claiming immediately.
 
 ---
 
@@ -144,7 +144,7 @@ You are not going to verify silicon or write an F* crypto library. Two transfera
    (HACL*/EverCrypt, SymCrypt, `aws-lc`, verified implementations of the primitives you depend on).
 
 2. **"Verified" needs a scope qualifier.** Functional correctness ≠ constant-time ≠
-   side-channel-free ≠ secure. Every slide about verified crypto should carry that qualifier. It's
+   side-channel-free ≠ secure. Every claim about verified crypto should carry that qualifier. It's
    the difference between credibility and a security-team objection you can't answer.
 
 ---

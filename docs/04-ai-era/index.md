@@ -1,6 +1,6 @@
 # AI era — index
 
-The framing that makes this talk timely. Two directions with the same engine.
+Why the AI era is the moment formal methods stop being a niche. Two directions, one engine.
 
 ```
                         ┌──────────────────────────────────────┐
@@ -40,7 +40,7 @@ The framing that makes this talk timely. Two directions with the same engine.
 |---|---|---|
 | [ai-for-fm.md](ai-for-fm.md) | **AI accelerates FM.** AlphaProof in detail, the 2026 OpenAI results with Lean certificates, autoformalization, the independent-judging layer (Comparator), what doesn't work yet. | The "wow" segment; 5–8 min |
 | [fm-for-ai.md](fm-for-ai.md) | **FM guards AI.** Four layers: model robustness, generated code, agent actions, system hyperproperties. AgentSpec, shields, Bedrock automated reasoning, verified-code pipelines. | The "why should I care" segment for AI/ML folks; 5–8 min |
-| [verification-bottleneck.md](verification-bottleneck.md) | **The economics.** Why verification is now the constraint, the two asymmetries, the verification gap, what the market is doing, what changes for an individual engineer. | The thesis slide; 3–5 min |
+| [verification-bottleneck.md](verification-bottleneck.md) | **The economics.** Why verification is now the constraint, the two asymmetries, the verification gap, what the market is doing, what changes for an individual engineer. | The core economic argument |
 
 ---
 
@@ -65,7 +65,7 @@ The framing that makes this talk timely. Two directions with the same engine.
 
 ---
 
-## The three sentences to end the talk on
+## The three sentences that summarise this
 
 1. **AI made code cheap and trust expensive.**
 2. **Checking is cheap; searching is hard — so AI proposes and kernels dispose.**

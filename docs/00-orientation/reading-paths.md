@@ -4,16 +4,18 @@ Different readers need different routes. Pick the one that matches why you're he
 
 ---
 
-## Path A — "I'm giving the talk" (≈2 hours of reading)
+## Path A — The full picture (≈2 hours)
 
-1. [why-now.md](why-now.md) — get the argument.
-2. [taxonomy.md](taxonomy.md) — get the map, especially the four dials.
-3. [02-history/narrative.md](../02-history/narrative.md) — get the story arc.
-4. [03-applications/case-studies.md](../03-applications/case-studies.md) — get the concrete proof it works.
-5. [03-applications/lightweight-fm.md](../03-applications/lightweight-fm.md) — get the actionable ask.
-6. [04-ai-era/ai-for-fm.md](../04-ai-era/ai-for-fm.md) + [fm-for-ai.md](../04-ai-era/fm-for-ai.md) — get the timeliness.
-7. [03-applications/adoption-gap.md](../03-applications/adoption-gap.md) — get the honesty.
-8. [slides/outline.md](../slides/outline.md) — assemble.
+For anyone who wants the whole argument, end to end.
+
+1. [why-now.md](why-now.md) — why this matters now.
+2. [taxonomy.md](taxonomy.md) — the map of the field, especially the four dials.
+3. [02-history/narrative.md](../02-history/narrative.md) — how the field got here.
+4. [03-applications/case-studies.md](../03-applications/case-studies.md) — the concrete proof it works.
+5. [03-applications/lightweight-fm.md](../03-applications/lightweight-fm.md) — the actionable part.
+6. [04-ai-era/ai-for-fm.md](../04-ai-era/ai-for-fm.md) + [fm-for-ai.md](../04-ai-era/fm-for-ai.md) — the AI-era relationship.
+7. [03-applications/adoption-gap.md](../03-applications/adoption-gap.md) — the honesty.
+8. [appendix/presenting.md](../appendix/presenting.md) — optional, if you want to present this material.
 
 Skip on first pass: logics.md, automated-reasoning.md, hardware-crypto.md, safety-critical.md.
 
@@ -51,13 +53,9 @@ Skip on first pass: logics.md, automated-reasoning.md, hardware-crypto.md, safet
 
 ---
 
-## Talk-length → content mapping
+## If you plan to present this
 
-| Length | Spine | Cut |
-|---|---|---|
-| **15 min** (lightning) | Why now → one story (AWS TLA+) → the ladder → ask | Everything else |
-| **30 min** | Hook (AI era) → taxonomy map → 3 case studies → AI bidirectional → lightweight ladder → ask | History depth, solvers, limits detail |
-| **45 min** | Above + history arc + limits section + a live demo | Safety-critical detail, tool catalog depth |
-| **60 min** | Everything, plus the adoption playbook and objection handling | Nothing, but move reference material to appendix slides |
-
-See [`slides/outline.md`](../slides/outline.md) for minute-by-minute scripts.
+This wiki is organised as knowledge, not as a script — you can read and cite it without ever
+thinking about a presentation. If you *do* want to present it, the
+[appendix](../appendix/presenting.md) reorganises the same material into two narrative spines with
+minute-by-minute timings for 15, 30, 45, and 60-minute slots.

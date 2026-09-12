@@ -2,9 +2,9 @@
 
 > **TL;DR.** You will not verify your service this quarter. But you can move up one rung of the
 > specification ladder, this sprint, for a few hours of work, and get a real guarantee that
-> testing cannot give you. This page is the part of the talk the audience can *act on tomorrow*.
+> testing cannot give you. This page is the part you can *act on tomorrow*.
 
-This is the most important page in the wiki for a working-engineer audience. Everything else is
+This is the most important page in the wiki for working engineers. Everything else is
 context for this.
 
 ---
@@ -21,7 +21,7 @@ context for this.
 | **5** | **Model-check a protocol design** | weeks | no safety/liveness violation in any interleaving | TLA+/TLC, Alloy, SPIN, Apalache |
 | **6** | **Full functional-correctness proof** | person-years | the implementation refines the spec, for all executions | Lean, Rocq, Isabelle |
 
-**The talk's ask: get to rung 2, and try rung 4 on exactly one function.** That's it.
+**The practical ask: get to rung 2, and try rung 4 on exactly one function.** That's it.
 
 Why rung 2 is the highest-value rung: it converts a *universally quantified* statement ("for all
 inputs, sorting is a permutation and is ordered") into an executable artifact, and the generator
@@ -55,7 +55,7 @@ def test_sort_is_a_permutation(xs):
 **The pedagogical gold in this example:** a naive "sort" implementation that returns its input
 passes `test_sort_is_sorted` and fails `test_sort_is_a_permutation`. **Specifications are
 incomplete by default, and the missing clause is where the bugs live.** This is the specification
-gap made concrete in 8 lines of Python — the best 3 minutes in the talk.
+gap made concrete in 8 lines of Python — the most useful illustration in this wiki.
 
 Hypothesis also *shrinks* failures to a minimal counterexample, which is exactly the
 counterexample-as-debugger value proposition of model checking, at the unit-test level.
@@ -120,7 +120,7 @@ in almost every language now. The *discipline* is what matters, not the tooling:
 | Design-by-contract annotations + runtime checks | Eiffel (origin), JML/OpenJML, `@contract` in Python |
 | Schema/type validation at every boundary | Pydantic, Zod, protobuf — *this is rung 1* |
 
-**Slide-worthy reframing:** "You already write specifications. `zod` schemas, protobuf
+**The reframe:** "You already write specifications. `zod` schemas, protobuf
 definitions, and Rust type signatures *are* specifications. The question is whether a machine
 checks them, and how much they say."
 
@@ -194,7 +194,7 @@ SMT-backed TLA+ checker that handles some specs TLC can't, under the same modell
 
 ## The 5 things to do in your first week
 
-Copy this into the talk as a closing slide.
+A one-page starting plan.
 
 1. **Pick the function that broke production last quarter.** Verify or property-test *that*. Not a
    greenfield module — the one that already hurt. (This is exactly how AWS started with TLA+.)
@@ -216,7 +216,7 @@ Copy this into the talk as a closing slide.
 | "PBT gives me the same guarantee as verification" | No — it's sampled. It finds more than hand-written tests, but a pass is not a proof. That's fine; it's 80/5. |
 | "Kani proves my whole program" | It proves the annotated function, bounded on loops by unwinding depth. Bounded ≠ unbounded. |
 | "TLA+ checked my code" | It checked your *design/model* ([refinement gap](../01-fundamentals/specifications.md#refinement)). |
-| "One verification pass and we're done" | Verification is a CI gate, not an event ([anti-patterns](../01-fundamentals/limits.md#5-anti-patterns-to-name-so-the-audience-recognises-them-at-work)). |
+| "One verification pass and we're done" | Verification is a CI gate, not an event ([anti-patterns](../01-fundamentals/limits.md#5-anti-patterns-to-recognise-at-work)). |
 | "This replaces testing" | No. It complements it. AWS uses both; Cedar uses both; seL4 uses both. |
 
 ---

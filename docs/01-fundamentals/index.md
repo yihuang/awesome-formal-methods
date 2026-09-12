@@ -2,13 +2,13 @@
 
 The durable ideas. These pages don't go stale; the AI-era chapter does.
 
-| Page | Core question | Talk use |
+| Page | Core question | Read it if… |
 |---|---|---|
-| [specifications.md](specifications.md) | What does "correct" even mean, and who writes it down? | The skill the audience actually needs |
-| [logics.md](logics.md) | What language are specs written in? | Appendix / one-slide "five logics" table |
-| [techniques.md](techniques.md) | How is a claim checked? | The big taxonomy slide |
-| [automated-reasoning.md](automated-reasoning.md) | What makes automation work? | The "checking is cheap, searching is hard" slide — key AI-era bridge |
-| [limits.md](limits.md) | What is impossible? | The credibility slide; use before Q&A |
+| [specifications.md](specifications.md) | What does "correct" even mean, and who writes it down? | you want the one skill that formal methods actually demands of you |
+| [logics.md](logics.md) | What language are specs written in? | you want to know what a given tool can and cannot express |
+| [techniques.md](techniques.md) | How is a claim checked? | you need to pick an approach for a real problem |
+| [automated-reasoning.md](automated-reasoning.md) | What makes automation work? | you want to understand why any of this became practical — the key AI-era bridge |
+| [limits.md](limits.md) | What is impossible? | you are about to trust, or sell, a verification claim |
 
 ## The five sentences that summarise this section
 
@@ -24,7 +24,7 @@ The durable ideas. These pages don't go stale; the AI-era chapter does.
 5. **Formal methods shrink logic risk and do nothing for requirement, environment, deployment,
    or operational risk.** ([limits.md](limits.md#3-the-scope-limits-what-fm-structurally-doesnt-cover))
 
-## The conceptual ladder (for slide ordering)
+## The conceptual ladder
 
 ```
    why does this matter now?      → docs/00-orientation/why-now.md

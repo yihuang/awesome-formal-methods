@@ -1,7 +1,7 @@
 # Objections and answers
 
 > **TL;DR.** Every one of these will come up. Have the one-paragraph answer ready, agree with the
-> part that's true, and don't oversell. The fastest way to lose a technical audience on this topic
+> part that's true, and don't oversell. The fastest way to lose a technical reader on this topic
 > is to sound like a vendor.
 
 Format: **the objection** → **what's true about it** → **the answer**.
@@ -29,8 +29,8 @@ changing the second half of that sentence.
 A verified system can be perfectly correct and useless (the classic: a "sort" spec that permits
 returning the input unchanged passes an "is it sorted" check).
 
-**Answer:** Don't defend it — *lead with it*. The specification gap is permanent and the talk
-should say so, because it reframes what FM is for: **precision, not omniscience.** A proof tells
+**Answer:** Don't defend it — *lead with it*. The specification gap is permanent and this wiki
+says so up front, because it reframes what FM is for: **precision, not omniscience.** A proof tells
 you "if the model is right and the property is what you meant, then this holds for all
 executions." That's a strictly better position than "we tested it and nothing broke," and it's a
 strictly worse position than "we know it's correct," which nobody has ever had.
@@ -125,7 +125,7 @@ The question is what testing structurally cannot do:
 - quantify over **all** adversary perturbations within a budget,
 - tell you that a property **cannot** fail, as opposed to hasn't yet.
 
-**The disarming question to use in Q&A:** *"When was the last time a test told you something you
+**The disarming question:** *"When was the last time a test told you something you
 couldn't have guessed by reading the code?"* Then: *"Here's a class of tool that tells you the
 input you'd never have guessed."* Lead with counterexamples. Never argue that testing is bad.
 
@@ -223,7 +223,7 @@ compiler, a cryptographic library, and a billion authorization checks a day.
 
 ## "You're overselling AI here."
 
-**Fair, and the talk should be the first to say it.** Watch for these oversells:
+**Fair, and this page should be the first to say it.** Watch for these oversells:
 
 | Oversell | Reality |
 |---|---|
@@ -233,7 +233,7 @@ compiler, a cryptographic library, and a billion authorization checks a day.
 | "AI provers are cheap" | AlphaProof took **days** per IMO problem. Sample efficiency is poor. |
 | "Formal methods solved AI safety" | They offer narrow, precise guarantees — containment, policy compliance, robustness in a ball. Nothing more. |
 
-**The credibility move:** put the limitations slide *before* the Q&A, not after. See
+**The credibility move:** state the limitations *before* you start answering objections, not after. See
 [ai-for-fm.md §7](../04-ai-era/ai-for-fm.md#7-what-does-not-work-yet) and
 [fm-for-ai.md §8](../04-ai-era/fm-for-ai.md#8-what-does-not-work-yet).
 
@@ -258,7 +258,7 @@ last broke production. That's the answer to "why should I care" that fits in a s
 > try?* AI just made that question the bottleneck. Start one rung up — one property, one function,
 > one day — and stop wherever it stops paying."**
 
-Agreeing with the objections instead of rebutting them is what makes the rest of the talk land.
+Agreeing with the objections instead of rebutting them is what makes a formal-methods argument land.
 
 ---
 

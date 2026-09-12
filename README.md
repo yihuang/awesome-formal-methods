@@ -2,9 +2,8 @@
 
 **📖 Read the wiki: <https://yihuang.github.io/awesome-formal-methods/>**
 
-A research-backed knowledge wiki for preparing a tech-sharing talk that introduces **formal methods
-to engineers**, framed in the **AI era**. Built as source material for slides — not the slides
-themselves.
+A research-backed knowledge wiki that introduces **formal methods to engineers**, framed in the
+**AI era**. Built to be read, linked, and cited.
 
 > **The thesis.** For fifty years formal methods were the expensive, exotic option you reached for
 > only in avionics and silicon. **The AI era inverted the economics.** Code is now cheap and
@@ -30,7 +29,7 @@ and formal methods share an origin. This wiki is about the loop between them.
 | **[Practice](docs/06-practice/)** | Adoption playbook (0→3 ladder) · objection handling |
 | **[Reference](docs/references/)** | Glossary · bibliography · sourced quote bank |
 | **[Demos](docs/demos.md)** | Runnable Lean, Python, and TLA+ artifacts |
-| **[Slides](docs/slides/outline.md)** | Minute-by-minute outlines for 30 / 45 / 60 minutes |
+| **[Presenting](docs/appendix/presenting.md)** | *Optional appendix* — timings and narrative spines |
 
 Plus **[Research notes](docs/research-notes.md)** — the confidence ledger: what's verified, what's
 flagged `⚠️`, and what this repo gets wrong.
@@ -39,7 +38,7 @@ flagged `⚠️`, and what this repo gets wrong.
 
 ## Coverage contract
 
-The talk must cover four axes. No cell may be empty.
+The wiki is deliberately built along four axes, so no reader gets only one half of the picture.
 
 | Axis | Left pole | Right pole |
 |---|---|---|
@@ -110,3 +109,22 @@ site. The fix was to force one GitHub-compatible slug convention in
 
 Corrections to the confidence ledger are the most valuable contribution — especially for the 🟡 and
 🔴 items. If you add a claim, add its source.
+
+---
+
+## License
+
+This repository is **dual-licensed**, because the prose and the code are useful under different
+terms:
+
+| Content | License |
+|---|---|
+| **Prose** — everything under [`docs/`](docs/) and this README | [CC BY 4.0](LICENSE-docs) — read, quote, remix, and translate freely with attribution |
+| **Code** — [`demos/`](demos/), [`tools/`](tools/), the workflows, and the site build config | [MIT](LICENSE) — use it however you like |
+
+Attribution for the prose: *"yihuang, Formal Methods in the AI Era"* with a link to
+<https://github.com/yihuang/awesome-formal-methods>.
+
+If you reuse a case study's numbers, credit the **primary source** rather than this wiki — every
+figure is linked to where it came from, and a few are flagged as unverified in the
+[confidence ledger](docs/research-notes.md).

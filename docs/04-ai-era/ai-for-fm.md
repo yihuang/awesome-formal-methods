@@ -30,7 +30,7 @@
                     └─────────────────────────────────────────┘
 ```
 
-Three properties make this loop special, and they're worth stating explicitly on a slide:
+Three properties make this loop special, and they're worth stating explicitly:
 
 1. **The reward signal is perfect.** Unlike RLHF, there is no reward model to hack. Lean says yes
    or no. This is why formal mathematics has become a favoured RL testbed.
@@ -113,7 +113,7 @@ The ten results, as listed in the repository README:
 | 9 | **Superexponential lower bound for multicolor triangle Ramsey numbers** (Erdős problem 183) | combinatorics |
 | 10 | **Counterexamples to the compactness and degeneracy conjectures** in extremal graph theory (Erdős problems 146, 180) | combinatorics |
 
-**Why this is the perfect closing example for the talk:**
+**Why this is the perfect illustration:**
 
 - **The artifacts include Lean 4 certificates.** Verified with Lean 4.32.0 + mathlib. That's the
   whole thesis: AI proposes, a kernel disposes.
@@ -122,11 +122,11 @@ The ten results, as listed in the repository README:
 - **The cost figure is astonishing** ⚠️: reporting suggests roughly **$2,000** at API rates for all
   ten results combined, according to secondary coverage. *Verify this before using it — it is a
   secondary-source claim and the press has varied.* If it holds up, it's the single most striking
-  number in the talk.
+  number in this wiki.
 - **It's contested on process, not on correctness.** Formalisation moves the dispute from "is the
   proof right?" to "is the *credit and norm* right?" — which is a much better dispute. See below.
 
-**The caveats you must present (this is what makes the slide credible):**
+**The caveats you must present (this is what makes the claim credible):**
 
 | Caveat | Detail |
 |---|---|
@@ -135,7 +135,7 @@ The ten results, as listed in the repository README:
 | **The Leiden Declaration (June 2026)** | An international group of mathematicians published a statement warning that AI is challenging core values of mathematics: announcements via press release rather than peer review, use of published research without consent, and threats to attribution and proof integrity. Endorsed by figures including the IMU. |
 | **Autoformalization risk** | The failure mode nobody can see: a proof of a *subtly different statement* than intended. Addressed by tooling (§5), not by the proof itself. |
 
-> **Slide-ready nuance:** *"The proofs are machine-checked. That's not the same as the results
+> **The nuance that matters:** *"The proofs are machine-checked. That's not the same as the results
 > being accepted. Mathematics is now arguing about credit and process — because the correctness
 > argument is largely settled by the kernel. That's a remarkable place for a field to be."*
 
@@ -176,7 +176,7 @@ The repo's test suite is a catalogue of exactly the attacks you'd worry about:
 > "the thing you wanted follows from the axioms you meant."
 
 That's the same discipline as [the specification gap](../01-fundamentals/specifications.md) —
-reappearing in a new costume. **This is the single best AI-era slide in the wiki**, because it
+reappearing in a new costume. **This is the single most important AI-era idea in this wiki**, because it
 shows the field solving an entirely new problem with an old idea (shrink the trusted base).
 
 ### The agentic layer

@@ -24,7 +24,7 @@ in milliseconds. The reason is engineering, not theory:
 | 2003 | **MiniSat** | ~600 lines of clean C++; became the template for a whole generation |
 | 2010s– | CryptoMiniSat, CaDiCaL, Kissat, Glucose, MapleSAT | proof logging (DRAT), inprocessing, better restarts, parallel SAT |
 
-**The three ideas that made CDCL work** (worth one slide each if the audience is technical):
+**The three ideas that made CDCL work** (worth understanding properly if you're technical):
 
 1. **Clause learning.** When a conflict occurs, derive the *reason* and add it as a permanent
    clause. The solver accumulates knowledge and doesn't repeat mistakes.
@@ -140,7 +140,7 @@ have you actually proven? Two answers:
 2. **Proof-producing SMT / verified checkers**: verified checkers (e.g. in Coq/Lean) for the
    emitted certificates.
 
-**Why it matters for the talk:** it shows the field takes its own medicine. When the trusted base
+**Why it matters:** it shows the field takes its own medicine. When the trusted base
 grows, the field's response is to *shrink* it. Any engineer who has debugged a "trust me" third-party
 service will appreciate the instinct.
 

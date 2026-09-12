@@ -30,9 +30,9 @@ function githubSlugify(str) {
 export default defineConfig({
   title: 'Formal Methods in the AI Era',
   description:
-    'A talk-prep knowledge wiki introducing formal methods to engineers: ' +
-    'fundamentals, history, industry applications, tooling, and the two-way ' +
-    'relationship between AI and formal verification.',
+    'A knowledge wiki introducing formal methods to engineers: fundamentals, ' +
+    'history, industry applications, tooling, and the two-way relationship ' +
+    'between AI and formal verification.',
   base: BASE,
   lang: 'en-US',
   cleanUrls: false,
@@ -88,7 +88,7 @@ export default defineConfig({
           { text: 'Adoption playbook', link: '/06-practice/adoption-playbook' },
           { text: 'Objections & answers', link: '/06-practice/objections' },
           { text: 'Demos', link: '/demos' },
-          { text: 'Slide outline', link: '/slides/outline' }
+          { text: 'Presenting (appendix)', link: '/appendix/presenting' }
         ]
       },
       {
@@ -180,7 +180,7 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: 'Runnable demos', link: '/demos' },
-          { text: 'Slide outline (30/45/60 min)', link: '/slides/outline' }
+          { text: 'Presenting this material', link: '/appendix/presenting' }
         ]
       },
       {
@@ -229,7 +229,9 @@ export default defineConfig({
         '<a href="' +
         BASE +
         'research-notes.html">confidence ledger</a>. Corrections welcome.',
-      copyright: 'Built as prep material for a tech-sharing talk.'
+      copyright:
+        'Prose licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; ' +
+        'code licensed <a href="https://opensource.org/license/mit">MIT</a>.'
     },
 
     notFound: {

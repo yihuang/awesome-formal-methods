@@ -70,7 +70,7 @@ on-ramp, and honest talks should say so rather than gatekeeping it out.
 
 ## Four orthogonal choices you're really making
 
-Every formal-methods decision reduces to these four dials. Use them as the talk's mental model.
+Every formal-methods decision reduces to these four dials. Use them as your mental model.
 
 ### Dial 1 — What are you reasoning about?
 
@@ -132,9 +132,9 @@ C-to-binary step was outside the original proof.
 
 ---
 
-## Vocabulary the talk should fix early
+## Vocabulary to fix early
 
-Fix these six terms in the first five minutes so the audience isn't lost later. Full definitions
+Fix these six terms early so nothing later is ambiguous. Full definitions
 in [`references/glossary.md`](../references/glossary.md).
 
 1. **Specification** — the precise statement of what the system must do.

@@ -5,7 +5,7 @@
 > scarce resource in the AI-era software lifecycle is *trustworthiness* — and formal methods are
 > the only technology that scales a sound check.
 
-This page is the economic argument that makes the talk timely. It's the bridge between
+This page is the economic argument for why this matters now. It's the bridge between
 [ai-for-fm.md](ai-for-fm.md) and [fm-for-ai.md](fm-for-ai.md).
 
 ---
@@ -38,7 +38,7 @@ and checking arbitrary code is governed by the limits from
 - Code volume at fixed headcount rises. Review capacity does not. Every additional line of
   AI-generated code is an additional line nobody has verified.
 
-**Amdahl's-law framing (good slide):** if you speed up one stage of a pipeline by 10× and leave the
+**Amdahl's-law framing:** if you speed up one stage of a pipeline by 10× and leave the
 next stage unchanged, the next stage becomes the bottleneck and sets the throughput ceiling. AI
 sped up authoring. Verification is the unsped-up stage.
 
@@ -46,7 +46,7 @@ sped up authoring. Verification is the unsped-up stage.
 
 ## 2. The two asymmetries that define the AI-era opportunity
 
-Everything in this wiki reduces to two facts. Put them on consecutive slides.
+Everything in this wiki reduces to two facts. They're worth stating together.
 
 ### Asymmetry A — checking is cheap, searching is hard
 
@@ -92,7 +92,7 @@ Every organisation's gap grew in 2024–2026. Some consequences:
 correlate. Adding another probabilistic checker to a pipeline of probabilistic checkers improves
 the average case and does little for the tail — and the tail is where incidents live.
 
-**This is the sharpest argument for formal methods in the talk**, because it is *not* an argument
+**This is the sharpest argument for formal methods**, because it is *not* an argument
 that FM is better than testing in general. It's an argument that the *marginal* checker in an
 AI-saturated pipeline must be **orthogonal** to the failure modes of the others, and only a sound
 checker is.
@@ -133,7 +133,7 @@ requirement.** That is what a bottleneck looks like when capital notices it.
 
 ## 6. What changes for an individual engineer
 
-The talk should end on this, because it's what the audience actually controls.
+This is where it lands for an individual engineer, because it's what you actually control.
 
 ```
    OLD CORE SKILL                    NEW CORE SKILL
@@ -144,7 +144,7 @@ The talk should end on this, because it's what the audience actually controls.
    reviewing style and logic         reviewing SPECIFICATIONS and ASSUMPTIONS
 ```
 
-**The reframing that lands with a big-tech engineering audience:**
+**The reframing that lands with engineers:**
 
 > "Your job is becoming less about producing correct code and more about **stating what correct
 > means, precisely enough that a machine can check it.** That is a specification skill. It is the
@@ -156,7 +156,7 @@ has already done this work. Formal methods just make the argument decidable.
 
 ---
 
-## 7. The three-sentence version (for a slide)
+## 7. The three-sentence version
 
 1. **AI made code cheap and trust expensive.**
 2. **Checking is cheap; searching is hard — so AI proposes and kernels dispose.**

@@ -1,6 +1,6 @@
 # Distributed systems: the best ROI in the field
 
-> **TL;DR.** If you take one application area away from this talk, take this one. Distributed
+> **TL;DR.** If you take one application area away from this wiki, take this one. Distributed
 > protocols are small, they fail in ways testing cannot sample, the bugs are design bugs, and the
 > failure cost is enormous. This is where formal methods have the best cost/benefit ratio in
 > existence — and it's the one an infrastructure team can adopt this quarter.
@@ -122,7 +122,7 @@ Properties you would now want to check:
    unbounded dedup state is how you OOM).
 
 **Two hours of TLA+ finds bug #1.** That is the entire pitch for this domain, and it fits on one
-slide. It also shows the pattern: the bug is a *crash between two adjacent statements*, found by
+page. It also shows the pattern: the bug is a *crash between two adjacent statements*, found by
 enumerating interleavings that no test would generate.
 
 ---
@@ -149,7 +149,7 @@ enumerating interleavings that no test would generate.
 | **Property-based testing of the state machine** | same idea as FM but sampled | rung 2; do this if you can't do TLA+ |
 | **Fuzzing / chaos engineering** | sample reality | necessary, not sufficient |
 
-> **Honest framing for the talk:** TLA+ is "apples" and Jepsen is "oranges"; the right answer is
+> **Honest framing:** TLA+ is "apples" and Jepsen is "oranges"; the right answer is
 > both. Model checking catches design bugs before code exists; Jepsen catches implementation bugs
 > the model abstracted away.
 

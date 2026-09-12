@@ -29,8 +29,8 @@
                   └───────────────────────────────────────┘
 ```
 
-Below: what each family is, what it's good at, how it fails, and the one-paragraph version for a
-slide.
+Below: what each family is, what it's good at, how it fails, and how to explain it in one
+paragraph.
 
 ---
 
@@ -56,7 +56,7 @@ slide.
 - Tactic scripts are code with no specs — a "proof" can be an accidental `sorry`/`admit` away
   from being a lie. **Always grep for `sorry` in CI.** (`demos/lean/` does this.)
 
-**Slide version.** *"Theorem proving is the strongest guarantee and the most expensive. It is
+**In short.** *"Theorem proving is the strongest guarantee and the most expensive. It is
 justified when the artifact is small, stable, and catastrophic when wrong — a kernel, a compiler,
 a crypto primitive."*
 
@@ -89,7 +89,7 @@ Alloy (bounded, relational), mCRL2, PRISM (probabilistic), UPPAAL (timed).
 - **Symbolic/bounded** (Apalache, CBMC, Alloy, NuSMV with BDDs): encode as formulas, let a solver
   reason. Scales differently, "bounded" means *up to depth k* — a bound is not a proof.
 
-**Slide version.** *"Model checking is a bug-finder for designs. You write the design in
+**In short.** *"Model checking is a bug-finder for designs. You write the design in
 unambiguous pseudo-code — TLA+ calls itself 'exhaustively testable pseudo-code' — and it hands
 you the interleaving that breaks it."*
 
@@ -116,7 +116,7 @@ Kani (Rust → CBMC), CBMC (C), Boogie (IR), SPARK/Ada, JML/OpenJML, KeY (Java),
 - SMT solvers are the trusted base: a solver bug can produce a bogus "verified".
 - Works best on single-threaded functional code; concurrency needs extra theory.
 
-**Slide version.** *"This is the sweet spot for industry. You write Dafny or annotate Rust, and a
+**In short.** *"This is the sweet spot for industry. You write Dafny or annotate Rust, and a
 solver checks it. It's the technology behind Cedar, and it's where an ordinary team has a real
 chance."*
 
@@ -149,7 +149,7 @@ may produce **false alarms** (incomplete).
 - Proving *functional correctness* with abstract interpretation is possible but much harder than
   proving *absence of runtime errors*.
 
-**Slide version.** *"Abstract interpretation is how you get 'this entire codebase has no undefined
+**In short.** *"Abstract interpretation is how you get 'this entire codebase has no undefined
 behaviour' without annotating anything. It's the quiet industrial workhorse — you've probably run
 it as a linter without knowing."*
 
@@ -175,7 +175,7 @@ system, TypeScript/Flow, Wuffs (memory-safe by construction), clippy/linters, CB
 - Can be fought tooth and nail (lifetime gymnastics), which is a UX cost, not a soundness cost.
 - "It type-checks" is rung 0 of 5 ([specifications.md](specifications.md#the-specification-ladder-from-weak-to-strong)).
 
-**Slide version.** *"You are all already running formal methods on every commit. The question is
+**In short.** *"You are all already running formal methods on every commit. The question is
 whether you want the dial at 'types' or at 'properties'."*
 
 ---
@@ -202,7 +202,7 @@ whether you want the dial at 'types' or at 'properties'."*
 4. **Types + everything else** (Rust): get memory safety for free, then add Kani/Creusot proofs
    where the value is.
 
-> **Pedagogical point for the talk:** these are not competing religions. AWS's experience report
+> **Key point:** these are not competing religions. AWS's experience report
 > is explicit that they use TLA+ *and* testing *and* code review, and that TLA+ answers a question
 > none of the others can.
 

@@ -1,6 +1,6 @@
 # Timeline: 1666 → 2026
 
-A dated spine for the history segment. Bold = the ten dates worth putting on a slide.
+A dated spine for the history of the field. Bold = the ten most consequential dates.
 
 Legend: 🧮 = logic/foundations · 🛠️ = tool/method · 🏭 = industrial deployment · 🤖 = AI overlap
 
@@ -29,7 +29,7 @@ Legend: 🧮 = logic/foundations · 🛠️ = tool/method · 🏭 = industrial d
 | Year | Event | Why it's on this list |
 |---|---|---|
 | **1949** | 🛠️ **Turing, "Checking a Large Routine"** | Possibly the first assertion-based correctness argument for a real program (a factorial routine for EDSAC). Formal methods is *older than AI*. |
-| **1956** | 🤖 **Logic Theorist (Newell, Shaw, Simon)** | **The first AI program ever written was a theorem prover.** The AI/FM entanglement is 70 years old — the single best narrative hook in this talk. |
+| **1956** | 🤖 **Logic Theorist (Newell, Shaw, Simon)** | **The first AI program ever written was a theorem prover.** The AI/FM entanglement is 70 years old — the single best narrative hook in the field's history. |
 | 1958–62 | 🧮 McCarthy: Lisp, and "Towards a Mathematical Science of Computation" (1962) | Program semantics as a mathematical object; the founding vision of program verification. |
 | 1967 | 🛠️ Floyd, "Assigning Meanings to Programs" | Pre/post-conditions as flow-chart annotations. Verified with the *right* formal logic this time. |
 | 1967 | 🛠️ Automath (de Bruijn) | The first proof *assistant*: machine-checked mathematics. |
@@ -105,4 +105,4 @@ Legend: 🧮 = logic/foundations · 🛠️ = tool/method · 🏭 = industrial d
    Proof search becomes a machine-learning problem; code generation becomes cheap; verification
    becomes the bottleneck and, for the first time, a mass-market concern.
 
-**See [narrative.md](narrative.md) for the storytelling version with hooks and slide cues.**
+**See [narrative.md](narrative.md) for the story-shaped version.**

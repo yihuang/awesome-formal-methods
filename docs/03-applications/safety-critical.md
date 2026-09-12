@@ -42,7 +42,7 @@ substituted are precise and legally consequential.
 
 ## What certification actually looks like
 
-A crucial distinction the talk should make, because engineers conflate them:
+A crucial distinction, because engineers conflate them:
 
 ```
    VERIFICATION   "I have evidence the system meets a specified property."
@@ -87,7 +87,7 @@ CompCert's "verify the tool" insight.
 
 ---
 
-## Why this domain is a double-edged sword for the talk
+## Why this domain is a double-edged sword
 
 ### The good news
 
@@ -105,7 +105,7 @@ Because FM's most visible history is safety-critical, the field inherited a repu
 > straightforward code, so the return on investment is only justified in safety-critical domains
 > such as medical systems and avionics."
 
-AWS explicitly calls this perception "quite wrong" for *their* use case. The talk should:
+AWS explicitly calls this perception "quite wrong" for *their* use case. Worth keeping in mind:
 
 1. **Acknowledge the origin story honestly** (that's how the field actually developed).
 2. **Show the cost curve has moved** ([lightweight-fm.md](lightweight-fm.md), solver improvements,
@@ -113,7 +113,7 @@ AWS explicitly calls this perception "quite wrong" for *their* use case. The tal
 3. **Show the non-safety uses** (control planes, authorization, crypto, agents) that have nothing
    to do with certification.
 
-**Slide-ready reframe:** *"Safety-critical gave us the tools and the culture of rigour. It also
+**The reframe:** *"Safety-critical gave us the tools and the culture of rigour. It also
 gave us a reputation problem. The interesting thing about the AI era is that the demand is now
 coming from places with no regulator at all."*
 
@@ -139,7 +139,7 @@ teams almost never write one down, and that's where the surprises live
 
 ---
 
-## What to say (and not say) to a big-tech engineering audience
+## Common misreadings to avoid
 
 **Say:**
 - This is where the techniques came from, and they work — the Astrée and CompCert results are real.
@@ -148,7 +148,7 @@ teams almost never write one down, and that's where the surprises live
 
 **Don't say:**
 - "Formal methods are for safety-critical systems." That's the stereotype AWS had to fight. It
-  alienates the audience and it's now false.
+  alienates engineers and it's now false.
 - "You need DO-333-compliant evidence for your service." Nobody does, and it makes the whole field
   sound like compliance theatre.
 

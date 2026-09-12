@@ -42,9 +42,9 @@ Two directions, and this wiki carries both:
 | **AI → FM** | AI as an *accelerator* | Autoformalization, neural theorem proving, Lean/mathlib agents, invariant suggestion |
 | **FM → AI** | FM as *guardrails* | Verifying LLM-written code, agent policy enforcement, certified robustness, provably-safe RL |
 
-The historical hook worth leading a talk with: the **first AI program ever written** — Logic
-Theorist, 1956 — *was* a theorem prover. The two fields did not converge recently; they started
-entangled. See [the narrative arc](./02-history/narrative.md).
+The historical hook: the **first AI program ever written** — Logic Theorist, 1956 — *was* a theorem
+prover. The two fields did not converge recently; they started entangled. See
+[the narrative arc](./02-history/narrative.md).
 
 ---
 
@@ -73,7 +73,7 @@ entangled. See [the narrative arc](./02-history/narrative.md).
 | Page | What it answers |
 |---|---|
 | [Timeline 1666–2026](./02-history/timeline.md) | Dated spine, with "why it matters" for each entry. |
-| [The narrative arc](./02-history/narrative.md) | Three acts, one twist, delivery notes. |
+| [The narrative arc](./02-history/narrative.md) | Three acts, one twist, one moral. |
 
 ### Applications — where it actually shipped
 
@@ -104,7 +104,7 @@ entangled. See [the narrative arc](./02-history/narrative.md).
 | [Adoption playbook](./06-practice/adoption-playbook.md) | The 0→3 ladder, with cost and payoff at each rung. |
 | [Objections & answers](./06-practice/objections.md) | Ten objections, answered honestly. |
 | [Runnable demos](./demos.md) | Lean, Python, and TLA+ artifacts — two of three run with no dependencies. |
-| [Slide outline](./slides/outline.md) | Minute-by-minute for 30/45/60 minutes, plus two narrative spines. |
+| [Presenting this material](./appendix/presenting.md) | **Optional appendix** — timings and narrative spines if you want to present the wiki's content. |
 
 ### Reference
 
@@ -112,14 +112,14 @@ entangled. See [the narrative arc](./02-history/narrative.md).
 |---|---|
 | [Glossary](./references/glossary.md) | Every term, defined once. |
 | [Bibliography](./references/bibliography.md) | Papers, books, courses, tools. |
-| [Quote bank](./references/quote-bank.md) | Sourced, slide-ready lines. |
+| [Quote bank](./references/quote-bank.md) | Sourced, quotable lines. |
 | [Research notes](./research-notes.md) | **The confidence ledger**: what's verified, what's flagged, and what this repo gets wrong. |
 
 ---
 
 ## The coverage contract
 
-The talk must cover four axes. This table is the completeness check — no cell may be empty.
+The wiki is deliberately built along four axes, so that no reader gets only one half of the picture.
 
 | Axis | Left pole | Right pole |
 |---|---|---|
@@ -146,17 +146,22 @@ python3 demos/python/temporal_monitor.py
 
 ## How to read this
 
-- **You're giving the talk** → [Reading paths, Path A](./00-orientation/reading-paths.md)
-- **You want to use this at work** → [Lightweight FM](./03-applications/lightweight-fm.md) → [Choosing a tool](./05-tools/choosing.md) → [Adoption playbook](./06-practice/adoption-playbook.md)
+- **I want to use this at work** → [Lightweight FM](./03-applications/lightweight-fm.md) → [Choosing a tool](./05-tools/choosing.md) → [Adoption playbook](./06-practice/adoption-playbook.md)
 - **You're an AI/ML engineer** → [The verification bottleneck](./04-ai-era/verification-bottleneck.md) → [FM → AI](./04-ai-era/fm-for-ai.md)
 - **You're sceptical** → [The adoption gap](./03-applications/adoption-gap.md) → [Limits](./01-fundamentals/limits.md) → [Objections](./06-practice/objections.md)
 
-## Status
+## Status and license
 
-Early collection phase, published as a wiki. Claims carry sources; numbers that need checking are
-flagged `⚠️` **in the text**, and aggregated in the [confidence ledger](./research-notes.md).
-Corrections are welcome — the ledger exists precisely so that nobody has to guess whether a figure
-is solid.
+A living wiki. Claims carry sources; numbers that need checking are flagged `⚠️` **in the text**,
+and aggregated in the [confidence ledger](./research-notes.md). Corrections are welcome — the
+ledger exists precisely so that nobody has to guess whether a figure is solid. Known gaps are
+listed there too.
+
+**Prose** is licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — quote, remix, and
+translate it with attribution. **Code** (the [demos](./demos.md) and tooling) is
+[MIT](https://opensource.org/license/mit).
+
+If you reuse a case study's numbers, credit the **primary source** rather than this wiki.
 
 **One closing line:**
 

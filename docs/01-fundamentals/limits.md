@@ -2,7 +2,7 @@
 
 > **TL;DR.** Formal methods are subject to hard mathematical limits, not engineering shortfalls.
 > Any talk that doesn't state them is marketing. This page is the honesty section — and, used
-> correctly, it is the most *credible* part of the talk.
+> correctly, it is the most *credible* part of this wiki.
 
 ---
 
@@ -19,7 +19,7 @@ For any consistent, sufficiently expressive, recursively axiomatised formal syst
 about them is expressible. It says **no single formal system is a universal truth machine**, and
 you will always be working relative to a chosen logic and axioms.
 
-Common misconception to pre-empt in Q&A: *"Gödel proves we can never verify software."* No. Gödel
+Common misconception to pre-empt: *"Gödel proves we can never verify software."* No. Gödel
 proves that no logic is complete for *all* arithmetic truth. Software properties usually live in
 much weaker fragments where you get decidability or good automation.
 
@@ -47,7 +47,7 @@ undecidable in general, for arbitrary programs.
 | Type systems being conservative and restrictive | the decidable approximation of correctness |
 | Bounded model checking reporting "no bug up to depth k" | only a bound is decidable |
 
-**Slide-ready line:** *"Rice's theorem is why every verification tool is either incomplete or
+**In one line:** *"Rice's theorem is why every verification tool is either incomplete or
 unsound. You don't get to choose otherwise; you only get to choose which side you fail on."*
 
 ### The soundness/completeness trade-off in one table
@@ -63,7 +63,7 @@ unsound. You don't get to choose otherwise; you only get to choose which side yo
 
 Note the last few rows: **a fuzzer finding nothing is not evidence of absence.** That is the whole
 reason formal methods exist. Conversely, a formal tool reporting "unknown" is not evidence of a bug.
-Teaching this asymmetry is the highest-value five minutes in the talk.
+Teaching this asymmetry is the highest-value thing on this page.
 
 ---
 
@@ -112,7 +112,7 @@ theorem everything_is_easy : 1 = 2 := by sorry   -- compiles, proves nothing
 Real proof engineering requires CI that rejects `sorry`/`admit`/`axiom` (see
 [`demos/lean/`](../demos.md)). Proof assistants *have* had soundness bugs historically —
 a famous class of incidents is a faulty termination/guard checker accepting a circular proof.
-⚠️ *If you cite a specific incident on a slide, verify the version and date — these are usually
+⚠️ *If you cite a specific incident, verify the version and date — these are usually
 fixed quickly and precisely scoped, so precision matters.*
 
 ### Cost-benefit reality
@@ -142,7 +142,7 @@ problem:
 > contain feedback loops.
 
 **Formal methods address (1). They do not address (2).** That's an unusually clean statement of
-scope from a practitioner, and it's worth a slide verbatim.
+scope from a practitioner, and it's worth emphasising verbatim.
 
 The general pattern: **FM reasons about models of systems, not systems.** What falls outside:
 
@@ -164,7 +164,7 @@ than *vaguely wrong* — which is a genuine improvement, but not omniscience.
 
 ## 4. The verified-systems-have-failed file
 
-Use these in the talk. They inoculate against the "so it's magic" reading and they teach the
+These inoculate against the "so it's magic" reading and they teach the
 right lesson: **the bug is almost never in the proof; it's in an assumption.**
 
 | Incident | Year | What the lesson is |
@@ -183,7 +183,7 @@ projects do the same. Look for it.
 
 ---
 
-## 5. Anti-patterns to name (so the audience recognises them at work)
+## 5. Anti-patterns to recognise at work
 
 | Anti-pattern | Symptom | Fix |
 |---|---|---|
@@ -202,7 +202,7 @@ projects do the same. Look for it.
 > **Formal methods cannot tell you what to want. They can tell you, with certainty, whether what
 > you asked for is what you'll get — and show you the exact input where it isn't.**
 
-That's the promise. State the scope boundaries in the same breath and the talk will be trusted.
+That's the promise. State the scope boundaries in the same breath and the argument will be trusted.
 
 ---
 

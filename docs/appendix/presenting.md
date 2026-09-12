@@ -1,4 +1,18 @@
-# Talk outline
+# Appendix: presenting this material
+
+> **Optional appendix.** Everything else in this wiki is a standalone knowledge base — you can
+> read it, link to it, and cite it without ever thinking about a presentation. **This page is
+> different.** It is for readers who want to *present* the material: a tech talk, a brown-bag
+> session, a reading group, or an internal training slot. Skip it if that isn't you.
+
+The wiki is organised as knowledge, not as a script. This appendix reorganises the same material
+into a narrative with timings. Two things to know before you use it:
+
+- **Pick one spine and commit.** Mixing them produces a survey, not a talk.
+- **Every claim traces back to a wiki page.** If a slide needs more depth than the outline gives,
+  follow the link — that is the point of having the wiki behind the deck.
+
+---
 
 ## Title options
 
@@ -9,7 +23,7 @@
 | **"What About All the Inputs You Didn't Try?"** | testing-gap | the most concrete, least jargon-y |
 | **"Debugging Designs: 50 Years of Proof Finally Meets Its Moment"** | historical | a mixed/senior audience |
 
-**Recommended:** #1 for the title slide, #3 as the subtitle.
+**Suggested:** #1 for the title slide, #3 as the subtitle.
 
 ---
 

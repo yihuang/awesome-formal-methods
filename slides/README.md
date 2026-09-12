@@ -21,18 +21,37 @@ The deck is deliberately *not* a tool tour. It is built on the wiki's strongest 
 
 | Part | Content | Why it's there |
 |---|---|---|
-| I · The impossible thing | Gödel, Turing, Rice → the asymmetry | the philosophy; earns everything after it |
-| II · The ideas that work | Curry–Howard, the spec gap, stuttering invariance, safety vs liveness, the frame rule | the deep fundamentals, one slide each |
-| III · It already shipped | seL4, CompCert's zero, AWS's reframing, the adoption gap | credibility, then honesty |
-| IV · The AI era | the inversion, AlphaProof, generic models at 92%, **the proof is the review**, blockchain | the reason this talk exists now |
-| V · The honest part | what FM can't do, verified systems that failed | say it before the audience does |
-| VI · What to do | the ladder, the 5 things, three sentences | the ask |
+| I · The impossible thing | Hilbert → Gödel, Turing, Rice → **the asymmetry** | the philosophy; earns everything after it |
+| II · The ideas that work | **Hoare logic basics** → Curry–Howard + the kernel → the spec gap → stuttering invariance → **LTL basics** → safety vs liveness → fairness → the frame rule → CompCert's zero | the deep fundamentals; basics come before the ideas that build on them |
+| III · The AI era | the inversion → AWS's 2014 precedent → **2024 milestone → 2025 specialists → 2026 state of the art** → the ten results → the proof is the review → blockchain | the reason this talk exists now |
+| IV · The honest part | what FM can't do, verified systems that failed, the adoption gap | say it before the audience does |
+| V · What to do | the ladder, the 5 things, three sentences | the ask |
 
 **The two slides that carry the talk:**
 
 1. **The asymmetry** — searching is expensive, checking is cheap. Everything follows from it.
 2. **"I made this mistake four times writing the wiki"** — four bugs, all in the *property*, none in
    the *proof*. Self-incriminating, and the most credible evidence for the whole argument.
+
+## Revision history
+
+**v2** — after a review pass:
+
+- **Added Hoare logic basics** (`{P} C {Q}`, the backward assignment axiom, the invariant you must
+  supply). It was the missing on-ramp: the audience recognises the triple, and the invariant sets up
+  Part III.
+- **Added LTL basics** — traces are infinite, `G`/`F`/`U`, and the four patterns people actually
+  write. The old deck jumped straight to "safety and liveness are topologically different", which is
+  meaningless without the operators.
+- **Removed the "It already shipped" part.** It read as an interruption: a case-study section
+  dropped between deep theory and the AI era, with no clear job. The evidence was kept and
+  redistributed to where it does work — **CompCert** now closes Part II as the payoff of the kernel
+  argument, **AWS's 2014 reframing** opens Part III as the precedent for the AI-era economics, and
+  **the adoption gap** moved to the honest part where it belongs.
+- **Fixed the state-of-the-art framing.** AlphaProof (IMO 2024) was presented as if it were current;
+  it is two years old, and by 2026 generic models have taken over. It is now explicitly labelled a
+  *milestone, not the state of the art*, with its own limitations on the slide, followed by a
+  2024 → 2025 → 2026 progression that ends at the actual state of the art.
 
 ---
 

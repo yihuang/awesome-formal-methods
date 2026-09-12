@@ -16,9 +16,10 @@ aspectRatio: 16/9
 fonts:
   webfonts: []
   provider: none
-# No `fonts:` block on purpose — declaring webfonts makes Slidev fetch them at
-# build time. style.css declares font stacks with system fallbacks instead, so
-# the deck renders identically offline and does not depend on a CDN.
+# No `fonts:` webfonts on purpose — Slidev's CLI injects a Google Fonts <link>
+# whenever `webfonts` is non-empty, and `fonts: false` does NOT suppress it.
+# style.css declares font stacks with system fallbacks instead, so the deck
+# renders identically offline and makes no font CDN request. Don't undo this.
 ---
 
 <div class="kicker">a tech sharing · 45 minutes · no maths required</div>
@@ -119,7 +120,7 @@ layout: center
 <div class="h3 accent">But</div>
 <ul>
 <li><b>The three theorems</b> that make this hard forever</li>
-<li><b>The four ideas</b> that make it possible anyway</li>
+<li><b>The five ideas</b> that make it possible anyway</li>
 <li><b>Why AI changed the economics</b> — and didn't change the limits</li>
 <li><b>One thing you can do on Monday</b></li>
 </ul>
@@ -345,13 +346,58 @@ layout: section
 
 <div class="part">Part II</div>
 # The ideas that work anyway
-<div class="partsub">Four ideas carry the entire field</div>
+<div class="partsub">Five ideas carry the entire field</div>
 
 ---
 layout: center
 ---
 
-<div class="idea-num">Idea 1</div>
+<div class="idea-num">The oldest idea, still the useful one</div>
+
+# Hoare logic: `{P} C {Q}`
+
+<div class="lead">
+"If <b>P</b> holds before <b>C</b> runs, and C terminates, then <b>Q</b> holds afterwards."
+</div>
+
+<table class="clean small">
+<tr><td class="mono">P</td><td>the <b>precondition</b> — what you may assume. <span class="dim">(assumed, not proven)</span></td></tr>
+<tr><td class="mono">C</td><td>the program</td></tr>
+<tr><td class="mono">Q</td><td>the <b>postcondition</b> — what you must deliver. <span class="dim">(proven)</span></td></tr>
+</table>
+
+```text
+{ x = 3 }      x := x + 1        { x = 4 }
+{ n ≥ 0 }      factorial(n)      { result = n! }
+```
+
+<v-click>
+
+<div class="callout">
+<b>Two things that surprise everyone.</b><br>
+<b>1.</b> The assignment axiom runs <b>backwards</b> — the precondition is the postcondition with the
+assignment substituted in. Reasoning about imperative code is backward reasoning.<br>
+<b>2.</b> The <code>while</code> rule needs an <b>invariant that you must supply</b>. There is no
+algorithm for finding it. That's Rice's theorem, showing up in the most practical place possible.
+</div>
+
+</v-click>
+
+<div class="muted small centered">
+Hold that second point. <b>Everything in Part III is about who supplies the invariant.</b>
+</div>
+
+<!--
+This is the on-ramp for the audience: most engineers have seen {P}C{Q} in a course.
+Set up the invariant as the bottleneck — it pays off twice later (AI proposing invariants,
+and the spec gap).
+-->
+
+---
+layout: center
+---
+
+<div class="idea-num">Idea 1 · why you can trust the tools</div>
 
 # Propositions are types. Proofs are programs.
 
@@ -399,8 +445,9 @@ layout: center
 <v-click>
 
 <div class="callout">
-The kernel is the only thing you must trust. In Lean that's a few thousand lines.
+The <b>kernel</b> is the only thing you must trust. In Lean that's a few thousand lines.
 This is the <b>de Bruijn criterion</b>, and it's why an extensible proof assistant is still safe.
+<span class="dim">Check it yourself: <code>#print axioms my_theorem</code>.</span>
 </div>
 
 </v-click>
@@ -550,7 +597,71 @@ Cost of following this rule: zero. Cost of not following it: unprovable refineme
 layout: center
 ---
 
-<div class="idea-num">Idea 4</div>
+<div class="idea-num">Idea 4 · the basics</div>
+
+# How do you specify something that never finishes?
+
+<div class="lead">
+A server has no "final answer". It runs forever, next to an environment.
+</div>
+
+<div class="grid2">
+<div>
+<div class="h3">A program is</div>
+<div class="small">an input → an output.<br>That's what <span class="mono">{P} C {Q}</span> describes.</div>
+</div>
+<div>
+<div class="h3 accent">A reactive system is</div>
+<div class="small">an infinite sequence of states:<br><span class="mono">σ = s₀ s₁ s₂ s₃ …</span></div>
+</div>
+</div>
+
+<div class="callout">
+<b>That is the whole conceptual shift.</b> A specification stops being about a result and becomes a
+predicate on <b>infinite sequences</b>. Give up "output" and you get the ability to say things like
+"every request is eventually answered" — which no input/output spec can express.
+</div>
+
+---
+layout: center
+---
+
+# LTL in one slide
+
+<div class="lead">Linear temporal logic: operators evaluated at a position in a trace.</div>
+
+<table class="clean small">
+<thead><tr><th>Operator</th><th>Reads</th><th>Meaning</th></tr></thead>
+<tr><td class="mono">X φ</td><td>next</td><td>φ holds in the immediately following state <span class="dim">— we'll see why you never write this</span></td></tr>
+<tr><td class="mono">G φ</td><td>always</td><td>φ holds in <b>all</b> future states</td></tr>
+<tr><td class="mono">F φ</td><td>eventually</td><td>φ holds in <b>some</b> future state</td></tr>
+<tr><td class="mono">φ U ψ</td><td>until</td><td>φ holds until ψ does — and ψ does happen</td></tr>
+</table>
+
+<div class="h3 accent" style="margin-top:1.1rem">The patterns you'll actually write</div>
+
+<table class="clean small mono">
+<tr><td>G ¬bad</td><td class="dim">nothing bad ever happens</td></tr>
+<tr><td>F good</td><td class="dim">something good eventually happens</td></tr>
+<tr><td>G (req → F ack)</td><td class="dim">every request is eventually answered</td></tr>
+<tr><td>G F progress</td><td class="dim">progress keeps happening, forever</td></tr>
+</table>
+
+<div class="muted small centered">
+<code>G</code> is <b>safety</b>-shaped. <code>F</code> is <b>liveness</b>-shaped. That distinction is the
+next slide — and it determines which tool can help you.
+</div>
+
+<!--
+The basics the audience needs before safety/liveness makes sense.
+Land: traces are infinite, G and F are the two shapes, and everything else is built from them.
+-->
+
+---
+layout: center
+---
+
+<div class="idea-num">Idea 4 · continued</div>
 
 # Safety and liveness are topologically different
 
@@ -619,9 +730,11 @@ First question to ask about any liveness claim: <b>under what fairness?</b>
 layout: center
 ---
 
-# Bonus idea: the frame rule
+<div class="idea-num">Idea 5</div>
 
-<div class="lead">Ordinary Hoare logic can't reason about pointers.<br>One connective fixes it.</div>
+# The frame rule
+
+<div class="lead">Ordinary Hoare logic can't reason about pointers — because of aliasing.<br>One connective fixes it.</div>
 
 <div class="compare">
 <div class="cmp-col">
@@ -650,36 +763,12 @@ Rust's borrow checker is a decidable fragment of it, and why Iris is a framework
 </v-click>
 
 ---
-layout: section
----
-
-<div class="part">Part III</div>
-# It already shipped
-<div class="partsub">The part where you realise you've been depending on this for years</div>
-
----
 layout: center
 ---
 
-# Things that run because someone proved something
+# Where that gets you
 
-<div class="parade">
-<div class="pcard"><div class="pn">8,700</div><div class="pl">lines of C in seL4</div><div class="pw">+ 200,000 lines of proof</div></div>
-<div class="pcard"><div class="pn">0</div><div class="pl">wrong-code bugs in CompCert</div><div class="pw">GCC and LLVM: hundreds</div></div>
-<div class="pcard"><div class="pn">1B+</div><div class="pl">Cedar checks per day</div><div class="pw">Dafny model + differential testing</div></div>
-<div class="pcard"><div class="pn">3</div><div class="pl">microkernels in your devices</div><div class="pw">seL4, verified end to end</div></div>
-</div>
-
-<div class="muted small centered">Plus the TLS in your browser (HACL*/EverCrypt), the silicon in your laptop, and the
-authorization decisions behind your cloud account.</div>
-
----
-layout: center
----
-
-# CompCert: the number that should bother you
-
-<div class="lead centered">Csmith (PLDI 2011) generated random C programs and compiled them with every major compiler.</div>
+<div class="lead centered">Back to the mechanism from Idea 1 — applied to a real artifact.</div>
 
 <div class="bignum-row">
 <div class="bignum bad">
@@ -693,79 +782,22 @@ layout: center
 </div>
 
 <div class="callout">
-Compiler bugs are <b>invisible</b>: correct source silently becomes incorrect binaries,
-and every test you run tests the binary — so a miscompile can make your tests pass <i>because</i>
-it's broken.
+Csmith (PLDI 2011) generated random C programs and compiled them with every major compiler.
+CompCert — a C compiler whose <b>every optimisation is proved semantics-preserving</b> — had none.
 </div>
-
-<div class="muted small centered">The generalisable lesson: <b>verify the tool, not just the artifact.</b> Verify a compiler once and
-every program you ever compile inherits the guarantee.</div>
-
----
-layout: center
----
-
-# The AWS reframing that gets budgets approved
-
-<div class="quote-block">
-> In several cases we have prevented subtle, serious bugs from reaching production. In other cases we
-> have been able to make innovative performance optimizations — e.g. removing or narrowing locks, or
-> weakening constraints on message ordering — <b>which we would not have dared to do without having
-> model checked those changes.</b>
-<div class="attrib">Use of Formal Methods at Amazon Web Services</div>
-</div>
-
-<v-click>
-
-<div class="grid2">
-<div>
-<div class="h3 dim">Insurance</div>
-<div class="small dim">protects against a loss that never appears on a dashboard.<br><b>Gets cut.</b></div>
-</div>
-<div>
-<div class="h3 accent">Enabler</div>
-<div class="small">lets you ship a faster design you couldn't otherwise justify.<br><b>Gets funded.</b></div>
-</div>
-</div>
-
-</v-click>
 
 <div class="muted small centered">
-They called the internal talk <b>"Debugging Designs"</b> and described the tool as
-<b>"exhaustively testable pseudo-code"</b>. Steal that framing. It isn't a euphemism — it's the
-difference between adoption and abandonment.
+Compiler bugs are <b>invisible</b>: correct source silently becomes incorrect binaries, and every test
+you run tests the binary — so a miscompile can make your tests pass <i>because</i> it's broken.<br>
+<b>The lesson: verify the tool, not just the artifact.</b> Verify a compiler once and every program you
+ever compile inherits the guarantee.
 </div>
-
----
-layout: center
----
-
-# And yet it mostly didn't reach you
-
-<div class="lead centered">That's the honest part, and it has reasons.</div>
-
-<table class="clean small">
-<tr><td>The specification gap</td><td class="dim">never closes; product requirements churn weekly</td></tr>
-<tr><td>Cost is upfront and lumpy</td><td class="dim">the benefit is a bug that didn't happen</td></tr>
-<tr><td>Expertise tax</td><td class="dim">weeks of ramp-up, concentrated in a small community</td></tr>
-<tr><td>Tools that aren't in CI</td><td class="dim">are not adopted, regardless of quality</td></tr>
-<tr class="hl"><td><b>Selection effects</b></td><td class="dim"><b>we publish successes, never abandoned verification projects</b></td></tr>
-</table>
-
-<v-click>
-
-<div class="punch">
-It delivered where failure was catastrophic and the artifact was small —<br>
-and <span class="accent">nowhere else</span>.
-</div>
-
-</v-click>
 
 ---
 layout: section
 ---
 
-<div class="part">Part IV</div>
+<div class="part">Part III</div>
 # The AI era
 <div class="partsub">Generation got cheap. Verification didn't.</div>
 
@@ -806,29 +838,78 @@ You sped up one stage by 10× and left the next one alone. <b>The next one now s
 
 ---
 layout: center
+---
+
+# We already had this argument once — in 2014
+
+<div class="quote-block">
+> In several cases we have prevented subtle, serious bugs from reaching production. In other cases we
+> have been able to make innovative performance optimizations — e.g. removing or narrowing locks, or
+> weakening constraints on message ordering — <b>which we would not have dared to do without having
+> model checked those changes.</b>
+<div class="attrib">Use of Formal Methods at Amazon Web Services</div>
+</div>
+
+<v-click>
+
+<div class="grid2">
+<div>
+<div class="h3 dim">Insurance</div>
+<div class="small dim">protects against a loss that never appears on a dashboard.<br><b>Gets cut.</b></div>
+</div>
+<div>
+<div class="h3 accent">Enabler</div>
+<div class="small">lets you ship a faster design you couldn't otherwise justify.<br><b>Gets funded.</b></div>
+</div>
+</div>
+
+</v-click>
+
+<div class="muted small centered">
+Keep this framing — it is the same claim the AI era makes, ten years earlier and with humans doing the
+proofs. <b>Verification is a speed enabler, not a brake.</b>
+</div>
+
+---
+layout: center
 class: text-center
 ---
 
-# 2024: the year it stopped being hypothetical
+# 2024 — the milestone
 
 <div class="huge">28 <span class="slash">/</span> 42</div>
 
 <div class="lead">
-<b>AlphaProof</b> + AlphaGeometry 2 solved 4 of 6 IMO problems — silver-medal range,
-one point below gold.
+<b>AlphaProof</b> + AlphaGeometry 2 solved 4 of 6 IMO problems — silver-medal range.
 </div>
 
 <div class="muted">
 Trained by reinforcement learning with <b>Lean as the environment and the reward</b>.
+Published in <i>Nature</i>, 2025.
 </div>
 
-<div class="attrib">Published in <i>Nature</i>, November 2025</div>
+<v-click>
+
+<div class="callout">
+<b>This is a milestone, not the state of the art.</b> It took days per problem where humans took
+hours, and <b>the two combinatorics problems remained unsolved</b>. What it proved was the
+<i>architecture</i>: search proposes, a kernel disposes. Everything since has been about making that
+architecture cheap and general.
+</div>
+
+</v-click>
+
+<!--
+Important framing. AlphaProof is where the field's own material tends to stop, and it's now two years
+old. Use it as the proof of the architecture and move on quickly — the next two slides are the
+actual state of the art.
+-->
 
 ---
 layout: center
 ---
 
-# What that actually required
+# What AlphaProof actually required
 
 <div class="grid3">
 <div class="stat"><div class="sn">3B</div><div class="sl">parameter proof network</div></div>
@@ -843,16 +924,42 @@ layout: center
 so fidelity isn't required for training data.
 </div>
 
-<div class="muted small centered">And the honest part, which is why the rest is credible: <b>"the two combinatorics problems remained unsolved"</b>, and it took days where humans took hours.</div>
+<div class="muted small centered">Remember this trick. It is why the field stopped needing hand-formalised problems, and it generalises to
+generating <i>specifications</i> from tickets, comments, and docs.</div>
+
+---
+layout: center
+---
+
+# 2025 — the specialists
+
+<div class="lead centered">Leapfrogging the 2024 result, mostly with the same architecture.</div>
+
+<table class="clean small">
+<tr><td class="mono">Aristotle</td><td><b>gold-medal-equivalent</b> on the IMO 2025 problems, with Lean-verified proofs ⚠️ vendor claim</td></tr>
+<tr><td class="mono">Goedel-Prover</td><td>open-weights SOTA for formal proof generation</td></tr>
+<tr><td class="mono">DeepSeek-Prover-V2</td><td>open models close most of the gap</td></tr>
+<tr><td class="mono">Kimina-Prover</td><td>Lean-based, open</td></tr>
+</table>
+
+<div class="callout">
+<b>2025 was the year specialised provers stopped being a research curiosity and became a product
+category</b> — and the year open weights made them reproducible.
+</div>
+
+<div class="muted small centered">
+But note the shape of every one of these: <b>a model trained specifically for Lean</b>.
+That's the part that stopped being true in 2026.
+</div>
 
 ---
 layout: center
 class: text-center
 ---
 
-# 2026: generic models write Lean now
+# 2026 — the state of the art
 
-<div class="lead">This is the thing most formal-methods material hasn't caught up with.</div>
+<div class="lead">Generic models took over. This is the part most formal-methods material hasn't caught up with.</div>
 
 <div class="grid3">
 <div class="stat"><div class="sn big">92%</div><div class="sl">Gemini 3.1 Pro<br><span class="mono small">miniF2F, refine@32</span></div></div>
@@ -863,11 +970,14 @@ class: text-center
 <v-click>
 
 <div class="punch">
-The winners are <b>general-purpose</b> models — not Lean-specialised provers.
+The leaders are <b>general-purpose</b> models — not Lean-specialised provers.
 </div>
 
-<div class="muted small">arXiv:2606.05632, June 2026. Note the metric: <span class="mono">refine@k</span> = "given the
-compiler's error, fix your attempt" — the actual interactive loop.</div>
+<div class="muted small">
+arXiv:2606.05632, June 2026. Note the metric: <span class="mono">refine@k</span> = "given the
+compiler's error, fix your attempt" — the actual interactive loop, not a one-shot benchmark.<br>
+And note the price: sub-cent proofs make search something you stop rationing.
+</div>
 
 </v-click>
 
@@ -875,9 +985,9 @@ compiler's error, fix your attempt" — the actual interactive loop.</div>
 layout: center
 ---
 
-# Ten new theorems, with machine-checked certificates
+# 2026 — ten new theorems, machine-checked
 
-<div class="lead centered">August 2026. Each problem open for at least a decade.</div>
+<div class="lead centered">August 2026. Each problem open for at least a decade. Produced by a <b>general-purpose</b> model.</div>
 
 <div class="grid2 small">
 <div>
@@ -899,12 +1009,14 @@ layout: center
 </div>
 
 <div class="callout">
-Every argument shipped with a <b>Lean 4 certificate</b> in a public repository — and the model was
-<i>general-purpose</i>, not a maths system.
+Every argument shipped with a <b>Lean 4 certificate</b> in a public repository.
+No Lean-specialised prover involved.
 </div>
 
 <div class="muted small centered">
-Compute cost reported around <b>~$2,000</b> for all ten ⚠️ <i>secondary source — verify before quoting.</i>
+Compute cost reported around <b>~$2,000</b> for all ten ⚠️ <i>secondary source — verify before quoting.</i><br>
+<b>And the honest part:</b> machine-checked ≠ accepted. Mathematics is now arguing about attribution and
+process, because the correctness argument is largely settled by the kernel.
 </div>
 
 ---
@@ -997,7 +1109,7 @@ A verified one can <b>send it</b> — the kernel will catch anything unsound.
 layout: section
 ---
 
-<div class="part">Part V</div>
+<div class="part">Part IV</div>
 # The honest part
 <div class="partsub">What this does not do — say it before someone else does</div>
 
@@ -1062,10 +1174,35 @@ Every serious verification project has an assumptions section. Ordinary teams al
 </div>
 
 ---
+layout: center
+---
+
+# And it mostly didn't reach you
+
+<div class="lead centered">That's the honest part too, and it has reasons.</div>
+
+<table class="clean small">
+<tr><td>The specification gap</td><td class="dim">never closes; product requirements churn weekly</td></tr>
+<tr><td>Cost is upfront and lumpy</td><td class="dim">the benefit is a bug that didn't happen</td></tr>
+<tr><td>Expertise tax</td><td class="dim">weeks of ramp-up, concentrated in a small community</td></tr>
+<tr><td>Tools that aren't in CI</td><td class="dim">are not adopted, regardless of quality</td></tr>
+<tr class="hl"><td><b>Selection effects</b></td><td class="dim"><b>we publish successes, never abandoned verification projects</b></td></tr>
+</table>
+
+<v-click>
+
+<div class="punch">
+It delivered where failure was catastrophic and the artifact was small —<br>
+and <span class="accent">nowhere else</span>.
+</div>
+
+</v-click>
+
+---
 layout: section
 ---
 
-<div class="part">Part VI</div>
+<div class="part">Part V</div>
 # What to actually do
 <div class="partsub">One property. One function. One day.</div>
 
@@ -1180,9 +1317,9 @@ layout: center
 <div>
 <div class="h3">The ideas</div>
 <ul>
-<li><span class="mono">/01-fundamentals/type-theory</span> — dependent types, universes</li>
+<li><span class="mono">/01-fundamentals/logics</span> — Hoare logic, in full</li>
+<li><span class="mono">/01-fundamentals/temporal-logic</span> — LTL, safety, liveness, stuttering</li>
 <li><span class="mono">/01-fundamentals/curry-howard</span> — why proofs are programs</li>
-<li><span class="mono">/01-fundamentals/temporal-logic</span> — safety, liveness, stuttering</li>
 <li><span class="mono">/01-fundamentals/separation-logic</span> — the frame rule</li>
 <li><span class="mono">/01-fundamentals/limits</span> — Gödel, Rice, the trusted base</li>
 </ul>
@@ -1192,7 +1329,7 @@ layout: center
 <ul>
 <li><span class="mono">/03-applications/lightweight-fm</span> — the on-ramp, with code</li>
 <li><span class="mono">/03-applications/blockchain</span> — EVM, zk, verified compilers</li>
-<li><span class="mono">/reviews/…</span> → <span class="mono">/04-ai-era/llm-proof-engineering</span> — AI writing Lean</li>
+<li><span class="mono">/04-ai-era/llm-proof-engineering</span> — AI writing Lean</li>
 <li><span class="mono">/05-tools/choosing</span> — which tool, for which problem</li>
 <li><span class="mono">/06-practice/adoption-playbook</span> — the 0→3 rollout</li>
 </ul>
@@ -1212,7 +1349,7 @@ class: text-center
 
 # Backup slides
 
-<div class="muted">The five families · the tool map · the objection answers · the full ladder</div>
+<div class="muted">The five families · the tool map · the objection answers</div>
 
 ---
 layout: center

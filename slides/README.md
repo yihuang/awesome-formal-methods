@@ -23,9 +23,9 @@ and will check out if the deck opens on Aristotle.
 
 | | |
 |---|---|
-| **I · Motivation** | the hook, the provocation, **why this is your problem**, the inversion, the roadmap |
+| **I · Motivation** | **why this is your problem**, the inversion, the roadmap. No scene-setting: the deck opens on the engineer's situation |
 | **II · History** | Aristotle → Euclid → the fifth postulate → Boole/Frege/Russell → Hilbert → the three schools → what formalism is *for* → where the regress of trust stops; then Gödel, Turing, Rice |
-| **III · Methodology** | the asymmetry, the propose/check architecture, Hoare logic, Curry–Howard, the spec gap, stuttering invariance, LTL, safety/liveness, fairness, the frame rule |
+| **III · Methodology** | the asymmetry, the propose/check architecture, Hoare logic, Curry–Howard, the spec gap, **LTL basics → safety/liveness → fairness → stuttering invariance**, the frame rule |
 | **IV · The AI era** | AWS's 2014 precedent, 2024 → 2026 state of the art, the ten results, the proof is the review, blockchain |
 | **V · Practice** | the honest limits, the adoption gap, the ladder, the five things |
 
@@ -43,7 +43,7 @@ An earlier version opened on Aristotle. The failure mode is obvious in hindsight
 nine slides about the philosophy of mathematics with **no established reason to care**, and the
 deck loses them before it has made a single claim about their job.
 
-So Part I now earns the right to the history section. It spends five slides on the engineer's actual
+So Part I now earns the right to the history section. It spends three slides on the engineer's actual
 situation — you review more code than you can read, your tests share your model's blind spots,
 testing samples and cannot cover the input you didn't imagine, and the failure surfaces in
 production. Only then does the deck say: *this question is 2,300 years old, and here is what those
@@ -73,7 +73,7 @@ thinks the philosophy is decoration.
 
 ## Pacing
 
-63 slides is a lot for 45 minutes — roughly 43 seconds each. That works because the philosophy
+62 slides is a lot for 45 minutes — roughly 43 seconds each. That works because the philosophy
 slides are statement slides you *say* rather than read, and because three slides at the end are
 explicitly backups.
 
@@ -82,12 +82,31 @@ explicitly backups.
 1. the *2025 specialists* slide — the 2024→2026 arc survives without it
 2. *What AlphaProof actually required* — keep the milestone, drop the training detail
 3. the *two rules, memorised* slide — it repeats the stuttering theorem
-4. *The objections, answered briefly* — it is already a backup
+4. the *2025 → 2026* pair collapse into one slide
+5. *The objections, answered briefly* — it is already a backup
 
 **Never cut:** the asymmetry, the four-mistakes slide, *Why this is your problem*, or the ask.
 The history section is safe to trim *only* if Part I stays intact — it is what earns the detour.
 
+**Do not reintroduce a cold open.** Two versions of this deck tried to hook the audience with history
+before explaining the stakes, and both times it read as a non-sequitur. If you want an intriguing
+opener, earn it — or use the closing slide's reveal, which is where the 1956 fact now lives.
+
 ## Revision history
+
+**v5** — two fixes.
+
+- **Removed the 1956 hook and the provocation slide that followed it.** Opening the deck with the
+  history of Logic Theorist, before any reason to care, was the same mistake as opening on Aristotle:
+  scene-setting ahead of motivation. The deck now goes title → *Why this is your problem* with nothing
+  in between. The 1956 fact still lands — as the **closing** slide, where it reads as a reveal rather
+  than a warm-up.
+- **Stuttering invariance moved after temporal logic.** It was being introduced before the audience had
+  seen traces or the `X` operator, so the Peled–Wilke theorem ("stuttering-invariant iff expressible
+  without `next`") referenced a symbol nobody had met. The LTL slides now come first, then
+  safety/liveness (which the LTL slide explicitly promises as "the next slide"), then fairness, then
+  stuttering. The `X` discussion is now the payoff of the operator table rather than a forward
+  reference.
 
 **v4** — reordered to motivation → history → methodology → AI era → practice, on the grounds that the
 philosophy was unearned. Added a *"Why this is your problem"* slide (four concrete pressures on a

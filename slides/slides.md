@@ -53,64 +53,6 @@ layout: section
 layout: center
 ---
 
-<div class="huge">1956</div>
-
-<div class="lead">
-The first AI program ever written was called <b>Logic Theorist</b>.
-It proved 38 of the first 52 theorems in <i>Principia Mathematica</i>.
-</div>
-
-<v-click>
-
-<div class="punch">
-It was a theorem prover.
-</div>
-
-</v-click>
-
-<div class="attrib">Newell, Shaw &amp; Simon, 1957</div>
-
-<!--
-THE HOOK. This is the twist nobody expects. Pause after "It was a theorem prover."
-Then: the two fields didn't converge recently — they started entangled.
--->
-
----
-layout: center
-class: text-center
----
-
-# The thing nobody said out loud
-
-<div class="lead">
-Your agent just wrote 400 lines. It compiles. The tests pass.
-</div>
-
-<v-click>
-
-<div class="punch big">
-<em>How do you know?</em>
-</div>
-
-</v-click>
-
-<v-click>
-
-<div class="muted small">
-You wrote the tests. So did the model. You share the same blind spot.
-</div>
-
-</v-click>
-
-<!--
-The provocation. Don't rush the last line — "you share the same blind spot" is the thesis of the
-whole second half of the talk.
--->
-
----
-layout: center
----
-
 # Why this is your problem
 
 <div class="lead">Three things changed. None of them are about mathematics.</div>
@@ -1062,74 +1004,6 @@ Keep the examples concrete — the erase/delete one lands best.
 layout: center
 ---
 
-<div class="idea-num">Idea 3</div>
-
-# Stuttering invariance
-
-<div class="lead">The most under-taught idea in the field.<br>It's why refinement proofs exist at all.</div>
-
----
-layout: center
----
-
-# Your implementation has more steps than your spec
-
-<div class="steps">
-  <div class="step-row">
-    <div class="rowlabel">abstract</div>
-    <div class="tokens"><span class="st">A</span><span class="dash">──────</span><span class="st">B</span></div>
-  </div>
-  <div class="step-row">
-    <div class="rowlabel">implementation</div>
-    <div class="tokens"><span class="st">A</span><span class="dash">──</span><span class="st small">a₁</span><span class="dash">──</span><span class="st small">a₂</span><span class="dash">──</span><span class="st">B</span></div>
-  </div>
-</div>
-
-<div class="lead centered">
-Three steps implementing one abstract action must not be a refinement <i>violation</i>.
-</div>
-
-<v-click>
-
-<div class="callout">
-<b>The theorem (Peled–Wilke).</b> A temporal property is stuttering-invariant
-<b>if and only if</b> you can write it without the <span class="mono">next</span> operator.
-</div>
-
-<div class="punch small">
-So: <b>never write <span class="mono">X</span>.</b> And write <span class="mono">[Next]_vars</span>, not
-<span class="mono">Next</span> — the bracket is the stuttering step.
-</div>
-
-</v-click>
-
----
-layout: center
----
-
-# Two rules, memorised
-
-<div class="rules">
-<div class="rule">
-<div class="rule-n mono">X φ</div>
-<div class="rule-v bad">almost always a bug</div>
-<div class="rule-w">"φ in the very next state" is a claim about <b>step granularity</b>. Any implementation with a different granularity breaks it.</div>
-</div>
-<div class="rule">
-<div class="rule-n mono">[Next]_v</div>
-<div class="rule-v good">this is the one</div>
-<div class="rule-w">"Next happens, <b>or nothing changes</b>." That second disjunct is the stuttering step, and it's what makes a spec refinable.</div>
-</div>
-</div>
-
-<div class="muted small centered">
-Cost of following this rule: zero. Cost of not following it: unprovable refinement, forever.
-</div>
-
----
-layout: center
----
-
 <div class="idea-num">Idea 4 · the basics</div>
 
 # How do you specify something that never finishes?
@@ -1257,6 +1131,74 @@ a theorem about a scheduler you don't have.
 
 <div class="muted centered small">
 First question to ask about any liveness claim: <b>under what fairness?</b>
+</div>
+
+---
+layout: center
+---
+
+<div class="idea-num">Idea 3</div>
+
+# Stuttering invariance
+
+<div class="lead">The most under-taught idea in the field.<br>It's why refinement proofs exist at all.</div>
+
+---
+layout: center
+---
+
+# Your implementation has more steps than your spec
+
+<div class="steps">
+  <div class="step-row">
+    <div class="rowlabel">abstract</div>
+    <div class="tokens"><span class="st">A</span><span class="dash">──────</span><span class="st">B</span></div>
+  </div>
+  <div class="step-row">
+    <div class="rowlabel">implementation</div>
+    <div class="tokens"><span class="st">A</span><span class="dash">──</span><span class="st small">a₁</span><span class="dash">──</span><span class="st small">a₂</span><span class="dash">──</span><span class="st">B</span></div>
+  </div>
+</div>
+
+<div class="lead centered">
+Three steps implementing one abstract action must not be a refinement <i>violation</i>.
+</div>
+
+<v-click>
+
+<div class="callout">
+<b>The theorem (Peled–Wilke).</b> A temporal property is stuttering-invariant
+<b>if and only if</b> you can write it without the <span class="mono">next</span> operator.
+</div>
+
+<div class="punch small">
+So: <b>never write <span class="mono">X</span>.</b> And write <span class="mono">[Next]_vars</span>, not
+<span class="mono">Next</span> — the bracket is the stuttering step.
+</div>
+
+</v-click>
+
+---
+layout: center
+---
+
+# Two rules, memorised
+
+<div class="rules">
+<div class="rule">
+<div class="rule-n mono">X φ</div>
+<div class="rule-v bad">almost always a bug</div>
+<div class="rule-w">"φ in the very next state" is a claim about <b>step granularity</b>. Any implementation with a different granularity breaks it.</div>
+</div>
+<div class="rule">
+<div class="rule-n mono">[Next]_v</div>
+<div class="rule-v good">this is the one</div>
+<div class="rule-w">"Next happens, <b>or nothing changes</b>." That second disjunct is the stuttering step, and it's what makes a spec refinable.</div>
+</div>
+</div>
+
+<div class="muted small centered">
+Cost of following this rule: zero. Cost of not following it: unprovable refinement, forever.
 </div>
 
 ---

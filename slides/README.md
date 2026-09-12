@@ -17,15 +17,19 @@ npm run build:all       # deck + wiki site
 
 **AI Made Code Cheap. Trust Is Still Expensive.**
 
-The deck is deliberately *not* a tool tour. It is built on the wiki's strongest material:
+Ordered as **motivation → history → methodology → AI era → practice**. That order matters: an
+engineer will sit through 2,300 years of philosophy *if* they already know why it is their problem,
+and will check out if the deck opens on Aristotle.
 
-| Part | Content | Why it's there |
-|---|---|---|
-| I · Why formalism — and why it's impossible | **Aristotle → Euclid → the fifth postulate → Boole/Frege/Russell → Hilbert → the three schools → what formalism is *for*** → then Gödel, Turing, Rice → **the asymmetry** | the deep question first; the impossibility results only mean something once you know what formalism was *for* |
-| II · The ideas that work | **Hoare logic basics** → Curry–Howard + the kernel → the spec gap → stuttering invariance → **LTL basics** → safety vs liveness → fairness → the frame rule → CompCert's zero | the deep fundamentals; basics come before the ideas that build on them |
-| III · The AI era | the inversion → AWS's 2014 precedent → **2024 milestone → 2025 specialists → 2026 state of the art** → the ten results → the proof is the review → blockchain | the reason this talk exists now |
-| IV · The honest part | what FM can't do, verified systems that failed, the adoption gap | say it before the audience does |
-| V · What to do | the ladder, the 5 things, three sentences | the ask |
+| | |
+|---|---|
+| **I · Motivation** | the hook, the provocation, **why this is your problem**, the inversion, the roadmap |
+| **II · History** | Aristotle → Euclid → the fifth postulate → Boole/Frege/Russell → Hilbert → the three schools → what formalism is *for* → where the regress of trust stops; then Gödel, Turing, Rice |
+| **III · Methodology** | the asymmetry, the propose/check architecture, Hoare logic, Curry–Howard, the spec gap, stuttering invariance, LTL, safety/liveness, fairness, the frame rule |
+| **IV · The AI era** | AWS's 2014 precedent, 2024 → 2026 state of the art, the ten results, the proof is the review, blockchain |
+| **V · Practice** | the honest limits, the adoption gap, the ladder, the five things |
+
+The deck is deliberately *not* a tool tour. It is built on the wiki's strongest material:
 
 **The two slides that carry the talk:**
 
@@ -33,11 +37,22 @@ The deck is deliberately *not* a tool tour. It is built on the wiki's strongest 
 2. **"I made this mistake four times writing the wiki"** — four bugs, all in the *property*, none in
    the *proof*. Self-incriminating, and the most credible evidence for the whole argument.
 
-## The opening, in detail
+## Why the order is motivation-first
 
-The first nine slides are the part worth defending, because they answer the question the rest of the
-deck depends on: **why would symbols on paper ever be more trustworthy than a competent person's
-judgement?**
+An earlier version opened on Aristotle. The failure mode is obvious in hindsight: an engineer watches
+nine slides about the philosophy of mathematics with **no established reason to care**, and the
+deck loses them before it has made a single claim about their job.
+
+So Part I now earns the right to the history section. It spends five slides on the engineer's actual
+situation — you review more code than you can read, your tests share your model's blind spots,
+testing samples and cannot cover the input you didn't imagine, and the failure surfaces in
+production. Only then does the deck say: *this question is 2,300 years old, and here is what those
+people worked out.* The history part now **pays rent** instead of asking for patience.
+
+## The history section, in detail
+
+It answers the question the rest of the deck depends on: **why would symbols on paper ever be more
+trustworthy than a competent person's judgement?**
 
 | Slide | The idea |
 |---|---|
@@ -58,7 +73,7 @@ thinks the philosophy is decoration.
 
 ## Pacing
 
-62 slides is a lot for 45 minutes — roughly 45 seconds each. That works because the philosophy
+63 slides is a lot for 45 minutes — roughly 43 seconds each. That works because the philosophy
 slides are statement slides you *say* rather than read, and because three slides at the end are
 explicitly backups.
 
@@ -69,9 +84,19 @@ explicitly backups.
 3. the *two rules, memorised* slide — it repeats the stuttering theorem
 4. *The objections, answered briefly* — it is already a backup
 
-**Never cut:** the asymmetry, the four-mistakes slide, the philosophy opening, or the ask.
+**Never cut:** the asymmetry, the four-mistakes slide, *Why this is your problem*, or the ask.
+The history section is safe to trim *only* if Part I stays intact — it is what earns the detour.
 
 ## Revision history
+
+**v4** — reordered to motivation → history → methodology → AI era → practice, on the grounds that the
+philosophy was unearned. Added a *"Why this is your problem"* slide (four concrete pressures on a
+working engineer) and moved the Amdahl-inversion slide out of the AI era and into Motivation, where
+it belongs as the "why now". The roadmap slide now states the five parts explicitly, so nobody is
+surprised by the history detour. The asymmetry and the propose/check architecture moved from the end
+of the history block to the *start* of Methodology — they are the premise of the techniques, not the
+conclusion of the history. Practice now absorbs the honest limits, since those are practical
+knowledge rather than a separate act.
 
 **v3** — added the philosophical opening. A reviewer pointed out that the deck explained *how*
 formalism fails before establishing *why formalism at all*, and asked for the origin of logic and the

@@ -42,6 +42,14 @@ Pace: 30 seconds.
 -->
 
 ---
+layout: section
+---
+
+<div class="part">Part I</div>
+# Motivation
+<div class="partsub">Why this is your problem now — before we go anywhere near mathematics</div>
+
+---
 layout: center
 ---
 
@@ -103,38 +111,120 @@ whole second half of the talk.
 layout: center
 ---
 
-# What this talk is
+# Why this is your problem
+
+<div class="lead">Three things changed. None of them are about mathematics.</div>
 
 <div class="grid2">
+<div>
+<div class="h3">You review more code than you can read</div>
+<div class="small">Not because you got slower — because generation outran review capacity.
+<b>The bottleneck moved, and it moved onto you.</b></div>
+</div>
+<div>
+<div class="h3 accent">Your tests share your blind spots</div>
+<div class="small">They were written by the same model, from the same assumptions, against the same
+imagined inputs. Correlated errors don't cancel. <b>They compound.</b></div>
+</div>
+</div>
 
+<div class="callout">
+And the failure surfaces in the one place you can't afford it: <b>production</b>. Testing samples. It
+cannot tell you about the input you didn't imagine — and that input is exactly what an adversary, an
+unusual customer, or next quarter's data will find.
+</div>
+
+<div class="muted small centered">
+So the question this talk is about is not "should I learn Lean". It is:<br>
+<b>what do you do when you can no longer personally vouch for the code you ship?</b>
+</div>
+
+<!--
+The slide that answers "what has this got to do with me". Do not skip or rush it — it is the reason
+the history section that follows is allowed to exist.
+-->
+
+---
+layout: center
+---
+
+# Amdahl's law, applied to software
+
+<div class="bars">
+  <div class="bar-row">
+    <div class="bar-label">generating code</div>
+    <div class="bar-track"><div class="bar shrink">then: $$$$</div></div>
+    <div class="bar-track"><div class="bar tiny">now: ¢</div></div>
+  </div>
+  <div class="bar-row">
+    <div class="bar-label">establishing trust</div>
+    <div class="bar-track"><div class="bar flat">then: $$</div></div>
+    <div class="bar-track"><div class="bar flat">now: $$ — unchanged</div></div>
+  </div>
+</div>
+
+<v-click>
+
+<div class="lead centered">
+You sped up one stage by 10× and left the next one alone. <b>The next one now sets your throughput ceiling.</b>
+</div>
+
+<div class="quote-block">
+> (Developers) report being able to <b>"fully delegate" only 0–20% of tasks</b>, while using AI in
+> roughly 60% of their work.
+<div class="attrib">Anthropic, 2026 agentic coding report ⚠️ vendor-published</div>
+</div>
+
+</v-click>
+
+<div class="muted small centered">That gap between <i>assisted</i> and <i>trusted</i> <b>is</b> the verification bottleneck.</div>
+
+---
+layout: center
+---
+
+# What this talk is
+
+<div class="lead">Five parts, in this order — the first one is why you're here.</div>
+
+<table class="clean small">
+<tr><td class="mono">I&nbsp;&nbsp;&nbsp;&nbsp;Motivation</td><td>why trusting code is now the bottleneck, and why that lands on you</td></tr>
+<tr><td class="mono">II&nbsp;&nbsp;&nbsp;History</td><td>where formalism came from, and the three theorems that cap it forever</td></tr>
+<tr><td class="mono">III&nbsp;&nbsp;Methodology</td><td>the five ideas that make verification possible anyway</td></tr>
+<tr><td class="mono">IV&nbsp;&nbsp;The AI era</td><td>what actually changed in 2024–2026, with numbers</td></tr>
+<tr><td class="mono">V&nbsp;&nbsp;&nbsp;Practice</td><td>the honest limits, and one thing to do on Monday</td></tr>
+</table>
+
+<div class="grid2">
 <div>
 <div class="h3">Not</div>
-<ul class="dim">
+<ul class="dim small">
 <li>A tour of 40 tools</li>
-<li>A lecture on type theory</li>
 <li>"Everyone should learn Lean"</li>
 </ul>
 </div>
-
 <div>
 <div class="h3 accent">But</div>
-<ul>
-<li><b>The three theorems</b> that make this hard forever</li>
-<li><b>The five ideas</b> that make it possible anyway</li>
-<li><b>Why AI changed the economics</b> — and didn't change the limits</li>
-<li><b>One thing you can do on Monday</b></li>
+<ul class="small">
+<li><b>Why anyone invented this at all</b> — a 2,300-year-old answer</li>
+<li>Why it can never be complete, and why that's survivable</li>
+<li>What AI changed — and what it didn't</li>
 </ul>
 </div>
-
 </div>
+
+<!--
+Set expectations honestly, including that history gets real time. Engineers sit through a section they
+know is coming; they check out of one that surprises them with Aristotle.
+-->
 
 ---
 layout: section
 ---
 
-<div class="part">Part I</div>
-# Why formalism — and why it's impossible
-<div class="partsub">Before we talk about tools, a question from 350 BCE</div>
+<div class="part">Part II</div>
+# History: the origin of formalism
+<div class="partsub">Why anyone would want symbols to be more trustworthy than judgement</div>
 
 ---
 layout: center
@@ -600,14 +690,9 @@ in finitary proof. Gödel showed it can't.
 layout: section
 ---
 
-<div class="part">Part I · continued</div>
+<div class="part">Part II · continued</div>
 # And then the dream collapsed
 <div class="partsub">Three theorems that closed Hilbert's programme — and defined our entire design space</div>
-
-<!--
-Transition. We now know WHY formalism (agreement without authority) and WHERE trust stops (a choice).
-Next: why it can never be complete. Hilbert asked the question and got an answer he didn't want.
--->
 
 ---
 layout: center
@@ -716,6 +801,14 @@ A fuzzer finding nothing is not evidence of absence.
 </v-click>
 
 ---
+layout: section
+---
+
+<div class="part">Part III</div>
+# Methodology &amp; techniques
+<div class="partsub">How any of this is possible at all — five ideas, in order</div>
+
+---
 layout: center
 ---
 
@@ -789,14 +882,6 @@ class: text-center
 <div class="muted small">And note the direction of dependence: <b>RL needs a verifier.</b> Formal methods aren't the legacy half of this loop.</div>
 
 ---
-layout: section
----
-
-<div class="part">Part II</div>
-# The ideas that work anyway
-<div class="partsub">Five ideas carry the entire field</div>
-
----
 layout: center
 ---
 
@@ -832,7 +917,7 @@ algorithm for finding it. That's Rice's theorem, showing up in the most practica
 </v-click>
 
 <div class="muted small centered">
-Hold that second point. <b>Everything in Part III is about who supplies the invariant.</b>
+Hold that second point. <b>Everything in the AI-era section is about who supplies the invariant.</b>
 </div>
 
 <!--
@@ -1245,44 +1330,9 @@ ever compile inherits the guarantee.
 layout: section
 ---
 
-<div class="part">Part III</div>
+<div class="part">Part IV</div>
 # The AI era
 <div class="partsub">Generation got cheap. Verification didn't.</div>
-
----
-layout: center
----
-
-# Amdahl's law, applied to software
-
-<div class="bars">
-  <div class="bar-row">
-    <div class="bar-label">generating code</div>
-    <div class="bar-track"><div class="bar shrink">then: $$$$</div></div>
-    <div class="bar-track"><div class="bar tiny">now: ¢</div></div>
-  </div>
-  <div class="bar-row">
-    <div class="bar-label">establishing trust</div>
-    <div class="bar-track"><div class="bar flat">then: $$</div></div>
-    <div class="bar-track"><div class="bar flat">now: $$ — unchanged</div></div>
-  </div>
-</div>
-
-<v-click>
-
-<div class="lead centered">
-You sped up one stage by 10× and left the next one alone. <b>The next one now sets your throughput ceiling.</b>
-</div>
-
-<div class="quote-block">
-> (Developers) report being able to <b>"fully delegate" only 0–20% of tasks</b>, while using AI in
-> roughly 60% of their work.
-<div class="attrib">Anthropic, 2026 agentic coding report ⚠️ vendor-published</div>
-</div>
-
-</v-click>
-
-<div class="muted small centered">That gap between <i>assisted</i> and <i>trusted</i> <b>is</b> the verification bottleneck.</div>
 
 ---
 layout: center
@@ -1557,9 +1607,9 @@ A verified one can <b>send it</b> — the kernel will catch anything unsound.
 layout: section
 ---
 
-<div class="part">Part IV</div>
-# The honest part
-<div class="partsub">What this does not do — say it before someone else does</div>
+<div class="part">Part V</div>
+# Practice: the honest limits, and your first week
+<div class="partsub">What it can't do, why it didn't reach you, and the one step that works</div>
 
 ---
 layout: center
@@ -1645,14 +1695,6 @@ and <span class="accent">nowhere else</span>.
 </div>
 
 </v-click>
-
----
-layout: section
----
-
-<div class="part">Part V</div>
-# What to actually do
-<div class="partsub">One property. One function. One day.</div>
 
 ---
 layout: center

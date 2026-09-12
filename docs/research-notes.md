@@ -239,7 +239,7 @@ that looked fine everywhere else:
 | Script | Checks | Notable catches |
 |---|---|---|
 | `tools/check-links.py` | relative links in Markdown source, GitHub-style anchors, **and links that escape `docs/`** | broke repeatedly during the restructure; the escape guard (links above the VitePress srcDir are on disk but 404 on the site) was added after VitePress caught one |
-| `tools/check-site.py` | links in the **built** HTML (base paths, VitePress-resolved anchors, hashed assets) **and table structure** | **51 broken links the Markdown checker could not see**, an 81-link breakage from a single bad sidebar entry, and a cell silently split by an unescaped `|` |
+| `tools/check-site.py` | links in the **built** HTML (base paths, VitePress-resolved anchors, hashed assets) **and table structure** | **51 broken links the Markdown checker could not see**, an 81-link breakage from a single bad sidebar entry, and a cell silently split by an unescaped `\|` |
 | `tools/check-refs.py` | reference coverage: every page has a `## References` section, and reports source density | found **33 pages with no references and many with zero external sources** |
 
 What the site checker caught, and what is worth remembering:

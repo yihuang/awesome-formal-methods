@@ -38,6 +38,34 @@ ROW_RE = re.compile(r"<tr\b.*?</tr>", re.DOTALL | re.IGNORECASE)
 TD_RE = re.compile(r"<td\b", re.IGNORECASE)
 
 
+def is_stale(dist: Path) -> tuple:
+    """True if any source file is newer than the build we are about to check.
+
+    Running this checker against a stale `dist/` silently validates the wrong
+    artifact — which has already happened once here: an edit to a table row was
+    verified against a build from before the edit, and CI caught what the local
+    run did not.
+    """
+    marker = dist / "index.html"
+    if not marker.exists():
+        return True, "no build found"
+    built = marker.stat().st_mtime
+    src_root = dist.parent.parent          # docs/
+    newest, newest_path = 0.0, None
+    for path in src_root.rglob("*"):
+        parts = set(path.parts)
+        if ".vitepress" in parts and path.name != "config.mts":
+            continue
+        if path.is_dir() or path.suffix not in {".md", ".mts", ".css", ".ts"}:
+            continue
+        m = path.stat().st_mtime
+        if m > newest:
+            newest, newest_path = m, path
+    if newest > built:
+        return True, f"{newest_path.relative_to(src_root)} is newer than the build"
+    return False, ""
+
+
 def check_tables(page: Path, rel_page: str) -> list:
     """Report tables that markdown did not parse as intended.
 
@@ -101,6 +129,13 @@ def main() -> None:
     if not dist.is_dir():
         print(f"dist directory not found: {dist}", file=sys.stderr)
         print("Run `npm run docs:build` first.", file=sys.stderr)
+        sys.exit(2)
+
+    stale, why = is_stale(dist)
+    if stale:
+        print(f"❌ the build is stale: {why}")
+        print("   Run `npm run docs:build` and then re-run this checker —")
+        print("   otherwise you are validating an older artifact than the sources.")
         sys.exit(2)
 
     base = "/" + base.strip("/") + "/"

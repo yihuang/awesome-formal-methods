@@ -88,7 +88,7 @@ This is the most important practical consequence, and it has a clean worked exam
 
 For the `apc-optimizer` — a zkVM constraint-system optimiser, formally verified in Lean:
 
-| | |
+| Aspect | Detail |
 |---|---|
 | **Human role** | write and thoroughly review ~**500 lines** of specification. Freeze it. Instruct agents not to change it. |
 | **AI role** | write the entire implementation and every proof: ~**10,000 lines** of Lean |

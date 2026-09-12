@@ -118,6 +118,7 @@ export default defineConfig({
           { text: 'Lean 4', link: '/05-tools/lean4' },
           { text: 'Mathlib', link: '/05-tools/mathlib' },
           { text: 'Proof tactics', link: '/05-tools/proof-tactics' },
+          { text: 'Iris (and iris-lean)', link: '/05-tools/iris' },
           { text: 'Adoption playbook', link: '/06-practice/adoption-playbook' },
           { text: 'Objections & answers', link: '/06-practice/objections' },
           { text: 'AI proof engineering', link: '/04-ai-era/llm-proof-engineering' },
@@ -157,6 +158,7 @@ export default defineConfig({
           { text: 'Logics', link: '/01-fundamentals/logics' },
           { text: 'Type theory & dependent types', link: '/01-fundamentals/type-theory' },
           { text: 'Curry–Howard correspondence', link: '/01-fundamentals/curry-howard' },
+          { text: 'Separation logic', link: '/01-fundamentals/separation-logic' },
           { text: 'Semantics (small-step, big-step, …)', link: '/01-fundamentals/semantics' },
           { text: 'Temporal logic (safety, liveness, stuttering)', link: '/01-fundamentals/temporal-logic' },
           { text: 'Techniques', link: '/01-fundamentals/techniques' },
@@ -209,7 +211,8 @@ export default defineConfig({
           { text: 'Model verifiers (TLA+, Ivy, Veil)', link: '/05-tools/model-verifiers' },
           { text: 'Lean 4', link: '/05-tools/lean4' },
           { text: 'Mathlib', link: '/05-tools/mathlib' },
-          { text: 'Proof tactics', link: '/05-tools/proof-tactics' }
+          { text: 'Proof tactics', link: '/05-tools/proof-tactics' },
+          { text: 'Iris (and iris-lean)', link: '/05-tools/iris' }
         ]
       },
       {

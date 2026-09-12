@@ -215,7 +215,7 @@ remove locks and weaken ordering constraints they "would not have dared to" chan
 powdr's autoprecompiles optimiser turns a constraint system into a smaller equivalent one — the core
 of making a zkVM fast. It is now formally verified in Lean, and the process is the story:
 
-| | |
+| Aspect | Detail |
 |---|---|
 | **Human-reviewed spec** | ~**500 lines** of Lean, thoroughly reviewed, frozen, and protected from agent edits |
 | **AI-written implementation + proofs** | ~**10,000 lines** of Lean that **no human ever read** |

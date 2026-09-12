@@ -13,7 +13,7 @@ entry has **the claim**, **the numbers**, **the pattern to steal**, and **the ho
 
 **Tool:** Isabelle/HOL · **Technique:** interactive theorem proving + refinement
 
-| | |
+| Metric | Figure |
 |---|---|
 | Implementation | ~8,700 lines of C |
 | Proof | ~200,000 lines of Isabelle |

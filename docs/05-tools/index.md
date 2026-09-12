@@ -7,6 +7,7 @@
 | [model-verifiers.md](model-verifiers.md) | TLA+, Ivy, Veil in depth: specs, toolchains, CTI-driven invariant discovery |
 | [lean4.md](lean4.md) | The Lean 4 kernel, elaborator, metaprogramming, and a runnable tour |
 | [mathlib.md](mathlib.md) | The library: conventions, discovery tools, workflow, coverage |
+| [iris.md](iris.md) | The Iris framework: monoids, invariants, ghost state, proof mode, and the Lean port |
 | [proof-tactics.md](proof-tactics.md) | The goal state, the automation ladder, debugging, best practices |
 
 ## The short version

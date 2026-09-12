@@ -98,7 +98,25 @@ attribution requirements and the registration snippet. `tla` and `dafny` are ven
 **The trap:** a language Shiki doesn't know falls back to plain text with only a build-log warning.
 The page looks *fine* — just unhighlighted — so nobody notices.
 
-### 4. Base path
+### 4. Tables — escape `|` inside inline code
+
+A literal `|` inside inline code in a table cell **splits the cell**. The table still builds, the
+links still resolve, and the HTML is well-formed — the content is just silently in the wrong column.
+Escape it:
+
+```markdown
+| Notation | Meaning |
+|---|---|
+| `\|={E1,E2}=>` | fancy update between masks |   <!-- the backslash before | is required -->
+```
+
+`check-site.py` catches this by flagging any backtick that survives into rendered output, which is
+what a split cell leaves behind. It also flags ragged rows.
+
+**While you're here:** give tables real header text. An empty header row (`| | |`) renders as a blank
+band and reads like a rendering bug.
+
+### 5. Base path
 
 The site is a GitHub Pages **project** site, so `base = '/awesome-formal-methods/'` in `config.mts`.
 Renaming the repository or moving to a user site (`yihuang.github.io`) requires changing it.
@@ -118,7 +136,7 @@ Four checkers run in CI before the site is deployed. Each catches a class of bug
 | `python3 tools/check-links.py` | broken relative Markdown links, bad anchors, links escaping `docs/` |
 | `python3 tools/check-refs.py` | a page missing its `## References` section (a ratchet, currently 0) |
 | `npm run docs:build` | VitePress dead links — **fails the build** |
-| `python3 tools/check-site.py` | broken links in the *built* HTML: base paths, rewritten anchors, hashed assets |
+| `python3 tools/check-site.py` | broken links in the *built* HTML (base paths, rewritten anchors, hashed assets) **and malformed tables** — ragged rows, and backticks leaking into rendered cells |
 
 `check-site.py` is the only one that sees what users actually load, and it found bugs the Markdown
 checker could not. Run it after any change to `config.mts`.

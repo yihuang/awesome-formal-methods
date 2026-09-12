@@ -12,7 +12,7 @@
 
 ## What it is, and how big
 
-| | |
+| Metric | Figure |
 |---|---|
 | **Definitions** | ~136,932 |
 | **Theorems** | ~288,041 |

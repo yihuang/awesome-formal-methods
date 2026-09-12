@@ -406,3 +406,77 @@
   text-transform: uppercase; color: var(--cyan); margin-bottom: 0.6rem;
 }
 .partsub { font-size: 1.05rem; color: var(--ink-dim); margin-top: 0.9rem; max-width: 48ch; }
+
+/* ============================================================================
+   Philosophy section (Part I) — a quieter, older-feeling register
+
+   The technical slides use cyan and tight sans type. These use amber and larger
+   serif statements in the era markers, so the origin story reads as history
+   rather than as a tool pitch.
+   ========================================================================= */
+
+.era {
+  font-family: var(--mono);
+  font-size: 1.5rem;
+  letter-spacing: 0.16em;
+  color: var(--amber);
+  opacity: 0.85;
+  margin-bottom: 0.5rem;
+}
+
+/* the syllogism, presented as a derivation */
+.syllogism { display: flex; justify-content: center; margin: 1.6rem 0 1.2rem; }
+.syl {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.2rem 2.2rem;
+  background: var(--surface);
+  text-align: left;
+}
+.syl-line { font-size: 1.15rem; line-height: 1.9; }
+.syl-rule {
+  height: 1px; background: var(--line); margin: 0.55rem 0;
+  position: relative;
+}
+.syl-rule::after {
+  content: "∴";
+  position: absolute; right: -1.3rem; top: -0.95rem;
+  color: var(--cyan); font-size: 1.1rem;
+}
+
+/* the three schools of mathematical philosophy */
+.schools { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; margin: 1.3rem 0; }
+.school {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1rem 1.05rem;
+  background: var(--surface);
+  display: flex; flex-direction: column;
+}
+.school:nth-child(1) { border-top: 2px solid var(--indigo); }
+.school:nth-child(2) { border-top: 2px solid var(--cyan); }
+.school:nth-child(3) { border-top: 2px solid var(--amber); }
+.sch-name { font-size: 1.12rem; font-weight: 700; letter-spacing: -0.01em; }
+.sch-who { font-size: 0.68rem; color: var(--ink-faint); margin: 0.25rem 0 0.6rem; }
+.sch-claim { font-size: 0.84rem; line-height: 1.45; flex: 1; }
+.sch-inherit {
+  font-size: 0.78rem; line-height: 1.45; color: var(--ink-dim);
+  margin-top: 0.7rem; padding-top: 0.65rem;
+  border-top: 1px solid var(--line-soft);
+}
+.sch-inherit b { color: var(--cyan); }
+
+/* the regress-of-trust diagram */
+.diagram .box.lop {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 1;
+}
+.diagram .box.stop {
+  fill: rgba(94, 234, 212, 0.10);
+  stroke: var(--cyan);
+  stroke-width: 1.6;
+}
+.diagram .ts.left { text-anchor: start; }
+.diagram .t.stop-t { fill: var(--cyan); font-size: 16px; }
+.diagram.regress { max-width: 640px; margin: 1.2rem auto 0.6rem; }

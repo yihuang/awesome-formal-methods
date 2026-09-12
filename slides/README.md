@@ -21,7 +21,7 @@ The deck is deliberately *not* a tool tour. It is built on the wiki's strongest 
 
 | Part | Content | Why it's there |
 |---|---|---|
-| I · The impossible thing | Hilbert → Gödel, Turing, Rice → **the asymmetry** | the philosophy; earns everything after it |
+| I · Why formalism — and why it's impossible | **Aristotle → Euclid → the fifth postulate → Boole/Frege/Russell → Hilbert → the three schools → what formalism is *for*** → then Gödel, Turing, Rice → **the asymmetry** | the deep question first; the impossibility results only mean something once you know what formalism was *for* |
 | II · The ideas that work | **Hoare logic basics** → Curry–Howard + the kernel → the spec gap → stuttering invariance → **LTL basics** → safety vs liveness → fairness → the frame rule → CompCert's zero | the deep fundamentals; basics come before the ideas that build on them |
 | III · The AI era | the inversion → AWS's 2014 precedent → **2024 milestone → 2025 specialists → 2026 state of the art** → the ten results → the proof is the review → blockchain | the reason this talk exists now |
 | IV · The honest part | what FM can't do, verified systems that failed, the adoption gap | say it before the audience does |
@@ -33,7 +33,53 @@ The deck is deliberately *not* a tool tour. It is built on the wiki's strongest 
 2. **"I made this mistake four times writing the wiki"** — four bugs, all in the *property*, none in
    the *proof*. Self-incriminating, and the most credible evidence for the whole argument.
 
+## The opening, in detail
+
+The first nine slides are the part worth defending, because they answer the question the rest of the
+deck depends on: **why would symbols on paper ever be more trustworthy than a competent person's
+judgement?**
+
+| Slide | The idea |
+|---|---|
+| *Why would anyone want this?* | pose the 2,300-year-old question before answering it |
+| *Separating form from content* (Aristotle, ~350 BCE) | the syllogism is valid **no matter what A, B and C are** — validity is a property of shape, not content. This is the birth of formality, and what a type checker does to a proof 2,300 years later |
+| *The first specification* (Euclid, ~300 BCE) | a claim is accepted because of its **derivation, not its author**. Everything in this talk mechanises that sentence |
+| *Then intuition broke* (1733→1832) | Saccheri derived a coherent non-Euclidean geometry and rejected it as *"repugnant to the nature of a straight line."* A century later it was accepted, and models showed it was as consistent as Euclid |
+| *The most important philosophical shock* | if two incompatible geometries are both consistent, **axioms are choices, not truths**. Mathematics became about *consequence*, not truth. **Your specification is a choice; the proof is only relative to what you chose** — the spec gap, two centuries early |
+| *Logic becomes a language* (1854→1901) | Boole makes reasoning calculable; Frege makes it a precise language with quantifiers; Russell's paradox breaks Frege's system while the book is at the printer |
+| *The answer: a game with rules* (1910→1930) | *Principia Mathematica* (2,000 pages to reach `1+1=2`), then Hilbert's programme and the Entscheidungsproblem |
+| *Three schools — and what engineering inherited* | logicism, formalism, intuitionism. **Brouwer rejected `p ∨ ¬p` in 1912 — which is why `Classical.em` is an axiom in Lean and Rocq today**, and why constructive proofs compute |
+| *What formalism is actually for* | not replacing judgement with machinery — making **disagreement decidable**. Its product is *agreement without authority*, and its cost is that judgement is **relocated** to the specification |
+| *Where the regress of trust stops* | every proof needs a checker, the checker is software, the software runs on a chip… You cannot verify the verifier. **Stopping is a choice, and it is philosophical, not mathematical** |
+
+Two of those land repeatedly later: the *axioms are choices* slide is the spec gap in historical form,
+and the *1912 philosophy determines today's `#print axioms`* slide is the rebuttal to anyone who
+thinks the philosophy is decoration.
+
+## Pacing
+
+62 slides is a lot for 45 minutes — roughly 45 seconds each. That works because the philosophy
+slides are statement slides you *say* rather than read, and because three slides at the end are
+explicitly backups.
+
+**If you are running long, cut in this order:**
+
+1. the *2025 specialists* slide — the 2024→2026 arc survives without it
+2. *What AlphaProof actually required* — keep the milestone, drop the training detail
+3. the *two rules, memorised* slide — it repeats the stuttering theorem
+4. *The objections, answered briefly* — it is already a backup
+
+**Never cut:** the asymmetry, the four-mistakes slide, the philosophy opening, or the ask.
+
 ## Revision history
+
+**v3** — added the philosophical opening. A reviewer pointed out that the deck explained *how*
+formalism fails before establishing *why formalism at all*, and asked for the origin of logic and the
+philosophy underneath it. Nine new slides covering Aristotle's syllogism (form vs content), Euclid's
+axiomatic method (derivation over authority), the non-Euclidean shock (axioms are choices, not truths),
+Boole → Frege → Russell's paradox, Hilbert's programme, the three schools of mathematical philosophy
+and what engineering inherited from each, what formalism is *for* (agreement without authority), and
+where the regress of trust stops. The `#print axioms` slide now has a 1912 origin story.
 
 **v2** — after a review pass:
 

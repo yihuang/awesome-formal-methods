@@ -133,32 +133,480 @@ layout: section
 ---
 
 <div class="part">Part I</div>
-# The impossible thing
-<div class="partsub">Three theorems that ended a dream — and defined our entire design space</div>
+# Why formalism — and why it's impossible
+<div class="partsub">Before we talk about tools, a question from 350 BCE</div>
 
 ---
 layout: center
 ---
 
-<div class="quote-block">
+# Why would anyone want this?
 
-> <span class="drop">L</span>et us know; we will know.
-
-<div class="attrib">David Hilbert's programme, paraphrased — <em>wir müssen wissen, wir werden wissen</em></div>
-
-</div>
+<div class="lead centered">Not "how do I verify code". The prior question:</div>
 
 <v-click>
 
-<div class="lead centered">
-Hilbert wanted a <b>mechanical procedure</b> that could decide any mathematical statement.
-Not "probably". Not "usually". <span class="accent">Always.</span>
+<div class="punch big">
+Why would <em>symbols on paper</em> ever be more trustworthy<br>than a competent person's judgement?
+</div>
+
+</v-click>
+
+<v-click>
+
+<div class="muted centered small">
+This is a 2,300-year-old question. The answer is not obvious, and engineers reinvent it badly every
+time they write "the tests pass, ship it".
 </div>
 
 </v-click>
 
 <!--
-Set up the dream properly. Hilbert is the optimist. Everything after is the bill.
+Open with the actual question. Don't answer it yet — the next six slides are the answer, and they're
+also the origin story of the discipline the audience is about to be sold on.
+-->
+
+---
+layout: center
+---
+
+<div class="era">~350 BCE</div>
+
+# Separating form from content
+
+<div class="lead">
+Aristotle's <i>Prior Analytics</i> contains the first formal system in history:
+the <b>syllogism</b>.
+</div>
+
+<div class="syllogism">
+<div class="syl">
+<div class="syl-line mono">All A are B.</div>
+<div class="syl-line mono">All B are C.</div>
+<div class="syl-rule"></div>
+<div class="syl-line mono accent">Therefore all A are C.</div>
+</div>
+</div>
+
+<v-click>
+
+<div class="callout">
+<b>The discovery is not the argument. It's that the argument is valid no matter what A, B and C
+are.</b> You can check it without knowing anything about the subject matter.
+</div>
+
+<div class="lead centered">
+Validity became a property of the <b>shape</b>, not of the content.
+</div>
+
+</v-click>
+
+<!--
+This is the birth of everything. Formality = you can evaluate an argument without understanding it.
+Pause on "no matter what A, B and C are" — that's the whole idea, and it's what a type checker does
+to a proof 2,300 years later.
+-->
+
+---
+layout: center
+---
+
+<div class="era">~300 BCE</div>
+
+# The first specification
+
+<div class="lead">
+Euclid's <i>Elements</i> does something Aristotle didn't: it starts from
+<b>five postulates</b> and derives <b>465 propositions</b> from them, and from nothing else.
+</div>
+
+<div class="grid2">
+<div>
+<div class="h3">What it established</div>
+<ul class="small">
+<li>A small set of assumptions is stated <b>up front</b></li>
+<li>Every claim traces back to them</li>
+<li>A claim is accepted because of its <b>derivation</b>, not its author</li>
+<li>Anyone can check it independently</li>
+</ul>
+</div>
+<div>
+<div class="h3 accent">Why it lasted 2,000 years</div>
+<div class="small">
+It was the paradigm of <b>certain knowledge</b> — the model for how you would prove anything at all.
+Descartes, Spinoza, Newton all wrote in Euclid's format.
+</div>
+</div>
+</div>
+
+<div class="callout">
+That second bullet is the thing to notice. <b>A claim is accepted because of its derivation, not its
+author.</b> Everything in this talk is a mechanisation of that one sentence.
+</div>
+
+<!--
+Euclid is the origin of "spec is the source of truth", and of the idea that authority is replaceable
+by checkability. Both are still the pitch.
+-->
+
+---
+layout: center
+---
+
+<div class="era">1733 → 1832</div>
+
+# Then intuition broke
+
+<div class="lead">
+For two millennia, mathematicians tried to <b>prove</b> Euclid's fifth postulate (the parallel
+postulate) from the other four. Everyone failed. In 1733, Saccheri tried a reductio — assume it's
+false, derive a contradiction.
+</div>
+
+<v-click>
+
+<div class="punch">
+He derived no contradiction.<br>
+<span class="accent">He derived a coherent geometry — and rejected it as "repugnant to the nature of a
+straight line".</span>
+</div>
+
+</v-click>
+
+<v-click>
+
+<div class="lead">
+A century later Lobachevsky, Bolyai and Gauss accepted the result instead of rejecting it. Riemann
+generalised it. Beltrami, Klein and Poincaré built <b>models</b> — showing that non-Euclidean
+geometry is exactly as consistent as Euclidean.
+</div>
+
+</v-click>
+
+<div class="attrib">Saccheri, <i>Euclid Freed of Every Flaw</i>, 1733</div>
+
+<!--
+THE philosophical pivot of the whole talk, and it's a great story — Saccheri got the right answer and
+threw it away because it was aesthetically unacceptable.
+
+The payoff on the next beat: if two incompatible geometries are both consistent, then geometry does
+not describe the world. It describes what FOLLOWS from assumptions.
+-->
+
+---
+layout: center
+---
+
+# The most important philosophical shock for engineers
+
+<div class="grid2">
+<div>
+<div class="h3 dim">What everyone believed</div>
+<div class="small dim">
+Axioms are <b>self-evident truths</b> about reality. Geometry describes the world.
+Deriving from axioms therefore gives you <b>true</b> statements.
+</div>
+</div>
+<div>
+<div class="h3 accent">What turned out to be true</div>
+<div class="small">
+Axioms are <b>choices</b>. Different consistent systems exist. A derivation proves only:
+<i>if you accept these, you must accept that.</i>
+</div>
+</div>
+</div>
+
+<v-click>
+
+<div class="callout">
+<b>Mathematics stopped being about truth and became about consequence.</b> Two incompatible geometries
+are both fine; you pick one and go <i>test</i> which fits the world.
+</div>
+
+</v-click>
+
+<v-click>
+
+<div class="punch">
+Your specification is a <b>choice</b>, not a fact.<br>
+The proof is only ever <span class="accent">relative to what you chose</span>.
+</div>
+
+</v-click>
+
+<!--
+This is the deepest slide in the deck, and it is where the spec gap comes from — two centuries early.
+Engineers find "the spec is a choice, the proof is relative" unsettling. Mathematicians had to absorb
+exactly this, and it was harder for them.
+
+Call back to this slide at the spec-gap slide in Part II. It's the same point, made twice, once as
+history and once as an engineering bug I actually shipped.
+-->
+
+---
+layout: center
+---
+
+<div class="era">1854 → 1901</div>
+
+# Logic becomes a language
+
+<div class="grid3">
+<div class="stat">
+<div class="sn">1854</div>
+<div class="sl"><b>Boole</b><br><i>Laws of Thought</i><br><span class="dim">reasoning becomes algebra</span></div>
+</div>
+<div class="stat">
+<div class="sn">1879</div>
+<div class="sl"><b>Frege</b><br><i>Begriffsschrift</i><br><span class="dim">quantifiers, scope, binding</span></div>
+</div>
+<div class="stat">
+<div class="sn red">1901</div>
+<div class="sl"><b>Russell</b><br><span class="dim">writes to Frege. The system is inconsistent.</span></div>
+</div>
+</div>
+
+<v-click>
+
+<div class="callout">
+Frege's <i>Grundgesetze</i> volume 2 was <b>already at the printer</b> when the letter arrived. His reply
+is one of the most honest passages in the history of ideas: <i>"Hardly anything more unfortunate can
+befall a scientific writer than to have one of the foundations of his edifice shaken after the work is
+finished."</i>
+</div>
+
+</v-click>
+
+<div class="muted small centered">
+Boole made reasoning <b>calculable</b>. Frege made it a <b>precise language</b> — the first one with
+quantifiers. And within twenty years, the most precise language anyone had ever built
+<b>proved a contradiction</b>. That is the crisis formalism was invented to answer.
+</div>
+
+<!--
+Boole → Frege → Russell is the arc from "logic is algebra" to "logic is a language" to "our best
+language is broken".
+
+Russell's paradox is one line: the set of all sets that do not contain themselves. Frege's honesty is
+worth reading aloud if you have the room.
+-->
+
+---
+layout: center
+---
+
+<div class="era">1910 → 1930</div>
+
+# The answer: make it a game with rules
+
+<div class="lead">
+Russell and Whitehead spent a decade writing <i>Principia Mathematica</i> to repair Frege's
+foundations: 3 volumes, ~2,000 pages — and <span class="mono">1 + 1 = 2</span> finally appears at
+proposition <span class="mono">*54.43</span>.
+</div>
+
+<v-click>
+
+<div class="lead">
+Hilbert proposed something bolder. Stop arguing about what mathematics <em>means</em>. Treat it as
+<b>symbols and rules</b> — then the question "is mathematics consistent?" becomes an ordinary
+mathematical question you can <em>answer</em>.
+</div>
+
+</v-click>
+
+<v-click>
+
+<div class="quote-block">
+> <span class="drop">W</span>ir müssen wissen. Wir werden wissen.
+<div class="attrib">Hilbert, Königsberg, 1930 — "We must know. We will know."</div>
+</div>
+
+</v-click>
+
+<div class="muted small centered">
+His programme: formalise all of mathematics, then prove it consistent using only <b>finitary</b>
+methods — reasoning so concrete that even an intuitionist would accept it. And in 1928, Hilbert and
+Ackermann asked whether there is a procedure to decide <em>any</em> statement. They called it the
+<span class="mono">Entscheidungsproblem</span>.
+</div>
+
+<!--
+Hilbert is the optimist, and his programme is the direct ancestor of formal verification: take the
+spec (axioms), take the derivation (proof), and check it mechanically. THAT is why this talk exists.
+
+Also: Principia Mathematica is the book Logic Theorist attacked in 1956. The hook loops back here.
+-->
+
+---
+layout: center
+---
+
+# Three schools — and what engineering inherited
+
+<div class="schools">
+<div class="school">
+<div class="sch-name">Logicism</div>
+<div class="sch-who mono">Frege · Russell · Whitehead</div>
+<div class="sch-claim">Mathematics reduces to logic plus definitions.</div>
+<div class="sch-inherit"><b>Inherited:</b> the ambition to write a precise language that can express
+anything — and the habit of tracing every claim to stated foundations.</div>
+</div>
+<div class="school">
+<div class="sch-name">Formalism</div>
+<div class="sch-who mono">Hilbert</div>
+<div class="sch-claim">Mathematics is symbol manipulation. Study the system, not the meaning.</div>
+<div class="sch-inherit"><b>Inherited:</b> <b>everything</b>. Proof checking, kernels, type checking,
+and the idea that a derivation is mechanical object you can audit.</div>
+</div>
+<div class="school">
+<div class="sch-name">Intuitionism</div>
+<div class="sch-who mono">Brouwer · Heyting · Kolmogorov</div>
+<div class="sch-claim">Mathematics is construction. Truth = a construction you can carry out.
+<b>Excluded middle is not valid</b> for infinite objects.</div>
+<div class="sch-inherit"><b>Inherited:</b> constructive logic → the Curry–Howard correspondence →
+<b>programs you can extract from proofs</b>.</div>
+</div>
+</div>
+
+<v-click>
+
+<div class="callout">
+<b>This is not ancient history.</b> Brouwer rejected <span class="mono">p ∨ ¬p</span> in 1912. That is
+why <span class="mono">Classical.em</span> is an <b>axiom</b> in Lean and Rocq, why
+<span class="mono">#print axioms</span> on a constructive proof says "does not depend on any axioms",
+and why a constructive proof can be <b>executed</b> while a classical one may not.
+</div>
+
+</v-click>
+
+<!--
+The payoff slide of the philosophical section: a 1912 argument about the philosophy of mathematics
+determines what shows up in `#print axioms` today, and why constructive proofs compute.
+
+If anyone thinks the philosophy is decoration, this slide is the rebuttal. Also a nice callback: the
+`#print axioms` slide later in the deck.
+-->
+
+---
+layout: center
+---
+
+# What formalism is actually *for*
+
+<div class="quote-block">
+> <span class="drop">C</span>alculemus. — let us calculate.
+<div class="attrib">Leibniz's programme, 1666</div>
+</div>
+
+<div class="grid2">
+<div>
+<div class="h3 dim">The misunderstanding</div>
+<div class="small dim">
+That formal methods replace judgement with machinery. That they are for mathematicians who don't trust
+each other, or for people who want to avoid thinking.
+</div>
+</div>
+<div>
+<div class="h3 accent">What it actually does</div>
+<div class="small">
+It makes <b>disagreement decidable</b>. Two parties who trust neither each other nor their tools can
+still converge, because a derivation can be checked independently.
+</div>
+</div>
+</div>
+
+<v-click>
+
+<div class="punch">
+Formalism is a <b>social technology</b>.<br>
+Its product is agreement without authority.
+</div>
+
+</v-click>
+
+<v-click>
+
+<div class="callout">
+<b>And this is the honest cost.</b> Formalism does not remove judgement — it <b>relocates</b> it. It
+moves the undecidable argument ("is this reasoning correct?") into a decidable one ("does this
+derivation check?"), and leaves you holding the harder question: <b>is this specification what we
+actually wanted?</b>
+</div>
+
+</v-click>
+
+<!--
+The thesis of the philosophical section. Formalism's product is agreement without authority — which is
+exactly what a protocol between mutually distrusting parties needs, and exactly why blockchains care.
+
+And the cost is the setup for the spec gap. Judgement isn't removed; it's relocated to the spec.
+-->
+
+---
+layout: center
+---
+
+# Where the regress of trust stops
+
+<div class="lead centered">Every proof needs a checker. The checker is software. The software runs on a chip…</div>
+
+<svg viewBox="0 0 720 260" class="diagram regress">
+  <defs>
+    <marker id="arw2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="currentColor"/>
+    </marker>
+  </defs>
+  <rect x="10"   y="10"  width="700" height="240" rx="12" class="box lop"/>
+  <rect x="60"   y="42"  width="600" height="180" rx="10" class="box lop"/>
+  <rect x="110"  y="74"  width="500" height="120" rx="9"  class="box lop"/>
+  <rect x="160"  y="104" width="400" height="64"  rx="8"  class="box stop"/>
+
+  <text x="30"  y="34"  class="ts left">physics</text>
+  <text x="80"  y="66"  class="ts left">the CPU</text>
+  <text x="130" y="98"  class="ts left">the compiler</text>
+  <text x="180" y="128" class="ts left">the kernel</text>
+
+  <text x="360" y="145" class="t stop-t">your proof</text>
+  <path d="M200,178 L200,240" class="flow" marker-end="url(#arw2)"/>
+  <text x="212" y="216" class="ts left">you must choose where to stop</text>
+</svg>
+
+<v-click>
+
+<div class="punch">
+You cannot verify the verifier. The regress is infinite, so <b>stopping is a choice</b> — and that
+choice is philosophical, not mathematical.
+</div>
+
+</v-click>
+
+<div class="muted small centered">
+Lean's answer is the <b>de Bruijn criterion</b>: make the kernel small enough that a human can review it,
+and accept everything below. Note that this is a claim about <i>engineering judgement</i>, dressed as a
+mathematical one.
+</div>
+
+<!--
+The philosophical core, and it is also the practical one: the trusted base is where you CHOOSE to stop
+justifying. Every verification report should state it. Every engineer who says "just trust the
+compiler" has made this choice without noticing.
+
+This closes the philosophy section and hands off to Gödel: Hilbert wanted the regress to have an end
+in finitary proof. Gödel showed it can't.
+-->
+
+---
+layout: section
+---
+
+<div class="part">Part I · continued</div>
+# And then the dream collapsed
+<div class="partsub">Three theorems that closed Hilbert's programme — and defined our entire design space</div>
+
+<!--
+Transition. We now know WHY formalism (agreement without authority) and WHERE trust stops (a choice).
+Next: why it can never be complete. Hilbert asked the question and got an answer he didn't want.
 -->
 
 ---

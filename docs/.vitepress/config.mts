@@ -86,6 +86,8 @@ export default defineConfig({
         items: [
           { text: 'Tool catalog', link: '/05-tools/catalog' },
           { text: 'Choosing a tool', link: '/05-tools/choosing' },
+          { text: 'Model verifiers: TLA+ / Ivy / Veil', link: '/05-tools/model-verifiers' },
+          { text: 'Model verifiers (TLA+, Ivy, Veil)', link: '/05-tools/model-verifiers' },
           { text: 'Adoption playbook', link: '/06-practice/adoption-playbook' },
           { text: 'Objections & answers', link: '/06-practice/objections' },
           { text: 'AI proof engineering', link: '/04-ai-era/llm-proof-engineering' },
@@ -124,6 +126,7 @@ export default defineConfig({
           { text: 'Specifications', link: '/01-fundamentals/specifications' },
           { text: 'Logics', link: '/01-fundamentals/logics' },
           { text: 'Semantics (small-step, big-step, …)', link: '/01-fundamentals/semantics' },
+          { text: 'Temporal logic (safety, liveness, stuttering)', link: '/01-fundamentals/temporal-logic' },
           { text: 'Techniques', link: '/01-fundamentals/techniques' },
           { text: 'Automated reasoning', link: '/01-fundamentals/automated-reasoning' },
           { text: 'Limits', link: '/01-fundamentals/limits' }
@@ -169,7 +172,9 @@ export default defineConfig({
         items: [
           { text: 'Index', link: '/05-tools/' },
           { text: 'Tool catalog', link: '/05-tools/catalog' },
-          { text: 'Choosing a tool', link: '/05-tools/choosing' }
+          { text: 'Choosing a tool', link: '/05-tools/choosing' },
+          { text: 'Model verifiers: TLA+ / Ivy / Veil', link: '/05-tools/model-verifiers' },
+          { text: 'Model verifiers (TLA+, Ivy, Veil)', link: '/05-tools/model-verifiers' }
         ]
       },
       {

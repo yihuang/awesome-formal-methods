@@ -65,6 +65,7 @@ prover. The two fields did not converge recently; they started entangled. See
 | [Specifications](./01-fundamentals/specifications.md) | What is a specification, and why is writing one the hard part? |
 | [Logics](./01-fundamentals/logics.md) | Hoare, separation, temporal, type theory, μ-calculus. |
 | [Semantics](./01-fundamentals/semantics.md) | Small-step, big-step, functional vs relational, denotational, axiomatic — and how to mechanise a language definition. |
+| [Temporal logic](./01-fundamentals/temporal-logic.md) | LTL, safety vs liveness, fairness, **stuttering invariance**, refinement, and the proof rules — with worked examples. |
 | [Techniques](./01-fundamentals/techniques.md) | The five families of verification, and how each one fails. |
 | [Automated reasoning](./01-fundamentals/automated-reasoning.md) | SAT, SMT, CDCL, DRAT — the engine under everything. |
 | [Limits](./01-fundamentals/limits.md) | Gödel, undecidability, Rice's theorem, the specification gap. |
@@ -104,6 +105,7 @@ prover. The two fields did not converge recently; they started entangled. See
 |---|---|
 | [Tool catalog](./05-tools/catalog.md) | ~40 tools in nine families, with "pick this if". |
 | [Choosing a tool](./05-tools/choosing.md) | Decision tree, heuristics, install commands. |
+| [Model verifiers](./05-tools/model-verifiers.md) | **TLA+ / Ivy / Veil** in depth: specs, toolchains, CTI-driven invariant discovery, and when to use which. |
 | [Adoption playbook](./06-practice/adoption-playbook.md) | The 0→3 ladder, with cost and payoff at each rung. |
 | [Objections & answers](./06-practice/objections.md) | Ten objections, answered honestly. |
 | [Runnable demos](./demos.md) | Lean, Python, and TLA+ artifacts — two of three run with no dependencies. |

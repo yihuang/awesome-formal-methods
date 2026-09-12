@@ -21,11 +21,11 @@ and formal methods share an origin. This wiki is about the loop between them.
 | Section | Contents |
 |---|---|
 | **[Orientation](docs/00-orientation/)** | Why now · taxonomy of the field · reading paths by role |
-| **[Fundamentals](docs/01-fundamentals/)** | Specifications · logics · **semantics (small-step, big-step, functional/relational)** · the five verification techniques · SAT/SMT · hard limits |
+| **[Fundamentals](docs/01-fundamentals/)** | Specifications · logics · **semantics (small-step, big-step, functional/relational)** · **temporal logic (safety, liveness, stuttering)** · the five verification techniques · SAT/SMT · hard limits |
 | **[History](docs/02-history/)** | Dated timeline 1666→2026 · the three-act narrative |
 | **[Applications](docs/03-applications/)** | seL4, CompCert, AWS TLA+, Cedar, SymCrypt, VNN-COMP · **blockchain/EVM/zk** · distributed systems · hardware & crypto · safety-critical · **the lightweight on-ramp** · the adoption gap |
 | **[AI era](docs/04-ai-era/)** | **AI → FM** (AlphaProof, autoformalization, the 2026 machine-checked results) · **AI proof engineering** (generic models writing Lean 4) · **FM → AI** (agent guardrails, NN verification, runtime monitors) · the verification bottleneck |
-| **[Tools](docs/05-tools/)** | ~40 tools in nine families · how to choose |
+| **[Tools](docs/05-tools/)** | ~40 tools in nine families · how to choose · **model verifiers: TLA+ / Ivy / Veil** |
 | **[Practice](docs/06-practice/)** | Adoption playbook (0→3 ladder) · objection handling |
 | **[Reference](docs/references/)** | Citation conventions · glossary · bibliography · sourced quote bank |
 | **[Demos](docs/demos.md)** | Runnable Lean, Python, and TLA+ artifacts |

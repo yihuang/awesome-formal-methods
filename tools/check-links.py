@@ -22,6 +22,9 @@ from urllib.parse import unquote
 # [text](target)  and  ![alt](target)
 LINK_RE = re.compile(r"!?\[[^\]]*\]\(([^)\s]+)(?:\s+\"[^\"]*\")?\)")
 
+# Set by check(): the VitePress source root, links may not escape it.
+DOCS_ROOT: Path | None = None
+
 SKIP_SCHEMES = ("http://", "https://", "mailto:", "tel:", "ftp://")
 
 
@@ -71,6 +74,9 @@ def find_markdown(root: Path) -> list:
 
 
 def check(root: Path) -> int:
+    global DOCS_ROOT
+    candidate = root / "docs"
+    DOCS_ROOT = candidate if candidate.is_dir() else None
     files = find_markdown(root)
     if not files:
         print(f"No Markdown files found under {root}")
@@ -104,6 +110,19 @@ def check(root: Path) -> int:
                 if not resolved.exists():
                     broken.append((md, lineno, target, "path does not exist"))
                     continue
+
+                # VitePress publishes only what is under docs/. A relative link from a
+                # docs/ page that resolves above docs/ exists on disk but 404s on the
+                # built site, so catch it here rather than at build time.
+                if DOCS_ROOT is not None and DOCS_ROOT in md.parents:
+                    try:
+                        resolved.relative_to(DOCS_ROOT)
+                    except ValueError:
+                        broken.append(
+                            (md, lineno, target,
+                             "escapes docs/ — not published; use an absolute GitHub URL")
+                        )
+                        continue
 
                 if frag and resolved.suffix == ".md":
                     if resolved not in anchor_cache:

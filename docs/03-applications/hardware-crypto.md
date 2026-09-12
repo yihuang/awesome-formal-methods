@@ -157,3 +157,31 @@ John Harrison's HOL Light floating-point verification work.
 
 Continue → [safety-critical.md](safety-critical.md): where regulation, not economics, drives
 adoption.
+
+## References
+
+- **Harrison, J.** *Formal Verification of Floating-Point Algorithms* (TPHOLs 2000) and *Floating
+  Point Verification in HOL Light: The Exponential Function* — Intel's use of HOL Light for
+  floating-point correctness. [Harrison's page](https://www.cl.cam.ac.uk/~jrh13/)
+- [Pentium FDIV bug](https://en.wikipedia.org/wiki/Pentium_FDIV_bug) — the 1994 event that made
+  formal verification standard in silicon.
+- **Cadence Jasper** (incl. Sequential Equivalence Checking) —
+  [product page](https://www.cadence.com/en_US/home/tools/system-design-and-verification/formal-and-static-verification/jasper-verification-platform.html) ·
+  **Synopsys VC Formal** · **Siemens Questa Formal** — the commercial formal-verification flows.
+- **Protzenko, J. et al.** *EverCrypt: A Fast, Verified, Cross-Platform Cryptographic Provider.*
+  IEEE S&P 2020. [hacl-star.github.io](https://hacl-star.github.io/HaclValeEverCrypt.html) — and the
+  Vale verified-assembly component.
+- **Microsoft SymCrypt** — [github.com/microsoft/SymCrypt](https://github.com/microsoft/SymCrypt)
+  ⚠️ Verification claims are vendor-published.
+- **Rust → Lean extraction tooling**: [Charon](https://github.com/AeneasVerif/charon),
+  [Aeneas](https://github.com/AeneasVerif/aeneas), [Hax](https://github.com/hacspec/hax).
+  ⚠️ Fast-moving; check maturity before recommending.
+- **Constant-time / side channels**: **Almeida, J. et al.** *Verifying Constant-Time
+  Implementations.* USENIX Security 2016 (`ct-verif`) ·
+  [FaCT](https://github.com/PLSysSec/FaCT) · [dudect](https://github.com/oreparaz/dudect)
+- **Protocol verification**: **Blanchet, B.** *ProVerif* —
+  [bblanche.gitlabpages.inria.fr/proverif](https://bblanche.gitlabpages.inria.fr/proverif/) ·
+  **Tamarin** — [tamarin-prover.github.io](https://tamarin-prover.github.io/) ·
+  **EasyCrypt** — [easycrypt.gitlabpages.inria.fr](https://easycrypt.gitlabpages.inria.fr/)
+- **Sail** — [github.com/rems-project/sail](https://github.com/rems-project/sail) — official ARM and
+  RISC-V ISA semantics, and the specification zkVM verification is checked against.

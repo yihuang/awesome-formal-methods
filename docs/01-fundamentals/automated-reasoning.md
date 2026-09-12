@@ -165,3 +165,30 @@ interesting page in this wiki.
 ---
 
 Next → [limits.md](limits.md): what is provably impossible, and the honest boundaries of the field.
+
+## References
+
+- **Davis, M., Logemann, G., Loveland, D.** *A Machine Program for Theorem-Proving.* CACM 1962 —
+  the DPLL procedure.
+- **Marques-Silva, J. & Sakallah, K.** *GRASP: A Search Algorithm for Propositional Satisfiability.*
+  IEEE Trans. Computers, 1999 (conference version 1996) — clause learning.
+- **Bayardo, R. & Schrag, R.** *Using CSP Look-Back Techniques to Solve Real-World SAT Instances.*
+  AAAI 1997 — RELSAT, non-chronological backjumping.
+- **Moskewicz, M. et al.** *Chaff: Engineering an Efficient SAT Solver.* DAC 2001 — watched literals
+  and VSIDS.
+- **Eén, N. & Sörensson, N.** *An Extensible SAT-solver.* SAT 2003 — MiniSat.
+- **de Moura, L. & Bjørner, N.** *Z3: An Efficient SMT Solver.* TACAS 2008.
+  [PDF](https://link.springer.com/chapter/10.1007/978-3-540-78800-3_24)
+- **Barbosa, H. et al.** *cvc5: A Versatile and Industrial-Strength SMT Solver.* TACAS 2022.
+  [PDF](https://arxiv.org/abs/2205.06117)
+- **Nelson, G. & Oppen, D.** *Simplification by Cooperating Decision Procedures.* TOPLAS 1979 — the
+  Nelson–Oppen combination method.
+- **Barrett, C., Sebastiani, R., Seshia, S., Tinelli, C.** *Satisfiability Modulo Theories.* In
+  *Handbook of Satisfiability*, 2021. [PDF](https://theory.stanford.edu/~barrett/pubs/BSS+21.pdf)
+- **Wetzler, N., Heule, M., Hunt, W.** *DRAT-trim: Efficient Checking and Trimming Using Expressive
+  Clausal Proofs.* SAT 2014 — machine-checkable UNSAT proofs.
+- **Cook, S.** *The Complexity of Theorem-Proving Procedures.* STOC 1971 — NP-completeness.
+- [SAT solver](https://en.wikipedia.org/wiki/SAT_solver) ·
+  [Satisfiability modulo theories](https://en.wikipedia.org/wiki/Satisfiability_modulo_theories)
+- **Dijkstra, E.W.** *Guarded Commands, Nondeterminacy and Formal Derivation of Programs.* CACM 1975
+  — `wp`, and the verification-condition pipeline this page describes.

@@ -263,3 +263,43 @@ artifact without running the checker, and never accept a proof without checking 
 [Leiden Declaration coverage](https://www.universiteitleiden.nl/en/news/2026/06/leiden-declaration-warns-ai-is-challenging-the-core-values-of-mathematics).
 
 Continue → [fm-for-ai.md](fm-for-ai.md): the other direction, where formal methods guard AI.
+
+## References
+
+- **Polu, S. & Sutskever, I.** *Generative Language Modeling for Automated Theorem Proving.* 2020.
+  [arXiv:2009.03393](https://arxiv.org/abs/2009.03393) — GPT-f.
+- **Yang, K. et al.** *LeanDojo: Theorem Proving with Retrieval-Augmented Language Models.* NeurIPS
+  2023. [arXiv:2306.15626](https://arxiv.org/abs/2306.15626) · [lean-dojo.org](https://leandojo.org/)
+- **Hubert, T. et al.** *Olympiad-level formal mathematical reasoning with reinforcement learning.*
+  *Nature*, 2025. [Link](https://www.nature.com/articles/s41586-025-09833-y) — the AlphaProof
+  architecture: 3B-parameter proof network, ~300k state–tactic pairs, ~1M informal → ~80M formal
+  problems, TTRL, and the IMO 2024 result. **All architectural figures on this page come from here.**
+- **AlphaProof & AlphaGeometry teams.** *AI achieves silver-medal standard solving International
+  Mathematical Olympiad problems.* DeepMind, July 2024.
+  [Link](https://deepmind.google/blog/ai-solves-imo-problems-at-silver-medal-level/)
+- **Chervonyi, Y. et al.** *Gold-medalist performance in solving olympiad geometry with
+  AlphaGeometry2.* JMLR 26, 2025.
+- **Lin, Y. et al.** *Goedel-Prover: A Frontier Model for Open-Source Automated Formal Theorem
+  Proving.* 2025. [arXiv:2502.07640](https://arxiv.org/abs/2502.07640)
+- *Autoformalization in the Era of Large Language Models: A Survey.* 2025.
+  [arXiv:2505.23486](https://arxiv.org/abs/2505.23486)
+- **OpenAI.** *Ten Advances in Mathematics and Theoretical Computer Science.* Aug 2026.
+  [openai/ten-proofs](https://github.com/openai/ten-proofs) ·
+  [Paper](https://cdn.openai.com/pdf/ten-proofs-oai.pdf) ·
+  [Reasoning walkthroughs](https://cdn.openai.com/pdf/reasoning-walkthroughs.pdf) — the ten results,
+  and the Lean 4 certificates.
+- **Lean FRO.** *Comparator* — [github.com/leanprover/comparator](https://github.com/leanprover/comparator) ·
+  **nanoda**, an independent Rust kernel — [github.com/ammkrn/nanoda_lib](https://github.com/ammkrn/nanoda_lib)
+- [lean-lsp-mcp](https://github.com/oOo0oOo/lean-lsp-mcp) — Lean as an agent-drivable tool.
+- [mathlib statistics](https://leanprover-community.github.io/mathlib_stats.html) — ~288,041
+  theorems, ~136,932 definitions, 772 contributors (Sept 2026).
+- **Leiden Declaration on Artificial Intelligence and Mathematics**, June 2026.
+  [Leiden University](https://www.universiteitleiden.nl/en/news/2026/06/leiden-declaration-warns-ai-is-challenging-the-core-values-of-mathematics) ·
+  [PDF](https://zenodo.org/records/20302944) — the governance objection.
+- **Benchmarks**: [miniF2F](https://github.com/openai/miniF2F) ·
+  [ProofNet](https://github.com/zhangir-azerbayev/proofnet) ·
+  [PutnamBench](https://trishullab.github.io/PutnamBench/) ·
+  [VeriBench](https://cs.stanford.edu/people/brando9/professional_documents/papers/NeurIPS_2026_VeriBench.pdf)
+  ⚠️
+- **Harmonic.** *Aristotle* — gold-medal-equivalent IMO 2025 with Lean-verified proofs.
+  ⚠️ Vendor claim from the arXiv abstract; verify before citing.

@@ -154,3 +154,28 @@ nobody calls TypeScript "formal methods". **The successful outcome for this fiel
 people adopt "formal methods" — it's that the ideas become invisible infrastructure.** Rust's
 borrow checker is already living proof. See
 [techniques.md §5](../01-fundamentals/techniques.md#5-types--lightweight-static-analysis-the-free-tier).
+
+## References
+
+- **Woodcock, J., Larsen, P., Bicarregui, J., Fitzgerald, J.** *Formal Methods: Practice and
+  Experience.* ACM Computing Surveys 41(4), 2009.
+  [ACM](https://dl.acm.org/doi/10.1145/1592434.1592436) — the industrial case-study survey, and the
+  clearest evidence that the technology works *and* did not spread.
+- **Clarke, E.M. & Wing, J.M.** *Formal Methods: State of the Art and Future Directions.* ACM
+  Computing Surveys 28(4), 1996.
+- **Newcombe, C. et al.** *Use of Formal Methods at Amazon Web Services.* 2014/2015.
+  [PDF](https://lamport.azurewebsites.net/tla/formal-methods-amazon.pdf) — the "perception is quite
+  wrong" quotation, and the "perception problem" framing of the adoption gap.
+- **Anthropic.** *Eight trends defining how software gets built in 2026.* Jan 2026.
+  [Link](https://claude.com/blog/eight-trends-defining-how-software-gets-built-in-2026) — the
+  assisted-versus-delegable gap. ⚠️ Vendor source.
+- **Alt, L.** *Performant Verified Software.* 2026.
+  [Link](https://leoalt.de/performant-verified-software) — the counter-argument to "verification is
+  a brake".
+- ⚠️ **Aerospace adoption barriers.** This page refers to empirical work on why aerospace
+  contractors, customers, and certification authorities hesitate to adopt formal methods. **No
+  specific study is pinned here yet** — candidates include the NASA/RTCA-adjacent surveys and the
+  FM 2009 industrial-practice workshop papers. Pin one before relying on the claim; see the
+  [confidence ledger](../research-notes.md#4-confidence-ledger).
+- **MacKenzie, D.** *Mechanizing Proof: Computing, Risk, and Trust.* MIT Press, 2001 — why adoption
+  is a social problem as much as a technical one.

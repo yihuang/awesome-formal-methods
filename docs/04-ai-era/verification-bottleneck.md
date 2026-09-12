@@ -168,3 +168,33 @@ has already done this work. Formal methods just make the argument decidable.
 Continue → [README.md](index.md) for the bidirectional map, or
 [../03-applications/lightweight-fm.md](../03-applications/lightweight-fm.md) for the actionable
 ladder.
+
+## References
+
+- **Anthropic.** *Eight trends defining how software gets built in 2026.* Jan 2026.
+  [Link](https://claude.com/blog/eight-trends-defining-how-software-gets-built-in-2026) — the "~60%
+  of work / 0–20% fully delegable" figure. ⚠️ **Vendor-published**; the gap is the point, not the
+  precise number.
+- **Newcombe, C. et al.** *Use of Formal Methods at Amazon Web Services.* 2014/2015.
+  [PDF](https://lamport.azurewebsites.net/tla/formal-methods-amazon.pdf) — "optimisations we would
+  not have dared to do".
+- **AWS Security Blog.** *An Unexpected Discovery: Automated Reasoning Often Makes Systems More
+  Efficient and Easier to Maintain.*
+  [Link](https://aws.amazon.com/blogs/security/an-unexpected-discovery-automated-reasoning-often-makes-systems-more-efficient-and-easier-to-maintain/)
+- **Amazon Science.** *How we built Cedar with automated reasoning and differential testing.*
+  [Link](https://www.amazon.science/blog/how-we-built-cedar-with-automated-reasoning-and-differential-testing) —
+  verification-guided development in production. ⚠️ The ~1 billion checks/day figure is
+  AWS-published.
+- **AWS.** *Automated Reasoning checks in Amazon Bedrock Guardrails.*
+  [Documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-automated-reasoning-checks.html) —
+  a sound check shipped as a product feature.
+- **powdr.** *Formally Verified Autoprecompiles.*
+  [Link](https://powdr.org/blog/formally-verified-autoprecompiles) · **Alt, L.** *Performant
+  Verified Software.* [Link](https://leoalt.de/performant-verified-software) — the review-bottleneck
+  argument, with production numbers.
+- **Lean FRO.** *Comparator* — [github.com/leanprover/comparator](https://github.com/leanprover/comparator) —
+  the independent-judging layer for machine-generated proofs.
+- **Kani** — [github.com/model-checking/kani](https://github.com/model-checking/kani) — push-button
+  verification as a cargo subcommand.
+- ⚠️ **DARPA CLARA** (~$48M, formal verification for aerospace control systems, 2026) — secondary
+  sources only; verify before citing. See the [confidence ledger](../research-notes.md#4-confidence-ledger).

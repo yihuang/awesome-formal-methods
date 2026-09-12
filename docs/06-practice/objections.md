@@ -265,3 +265,29 @@ Agreeing with the objections instead of rebutting them is what makes a formal-me
 Related: [adoption-gap.md](../03-applications/adoption-gap.md) ·
 [limits.md](../01-fundamentals/limits.md) ·
 [adoption-playbook.md](adoption-playbook.md)
+
+## References
+
+- **Rice, H.G.** *Classes of Recursively Enumerable Sets and Their Decision Problems.* 1953 —
+  "Gödel proved we can never verify software" and the decidability objection.
+  [PDF](https://www.ams.org/journals/tran/1953-074-02/S0002-9947-1953-0053041-6/S0002-9947-1953-0053041-6.pdf)
+- **Gödel, K.** 1931. [Stanford Encyclopedia](https://plato.stanford.edu/entries/goedel-incompleteness/)
+- **Newcombe, C. et al.** *Use of Formal Methods at Amazon Web Services.* 2014/2015.
+  [PDF](https://lamport.azurewebsites.net/tla/formal-methods-amazon.pdf) — the cost objection, the
+  enabler reframe, and the design-versus-code argument.
+- **Woodcock, J. et al.** *Formal Methods: Practice and Experience.* ACM CSUR 41(4), 2009 — the
+  "academic and unusable" objection, addressed with deployment data.
+  [ACM](https://dl.acm.org/doi/10.1145/1592434.1592436)
+- **Protzenko, J. et al.** *EverCrypt.* IEEE S&P 2020 —
+  [hacl-star.github.io](https://hacl-star.github.io/HaclValeEverCrypt.html) — "don't roll your own
+  crypto".
+- **Klein, G. et al.** SOSP 2009; **Cousot, P. et al.** ESOP 2005 — maintenance and re-verification.
+- **Alt, L.** *Performant Verified Software.* 2026.
+  [Link](https://leoalt.de/performant-verified-software) — "isn't this more process?" and the
+  verification-as-speed-enabler answer.
+- **Klingner, T. et al.** *A comparison of LLMs' effectiveness in producing formal proofs in Lean 4.*
+  [arXiv:2606.05632](https://arxiv.org/abs/2606.05632) — the "AI can just verify things" objection.
+- **Lean FRO.** [Comparator](https://github.com/leanprover/comparator) — statement mismatch, the
+  failure mode behind "you're overselling AI".
+- **Amazon Science.** *How we built Cedar with automated reasoning and differential testing.*
+  [Link](https://www.amazon.science/blog/how-we-built-cedar-with-automated-reasoning-and-differential-testing)

@@ -59,6 +59,9 @@ jobs:
       - name: Check internal Markdown links
         run: python3 tools/check-links.py
 
+      - name: Check reference coverage (ratchet)
+        run: python3 tools/check-refs.py
+
       - name: Run zero-dependency Python demos
         run: |
           python3 demos/python/dpll_sat.py

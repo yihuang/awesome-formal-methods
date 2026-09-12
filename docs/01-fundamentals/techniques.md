@@ -209,3 +209,27 @@ whether you want the dial at 'types' or at 'properties'."*
 ---
 
 Next → [automated-reasoning.md](automated-reasoning.md): the solvers that power families 3 and 5.
+
+## References
+
+- **Cousot, P. & Cousot, R.** *Abstract Interpretation: A Unified Lattice Model for Static Analysis
+  of Programs.* POPL 1977. [Intro](https://www.di.ens.fr/~cousot/AI/IntroAbsInt.html)
+- **Cousot, P. et al.** *The ASTRÉE Analyzer.* ESOP 2005.
+  [PDF](https://pcousot.github.io/publications/CousotEtAl-ESOP05.pdf) — industrial abstract
+  interpretation on ~132,000 lines of Airbus C.
+- **Clarke, E.M. & Emerson, E.A.** 1981; **Queille & Sifakis** 1982 — model checking.
+- **Klein, G. et al.** *seL4: Formal Verification of an OS Kernel.* SOSP 2009.
+  [PDF](https://sel4.systems/Research/pdfs/sel4-sosp2009.pdf)
+- **Leroy, X.** *Formal Verification of a Realistic Compiler.* CACM 2009.
+  [PDF](https://xavierleroy.org/publi/compcert-CACM.pdf)
+- **Leino, K.R.M.** *Dafny: An Automatic Program Verifier for Functional Correctness.* LPAR 2010.
+- **Barnett, M., Chang, B.-Y., DeLine, R., Jacobs, B., Leino, K.R.M.** *Boogie: A Modular Reusable
+  Verifier for Object-Oriented Programs.* FMCO 2005 — the VC-generation architecture under many tools.
+- **Delmas, R. et al.** *Kani: A Model Checker for Rust.* ASE 2026.
+  [Repository](https://github.com/model-checking/kani)
+- **Barnett, M. & Rustan, K.** and the **RustBelt** line of work: **Jung, R. et al.** *RustBelt:
+  Securing the Foundations of the Rust Programming Language.* POPL 2018 — Rust's ownership as a
+  separation-logic discipline.
+- [Abstract interpretation](https://en.wikipedia.org/wiki/Abstract_interpretation) ·
+  [Model checking](https://en.wikipedia.org/wiki/Model_checking) ·
+  [Theorem proving](https://en.wikipedia.org/wiki/Automated_theorem_proving)

@@ -316,3 +316,32 @@ Ordered by return on effort:
 
 Continue → [verification-bottleneck.md](verification-bottleneck.md): the economic argument that ties
 both directions together.
+
+## References
+
+- *Guardians of the Agents.* ACM Queue / CACM, 2025.
+  [ACM Queue](https://queue.acm.org/detail.cfm?id=3762990) ·
+  [CACM](https://cacm.acm.org/practice/guardians-of-the-agents/) — proof-carrying actions, and the
+  credit-card-authorization analogy.
+- **Wang, H. et al.** *AgentSpec: Customizable Runtime Enforcement for Safe and Reliable LLM Agents.*
+  2025. [arXiv:2503.18666](https://arxiv.org/abs/2503.18666) ·
+  [github.com/haoyuwang99/AgentSpec](https://github.com/haoyuwang99/AgentSpec)
+- **AWS.** *Automated Reasoning checks in Amazon Bedrock Guardrails.*
+  [Documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-automated-reasoning-checks.html) ·
+  [Concepts](https://docs.aws.amazon.com/bedrock/latest/userguide/automated-reasoning-checks-concepts.html) ·
+  [AWS ML blog](https://aws.amazon.com/blogs/machine-learning/how-automated-reasoning-checks-in-amazon-bedrock-transform-generative-ai-compliance/)
+- **VNN-COMP** — [vnn-comp.github.io](https://vnn-comp.github.io/) ·
+  **α,β-CROWN** — **Wang, S. et al.** *Beta-CROWN: Efficient Bound Propagation with Per-neuron Split
+  Constraints for Complete and Incomplete Neural Network Verification.* NeurIPS 2021.
+  [github.com/Verified-Intelligence/alpha-beta-CROWN](https://github.com/Verified-Intelligence/alpha-beta-CROWN)
+- **Katz, G. et al.** *The Marabou Framework for Verification and Analysis of Deep Neural Networks.*
+  CAV 2019. [PDF](https://arxiv.org/abs/1905.11344)
+- *Towards Formal Verification of LLM-Generated Code from Natural Language Prompts.* 2025.
+  [arXiv:2507.13290](https://arxiv.org/abs/2507.13290)
+- **Alshiekh, M. et al.** *Safe Reinforcement Learning via Shielding.* AAAI 2018;
+  *Shields for Safe Reinforcement Learning*, CACM —
+  [link](https://cacm.acm.org/research/shields-for-safe-reinforcement-learning/)
+- **Necula, G.** *Proof-Carrying Code.* POPL 1997 — the original idea being reapplied to AI output.
+  [PDF](https://www.cs.cmu.edu/~necula/Papers/pcc.pdf)
+- **Clarkson, M. & Schneider, F.** *Hyperproperties.* CSF 2008 — why non-interference needs a
+  different property class. [PDF](https://www.cs.cornell.edu/fbs/publications/Hyperproperties.pdf)

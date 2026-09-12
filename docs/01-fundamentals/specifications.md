@@ -206,3 +206,22 @@ exists is nearly free by comparison.
 ---
 
 Continue → [logics.md](logics.md): the formal languages these specs are written in.
+
+## References
+
+- **Floyd, R.** *Assigning Meanings to Programs.* 1967.
+- **Hoare, C.A.R.** *An Axiomatic Basis for Computer Programming.* CACM 1969.
+  [PDF](https://dl.acm.org/doi/10.1145/363235.363259)
+- **Dijkstra, E.W.** *Guarded Commands, Nondeterminacy and Formal Derivation of Programs.* CACM 1975.
+- **Lamport, L.** *Specifying Systems: The TLA+ Language and Tools for Hardware and Software
+  Engineers.* Addison-Wesley, 2002. [Free online](https://lamport.azurewebsites.net/tla/book.html) —
+  the reference for writing specifications at the design level.
+- **Newcombe, C. et al.** *Use of Formal Methods at Amazon Web Services.* 2014/2015.
+  [PDF](https://lamport.azurewebsites.net/tla/formal-methods-amazon.pdf) — the "what needs to go
+  right" inversion, the refinement-gap honesty, and the data-modelling aside.
+- **Amazon Science.** *How we built Cedar with automated reasoning and differential testing.*
+  [Link](https://www.amazon.com/science/blog/how-we-built-cedar-with-automated-reasoning-and-differential-testing) —
+  the ghost/observer spec pattern and the `explicit permit` / `forbid overrides permit` properties.
+- **Cutler, J. et al.** *Cedar: A New Language for Expressive, Fast, Safe, and Analyzable
+  Authorization.* OOPSLA 2024. [PDF](https://arxiv.org/abs/2403.04651)
+- [Refinement](https://en.wikipedia.org/wiki/Refinement_(computing)) — the abstraction relation.

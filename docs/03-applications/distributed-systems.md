@@ -178,3 +178,27 @@ enumerating interleavings that no test would generate.
 
 Continue → [hardware-crypto.md](hardware-crypto.md), the domain where FM is *already* standard
 practice.
+
+## References
+
+- **Newcombe, C. et al.** *Use of Formal Methods at Amazon Web Services.* 2014/2015.
+  [PDF](https://lamport.azurewebsites.net/tla/formal-methods-amazon.pdf) — the design-bug argument,
+  the "Debugging Designs" framing, and the data-modelling discovery.
+- **Lamport, L.** *Specifying Systems.* 2002. [Free online](https://lamport.azurewebsites.net/tla/book.html) ·
+  [TLA+ home](https://lamport.azurewebsites.net/tla/tla.html) · [learntla.com](https://learntla.com/)
+- **Apalache** — [apalache-mc.org](https://apalache-mc.org/) — symbolic, SMT-backed TLA+ checking.
+- **Jackson, D.** *Software Abstractions: Logic, Language, and Analysis.* MIT Press, 2012 — Alloy,
+  and the Chord case study.
+- **Holzmann, G.** *The SPIN Model Checker.* Addison-Wesley, 2003.
+- **Hawblitzel, C. et al.** *IronFleet: Proving Practical Distributed Systems Correct.* SOSP 2015.
+  [PDF](https://www.microsoft.com/en-us/research/publication/ironfleet-proving-practical-distributed-systems-correct/)
+- **Wilcox, J. et al.** *Verdi: A Framework for Verifying Distributed Systems.* PLDI 2015.
+- **Veil** — [github.com/verse-lab/veil](https://github.com/verse-lab/veil) — Lean 4 protocol
+  verification.
+- **Kingsbury, K.** *Jepsen.* [jepsen.io](https://jepsen.io/) — black-box testing under partitions;
+  the complement to model checking, not a substitute.
+- **FoundationDB** — *Testing Distributed Systems with Deterministic Simulation.*
+  [Apple engineering note](https://apple.github.io/foundationdb/testing.html) ·
+  **TigerBeetle** — [Deterministic Simulation Testing](https://docs.tigerbeetle.com/concepts/safety/)
+- **Stateright** — [github.com/stateright/stateright](https://github.com/stateright/stateright) —
+  model checking in and for Rust.

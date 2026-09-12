@@ -106,3 +106,66 @@ Legend: 🧮 = logic/foundations · 🛠️ = tool/method · 🏭 = industrial d
    becomes the bottleneck and, for the first time, a mass-market concern.
 
 **See [narrative.md](narrative.md) for the story-shaped version.**
+
+## References
+
+Primary sources for the entries on this page, in roughly chronological order.
+
+**Logic and foundations**
+- **Leibniz, G.W.** *Dissertatio de arte combinatoria.* 1666 — the *calculus ratiocinator*.
+- **Boole, G.** *The Mathematical Analysis of Logic.* 1847.
+- **Frege, G.** *Begriffsschrift.* 1879.
+- **Russell, B. & Whitehead, A.N.** *Principia Mathematica.* 1910–13.
+- **Hilbert, D. & Ackermann, W.** *Grundzüge der theoretischen Logik.* 1928 — the Entscheidungsproblem.
+- **Gödel, K.** 1931. [Stanford Encyclopedia](https://plato.stanford.edu/entries/goedel-incompleteness/)
+- **Turing, A.M.** *On Computable Numbers…* 1936; **Church, A.** 1936.
+- **Rice, H.G.** 1953.
+
+**Program verification**
+- **Turing, A.M.** *Checking a Large Routine.* 1949.
+- **Newell, A., Shaw, J.C., Simon, H.** 1957 — Logic Theorist.
+- **McCarthy, J.** *Towards a Mathematical Science of Computation.* IFIP 1962.
+- **Floyd, R.** 1967; **Hoare, C.A.R.** 1969; **Dijkstra, E.W.** 1975.
+- **de Bruijn, N.G.** Automath, 1967. **Milner, R.** LCF, 1972. **Boyer & Moore**, 1971–.
+- **Mizar** — [mizar.org](https://mizar.uwb.edu.pl/) (from 1973).
+- **Cousot, P. & Cousot, R.** POPL 1977; **Pnueli, A.** FOCS 1977.
+- **Clarke & Emerson** 1981; **Queille & Sifakis** 1982.
+- **Bryant, R.** *Graph-Based Algorithms for Boolean Function Manipulation.* IEEE TC 1986 — BDDs.
+- **McMillan, K.** *Symbolic Model Checking.* 1993.
+- [Paris Métro Line 14 / the B method](https://www.atelier.net/en/trends/articles/b-method-language-used-certify-software) —
+  **Abrial, J.-R.** *The B-Book.* CUP, 1996.
+
+**Solvers**
+- **Davis, M. & Putnam, H.** 1960; **Davis, Logemann, Loveland** 1962 — DPLL.
+- **Marques-Silva & Sakallah** 1996; **Bayardo & Schrag** 1997 — CDCL.
+- **Moskewicz, M. et al.** 2001 — Chaff. **Eén & Sörensson** 2003 — MiniSat.
+- **de Moura, L. & Bjørner, N.** TACAS 2008 — Z3. [cvc5](https://cvc5.github.io/) 2021–.
+- **Reynolds, J.C.** 2002; **O'Hearn, P. et al.** 2001 — separation logic.
+
+**Industry**
+- [Pentium FDIV bug](https://en.wikipedia.org/wiki/Pentium_FDIV_bug) 1994.
+- [Ariane 5 Flight 501](https://www.esa.int/Newsroom/Press_Releases/Ariane_5_Flight_501) 1996.
+- **Leroy, X.** CACM 2009 — CompCert; **Yang, X. et al.** PLDI 2011 — Csmith.
+- **Cousot, P. et al.** ESOP 2005 — Astrée.
+- **Klein, G. et al.** SOSP 2009 — seL4; the binary-verification follow-up:
+  **Sewell, T. et al.** *Translation Validation for a Verified OS Kernel.* PLDI 2013.
+- **Newcombe, C. et al.** 2014/2015 — AWS. **Protzenko, J. et al.** IEEE S&P 2020 — EverCrypt.
+
+**AI era**
+- **Polu, S. & Sutskever, I.** *Generative Language Modeling for Automated Theorem Proving.* 2020 —
+  GPT-f.
+- **Yang, K. et al.** *LeanDojo.* NeurIPS 2023. [lean-dojo.org](https://leandojo.org/)
+- **Hubert, T. et al.** *Olympiad-level formal mathematical reasoning with reinforcement learning.*
+  *Nature*, 2025.
+- **Lin, Y. et al.** *Goedel-Prover.* 2025. [arXiv:2502.07640](https://arxiv.org/abs/2502.07640)
+- *Autoformalization in the Era of Large Language Models: A Survey.* 2025.
+  [arXiv:2505.23486](https://arxiv.org/abs/2505.23486)
+- **OpenAI.** *Ten Advances in Mathematics and Theoretical Computer Science.* 2026.
+- **Lean FRO.** [Comparator](https://github.com/leanprover/comparator).
+- **Klingner, T. et al.** *A comparison of LLMs' effectiveness in producing formal proofs in Lean 4.*
+  [arXiv:2606.05632](https://arxiv.org/abs/2606.05632)
+- **Rocq 9.0** (the Coq rename), 12 March 2025.
+  [Release notes](https://rocq-prover.org/releases/9.0.0)
+- [mathlib statistics](https://leanprover-community.github.io/mathlib_stats.html)
+- [Leiden Declaration on AI and Mathematics](https://www.universiteitleiden.nl/en/news/2026/06/leiden-declaration-warns-ai-is-challenging-the-core-values-of-mathematics),
+  June 2026.

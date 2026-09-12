@@ -208,3 +208,26 @@ That's the promise. State the scope boundaries in the same breath and the argume
 
 Next → [02-history/narrative.md](../02-history/narrative.md): how the field got here, including
 the AI entanglement nobody expects.
+
+## References
+
+- **Gödel, K.** *Über formal unentscheidbare Sätze der Principia Mathematica und verwandter
+  Systeme I.* 1931. [Stanford Encyclopedia](https://plato.stanford.edu/entries/goedel-incompleteness/)
+- **Turing, A.M.** *On Computable Numbers, with an Application to the Entscheidungsproblem.* 1936 —
+  the halting problem.
+- **Rice, H.G.** *Classes of Recursively Enumerable Sets and Their Decision Problems.* Trans. AMS,
+  1953. [PDF](https://www.ams.org/journals/tran/1953-074-02/S0002-9947-1953-0053041-6/S0002-9947-1953-0053041-6.pdf)
+- **Wright, A. & Felleisen, M.** *A Syntactic Approach to Type Soundness.* 1994 — progress and
+  preservation, the type-system analogue of soundness.
+- **Klein, G. et al.** *seL4: Formal Verification of an OS Kernel.* SOSP 2009.
+  [PDF](https://sel4.systems/Research/pdfs/sel4-sosp2009.pdf) — the ~8,700 lines of C / ~200,000
+  lines of proof / ~20 person-years figures, and the assumptions section.
+- **Cousot, P. et al.** *The ASTRÉE Analyzer.* ESOP 2005.
+  [PDF](https://pcousot.github.io/publications/CousotEtAl-ESOP05.pdf) — false alarms, and the price
+  of soundness.
+- **Yang, X., Chen, Y., Eide, E., Regehr, J.** *Finding and Understanding Bugs in C Compilers.*
+  PLDI 2011. [PDF](https://users.cs.utah.edu/~regehr/papers/pldi11-preprint.pdf) — the Csmith study.
+- **Pentium FDIV bug** — [Wikipedia](https://en.wikipedia.org/wiki/Pentium_FDIV_bug)
+- **Ariane 5 Flight 501** — [ESA report](https://www.esa.int/Newsroom/Press_Releases/Ariane_5_Flight_501)
+- **Knight Capital** — SEC filing and contemporaneous reporting; the deployment-error case study.
+- [Gödel's incompleteness theorems](https://en.wikipedia.org/wiki/G%C3%B6del%27s_incompleteness_theorems)

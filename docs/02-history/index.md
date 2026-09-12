@@ -35,3 +35,24 @@ strangers.
 
 ⚠️ *Items flagged in the timeline still need a source check before you rely on them; see
 [RESEARCH-NOTES.md](../research-notes.md).*
+
+## References
+
+- **Clarke, E.M. & Wing, J.M.** *Formal Methods: State of the Art and Future Directions.* ACM
+  Computing Surveys 28(4), 1996.
+  [PDF](https://www.cs.cmu.edu/~emc/papers/Books%20and%20Edited%20Volumes/Formal%20Methods%20State%20of%20the%20Art%20and%20Future%20Directions.pdf)
+- **Woodcock, J., Larsen, P., Bicarregui, J., Fitzgerald, J.** *Formal Methods: Practice and
+  Experience.* ACM Computing Surveys 41(4), 2009.
+  [PDF](https://dl.acm.org/doi/10.1145/1592434.1592436) — the industrial case-study survey, and the
+  strongest single source for "it shipped, quietly".
+- **Klein, G. et al.** *seL4: Formal Verification of an OS Kernel.* SOSP 2009.
+- **Leroy, X.** *Formal Verification of a Realistic Compiler.* CACM 2009.
+- **Yang, X. et al.** *Finding and Understanding Bugs in C Compilers.* PLDI 2011.
+- **Cousot, P. et al.** *The ASTRÉE Analyzer.* ESOP 2005.
+- **Newcombe, C. et al.** *Use of Formal Methods at Amazon Web Services.* 2014/2015.
+- **Newell, A., Shaw, J.C., Simon, H.** *Empirical Explorations with the Logic Theory Machine.* 1957 —
+  the first AI program, and a theorem prover.
+- **MacKenzie, D.** *Mechanizing Proof: Computing, Risk, and Trust.* MIT Press, 2001 — the sociology
+  of why adoption is hard.
+- **Hubert, T. et al.** *Olympiad-level formal mathematical reasoning with reinforcement learning.*
+  *Nature*, 2025. [Link](https://www.nature.com/articles/s41586-025-09833-y)

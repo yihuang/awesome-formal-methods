@@ -192,3 +192,26 @@ adoption and abandonment.
 ---
 
 Next → [objections.md](objections.md): the answers you'll need.
+
+## References
+
+- **Newcombe, C. et al.** *Use of Formal Methods at Amazon Web Services.* 2014/2015.
+  [PDF](https://lamport.azurewebsites.net/tla/formal-methods-amazon.pdf) — every claim on this page
+  about how adoption actually happened: "Debugging Designs", "exhaustively testable pseudo-code",
+  starting from an incident, and the two kinds of win (bugs prevented, optimisations enabled).
+- **Cousot, P. et al.** *The ASTRÉE Analyzer.* ESOP 2005.
+  [PDF](https://pcousot.github.io/CousotEtAl-ESOP05.pdf) — the assumptions-and-limitations section as
+  an engineering artifact.
+- **Woodcock, J. et al.** *Formal Methods: Practice and Experience.* ACM CSUR 41(4), 2009.
+  [ACM](https://dl.acm.org/doi/10.1145/1592434.1592436) — what industrial deployments look like in
+  practice, including the organisational conditions.
+- **Barnett, M. et al.** *Boogie*; **Leino, K.R.M.** *Dafny* — the annotation-burden reality behind
+  rung 4, and why loop invariants are the cost centre.
+- **Kani** — [github.com/model-checking/kani](https://github.com/model-checking/kani) ·
+  [Kani book](https://model-checking.github.io/kani/) — a CI-ready verifier, i.e. one that does not
+  require changing languages.
+- **Hypothesis** — [hypothesis.readthedocs.io](https://hypothesis.readthedocs.io/) — rung 1–2.
+- **Klein, G. et al.** *seL4: Formal Verification of an OS Kernel.* SOSP 2009 — re-verification cost
+  after the initial proof.
+- **Lean FRO.** [Comparator](https://github.com/leanprover/comparator) — the "verify the claim, not
+  just the proof" discipline that rung 3's CI gate should include.

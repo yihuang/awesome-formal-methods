@@ -193,3 +193,44 @@ dismiss testing so many times that engineers reflexively discount it. Use this i
 
 > "Testing is necessary and stays necessary. The question is what it structurally cannot do:
 > quantify over all inputs, all interleavings, and all adversary perturbations."
+
+## References
+
+Every quotation on this page is attributed inline. The underlying documents:
+
+- **Newell, A., Shaw, J.C., Simon, H.** *Empirical Explorations with the Logic Theory Machine.* 1957
+  — Logic Theorist.
+- **Newcombe, C., Rath, T., Zhang, F., Munteanu, B., Brooker, M., Deardeuff, M.** *Use of Formal
+  Methods at Amazon Web Services.* 2014/2015.
+  [PDF](https://lamport.azurewebsites.net/tla/formal-methods-amazon.pdf) — the cost objection, the
+  "perception is quite wrong" line, the "Debugging Designs" framing, the "exhaustively testable
+  pseudo-code" framing, the design-versus-code argument, the "what needs to go right" inversion,
+  the two-kinds-of-win quotation, the data-modelling aside, and the "all models are wrong" line.
+- **Hubert, T. et al.** *Olympiad-level formal mathematical reasoning with reinforcement learning.*
+  *Nature*, 2025. [Link](https://www.nature.com/articles/s41586-025-09833-y) — the kernel-soundness
+  quotation, the mis-formalized-statement insight, the "rigorously verifying... remains a challenge"
+  quotation, and the honest "combinatorics problems remained unsolved" line.
+- **DeepMind.** *AI achieves silver-medal standard solving International Mathematical Olympiad
+  problems.* 2024. [Link](https://deepmind.google/blog/ai-solves-imo-problems-at-silver-medal-level/) —
+  the Timothy Gowers quotation.
+- *Guardians of the Agents.* ACM Queue, 2025.
+  [Link](https://queue.acm.org/detail.cfm?id=3762990) — the proof-carrying-actions and
+  credit-card-analogy quotation.
+- **Anthropic.** *Eight trends defining how software gets built in 2026.*
+  [Link](https://claude.com/blog/eight-trends-defining-how-software-gets-built-in-2026) — the
+  delegation figure. ⚠️ Vendor-published.
+- **Microsoft SymCrypt** — [github.com/microsoft/SymCrypt](https://github.com/microsoft/SymCrypt) —
+  the "single incorrect bit operation" line. ⚠️ Vendor material.
+- **powdr.** *Formally Verified Autoprecompiles.*
+  [Link](https://powdr.org/blog/formally-verified-autoprecompiles); **Alt, L.** *Performant Verified
+  Software.* [Link](https://leoalt.de/performant-verified-software) — "the proof is the review".
+- **Yang, X., Chen, Y., Eide, E., Regehr, J.** *Finding and Understanding Bugs in C Compilers.*
+  PLDI 2011 — the Csmith numbers.
+- **Klein, G. et al.** *seL4: Formal Verification of an OS Kernel.* SOSP 2009 — the
+  8,700/200,000/~20 person-year figures.
+- **Cousot, P. et al.** *The ASTRÉE Analyzer.* ESOP 2005 — the ~132,000 lines of Airbus C.
+- [mathlib statistics](https://leanprover-community.github.io/mathlib_stats.html)
+- [openai/ten-proofs](https://github.com/openai/ten-proofs)
+- [Pentium FDIV bug](https://en.wikipedia.org/wiki/Pentium_FDIV_bug)
+- **Dijkstra, E.W.** *Notes on Structured Programming.* 1970 — the testing quotation that this page
+  deliberately advises against over-using.

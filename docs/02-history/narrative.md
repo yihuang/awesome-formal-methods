@@ -197,3 +197,28 @@ If you take one thing from this page, take the shape rather than the dates:
 
 *Presenting this material?* The appendix has
 [a presentation outline](../appendix/presenting.md) built on this structure, with timings.
+
+## References
+
+- **Newell, A., Shaw, J.C., Simon, H.** *Empirical Explorations with the Logic Theory Machine: A
+  Case Study in Heuristics.* 1957 — Logic Theorist, and the theorems it proved from *Principia
+  Mathematica*.
+- **Turing, A.M.** *Checking a Large Routine.* 1949 — arguably the first program-correctness
+  argument.
+- **Gödel, K.** 1931; **Turing, A.M.** 1936; **Rice, H.G.** 1953 — Act I's three ceiling results.
+- **Floyd, R.** 1967; **Hoare, C.A.R.** 1969; **Dijkstra, E.W.** 1975 — the ladder.
+- **Cousot, P. & Cousot, R.** 1977; **Clarke & Emerson** 1981 — the two escapes from undecidability.
+- [Pentium FDIV bug](https://en.wikipedia.org/wiki/Pentium_FDIV_bug) — and John Harrison's HOL Light
+  verification of Intel's floating-point division: **Harrison, J.** *Formal Verification of
+  Floating-Point Algorithms* (TPHOLs 2000).
+- **Cousot, P. et al.** *The ASTRÉE Analyzer.* ESOP 2005 — A340 fly-by-wire.
+- **Leroy, X.** *Formal Verification of a Realistic Compiler.* CACM 2009; **Yang, X. et al.** PLDI
+  2011 — CompCert and the Csmith comparison.
+- **Klein, G. et al.** *seL4: Formal Verification of an OS Kernel.* SOSP 2009.
+- **Protzenko, J. et al.** *EverCrypt: A Fast, Verified, Cross-Platform Cryptographic Provider.*
+  IEEE S&P 2020. [hacl-star.github.io](https://hacl-star.github.io/HaclValeEverCrypt.html)
+- **Newcombe, C. et al.** *Use of Formal Methods at Amazon Web Services.* 2014/2015.
+- **Hubert, T. et al.** *Olympiad-level formal mathematical reasoning with reinforcement learning.*
+  *Nature*, 2025.
+- **OpenAI.** *Ten Advances in Mathematics and Theoretical Computer Science.* 2026.
+  [Repository](https://github.com/openai/ten-proofs)

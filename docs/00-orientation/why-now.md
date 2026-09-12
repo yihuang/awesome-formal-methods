@@ -96,3 +96,25 @@ For each of these, formal methods offer something testing structurally cannot: a
 **The practical ask:** don't adopt a proof assistant tomorrow. Adopt the *habit* of writing one
 precise property that must hold for all inputs, and use the cheapest tool that can check it. That
 is the entire on-ramp ([lightweight-fm.md](../03-applications/lightweight-fm.md)).
+
+## References
+
+- **Newcombe, C. et al.** *Use of Formal Methods at Amazon Web Services.* 2014/2015.
+  [PDF](https://lamport.azurewebsites.net/tla/formal-methods-amazon.pdf) — the "perception is quite
+  wrong" quotation, and formal methods as an enabler rather than insurance.
+- **AWS Security Blog.** *An Unexpected Discovery: Automated Reasoning Often Makes Systems More
+  Efficient and Easier to Maintain.*
+  [Link](https://aws.amazon.com/blogs/security/an-unexpected-discovery-automated-reasoning-often-makes-systems-more-efficient-and-easier-to-maintain/) —
+  the same argument from the other direction: verification leading to *faster* systems.
+- **Anthropic.** *Eight trends defining how software gets built in 2026.* Jan 2026.
+  [Link](https://claude.com/blog/eight-trends-defining-how-software-gets-built-in-2026) — the
+  "~60% of work / 0–20% fully delegable" figure. ⚠️ Vendor-published; see the
+  [confidence ledger](../research-notes.md#4-confidence-ledger).
+- **Alt, L.** *Performant Verified Software.* Sept 2026.
+  [Link](https://leoalt.de/performant-verified-software) — the strongest statement of the
+  "verification buys performance" thesis, with production numbers.
+- **Rice, H.G.** *Classes of Recursively Enumerable Sets and Their Decision Problems.* 1953 → see
+  [limits.md](../01-fundamentals/limits.md) for why testing cannot be made sound.
+- [Ethereum formal verification overview](https://github.com/leonardoalt/ethereum_formal_verification_overview) —
+  an actively maintained list of what is *actually* verified in a domain where failure is
+  monetised.

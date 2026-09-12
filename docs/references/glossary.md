@@ -257,3 +257,34 @@ peer review, use of published work without consent, and threats to attribution a
 | **IMO** | International Mathematical Olympiad |
 | **DO-178C / DO-333** | avionics software standard / its formal-methods supplement |
 | **ASIL / SIL** | automotive safety integrity level / safety integrity level |
+
+## References
+
+This glossary defines terms introduced across the wiki; the authoritative sources are on the pages
+where each term is used. The primary references for the definitions most often looked up here:
+
+- **Hoare, C.A.R.** CACM 1969 — precondition, postcondition, partial correctness.
+- **Dijkstra, E.W.** CACM 1975 — weakest precondition, verification condition.
+- **Floyd, R.** 1967 — invariant, as an annotation on a flowchart.
+- **Cousot, P. & Cousot, R.** POPL 1977 — abstraction, abstract domain, false alarm.
+- **Kahn, G.** STACS 1987; **Plotkin, G.** 1981 — big-step and small-step, and the derivation-based
+  proof principles behind them.
+- **Clarke & Emerson** 1981; **Pnueli, A.** 1977 — safety, liveness, temporal operators.
+- **Emerson & Halpern** 1983 — LTL, CTL, CTL*.
+- **Kozen, D.** 1983 — μ-calculus.
+- **Reynolds, J.C.** 2002; **O'Hearn, P. et al.** 2001 — separation logic, frame rule, footprint.
+- **Rice, H.G.** 1953 — soundness/completeness trade-off.
+- **de Bruijn, N.G.** 1980 — trusted base, de Bruijn criterion.
+- **Necula, G.** POPL 1997 — proof-carrying code.
+- **Clarkson, M. & Schneider, F.** CSF 2008 — hyperproperty, non-interference.
+- **Wang, S. et al.** NeurIPS 2021 — certified robustness.
+- **Alshiekh, M. et al.** AAAI 2018 — shields.
+- **Wang, H. et al.** 2025 ([arXiv:2503.18666](https://arxiv.org/abs/2503.18666)) — runtime
+  enforcement for agents.
+- **Wright, A. & Felleisen, M.** 1994 — progress and preservation.
+- [SAT solver](https://en.wikipedia.org/wiki/SAT_solver) ·
+  [SMT](https://en.wikipedia.org/wiki/Satisfiability_modulo_theories) ·
+  [Operational semantics](https://en.wikipedia.org/wiki/Operational_semantics) ·
+  [Separation logic](https://en.wikipedia.org/wiki/Separation_logic) ·
+  [Abstract interpretation](https://en.wikipedia.org/wiki/Abstract_interpretation) —
+  for the survey-level definitions.

@@ -245,3 +245,28 @@ a new religion.
 ---
 
 Next → [techniques.md](techniques.md): the algorithmic side — how these logics get *checked*.
+
+## References
+
+- **Floyd, R.** *Assigning Meanings to Programs.* 1967 — pre/post-conditions.
+- **Hoare, C.A.R.** *An Axiomatic Basis for Computer Programming.* CACM 1969 — the Hoare triple and
+  the inference rules reproduced on this page.
+- **Dijkstra, E.W.** *Guarded Commands, Nondeterminacy and Formal Derivation of Programs.* CACM
+  1975 — weakest preconditions.
+- **Pnueli, A.** *The Temporal Logic of Programs.* FOCS 1977 — temporal logic for reactive systems
+  (Turing Award 1996).
+- **Clarke, E.M. & Emerson, E.A.** *Design and Synthesis of Synchronization Skeletons Using
+  Branching-Time Temporal Logic.* 1981 — CTL; **Queille & Sifakis** 1982 — the independent origin of
+  model checking (Turing Award 2007).
+- **Emerson, E.A. & Halpern, J.** *"Sometimes" and "Not Never" Revisited: On Branching versus Linear
+  Time.* POPL 1983 — LTL vs CTL, and CTL*.
+- **Kozen, D.** *Results on the Propositional μ-Calculus.* 1983.
+- **Reynolds, J.C.** *Separation Logic: A Logic for Shared Mutable Data Structures.* LICS 2002;
+  **O'Hearn, P., Reynolds, J., Yang, H.** *Local Reasoning about Programs that Alter Data
+  Structures.* CSL 2001. [Separation logic](https://en.wikipedia.org/wiki/Separation_logic) — the
+  frame rule, and the basis for Rust's ownership discipline.
+- **Howard, W.A.** *The Formulae-as-Types Notion of Construction.* 1969 — Curry–Howard.
+- **Pierce, B.** *Types and Programming Languages.* MIT Press, 2002.
+- **Winskel, G.** *The Formal Semantics of Programming Languages.* MIT Press, 1993.
+- [Hoare logic](https://en.wikipedia.org/wiki/Hoare_logic) ·
+  [Model checking](https://en.wikipedia.org/wiki/Model_checking)

@@ -146,3 +146,24 @@ in [`references/glossary.md`](../references/glossary.md).
 5. **Soundness** — verified ⇒ true.
 6. **Refinement** — the relation "this concrete implementation is a correct instance of that
    abstract spec". This is how you connect a verified model to real code.
+
+## References
+
+- **Hoare, C.A.R.** *An Axiomatic Basis for Computer Programming.* CACM 12(10), 1969.
+  [PDF](https://dl.acm.org/doi/10.1145/363235.363259) — the origin of `{P}C{Q}`.
+- **Cousot, P. & Cousot, R.** *Abstract Interpretation: A Unified Lattice Model for Static Analysis
+  of Programs by Construction or Approximation of Fixpoints.* POPL 1977.
+  [Overview](https://www.di.ens.fr/~cousot/AI/IntroAbsInt.html) — the sound over-approximation family.
+- **Clarke, E.M. & Emerson, E.A.** *Design and Synthesis of Synchronization Skeletons Using
+  Branching-Time Temporal Logic.* 1981; **Queille, J.P. & Sifakis, J.** 1982 — model checking.
+- **Rice, H.G.** *Classes of Recursively Enumerable Sets and Their Decision Problems.* 1953 — why
+  every tool is incomplete or unsound.
+- **Howard, W.A.** *The Formulae-as-Types Notion of Construction.* 1969 — Curry–Howard, and why
+  proof assistants are programming languages.
+- **de Bruijn, N.G.** *A Survey of the Project Automath.* 1980 — the de Bruijn criterion, and the
+  small-kernel design that proof assistants still follow.
+- **Newcombe, C. et al.** *Use of Formal Methods at Amazon Web Services.* 2014/2015.
+  [PDF](https://lamport.azurewebsites.net/tla/formal-methods-amazon.pdf) — the practitioner framing
+  used throughout this wiki.
+- [Wikipedia: Formal methods](https://en.wikipedia.org/wiki/Formal_methods) — for the survey-level
+  taxonomy.

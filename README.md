@@ -21,13 +21,13 @@ and formal methods share an origin. This wiki is about the loop between them.
 | Section | Contents |
 |---|---|
 | **[Orientation](docs/00-orientation/)** | Why now · taxonomy of the field · reading paths by role |
-| **[Fundamentals](docs/01-fundamentals/)** | Specifications · logics · the five verification techniques · SAT/SMT · hard limits |
+| **[Fundamentals](docs/01-fundamentals/)** | Specifications · logics · **semantics (small-step, big-step, functional/relational)** · the five verification techniques · SAT/SMT · hard limits |
 | **[History](docs/02-history/)** | Dated timeline 1666→2026 · the three-act narrative |
-| **[Applications](docs/03-applications/)** | seL4, CompCert, AWS TLA+, Cedar, SymCrypt, Veil, VNN-COMP · distributed systems · hardware & crypto · safety-critical · **the lightweight on-ramp** · the adoption gap |
-| **[AI era](docs/04-ai-era/)** | **AI → FM** (AlphaProof, autoformalization, the 2026 machine-checked results) · **FM → AI** (agent guardrails, NN verification, runtime monitors) · the verification bottleneck |
+| **[Applications](docs/03-applications/)** | seL4, CompCert, AWS TLA+, Cedar, SymCrypt, VNN-COMP · **blockchain/EVM/zk** · distributed systems · hardware & crypto · safety-critical · **the lightweight on-ramp** · the adoption gap |
+| **[AI era](docs/04-ai-era/)** | **AI → FM** (AlphaProof, autoformalization, the 2026 machine-checked results) · **AI proof engineering** (generic models writing Lean 4) · **FM → AI** (agent guardrails, NN verification, runtime monitors) · the verification bottleneck |
 | **[Tools](docs/05-tools/)** | ~40 tools in nine families · how to choose |
 | **[Practice](docs/06-practice/)** | Adoption playbook (0→3 ladder) · objection handling |
-| **[Reference](docs/references/)** | Glossary · bibliography · sourced quote bank |
+| **[Reference](docs/references/)** | Citation conventions · glossary · bibliography · sourced quote bank |
 | **[Demos](docs/demos.md)** | Runnable Lean, Python, and TLA+ artifacts |
 | **[Presenting](docs/appendix/presenting.md)** | *Optional appendix* — timings and narrative spines |
 
@@ -76,6 +76,7 @@ Everything below runs in CI on every push (see
 | Gate | What it catches |
 |---|---|
 | `python3 tools/check-links.py` | broken relative Markdown links |
+| `python3 tools/check-refs.py` | reference coverage — a ratchet: every page must keep a `## References` section |
 | `npm run docs:build` | VitePress dead links; **fails the build** |
 | `python3 tools/check-site.py` | broken links in the *built* site — base-path, anchor, and asset problems the Markdown checker can't see (2,462 links checked) |
 | `lake build` | the Lean proofs actually compile |

@@ -223,3 +223,27 @@ A one-page starting plan.
 
 Next → [adoption-gap.md](adoption-gap.md): why, if this is so good, it hasn't already happened
 to you.
+
+## References
+
+- **Claessen, K. & Hughes, J.** *QuickCheck: A Lightweight Tool for Random Testing of Haskell
+  Programs.* ICFP 2000. [PDF](https://www.cs.tufts.edu/~nr/cs257/archive/john-hughes/quick.pdf) —
+  the origin of property-based testing.
+- **MacIver, D.** *Hypothesis* — [hypothesis.readthedocs.io](https://hypothesis.readthedocs.io/) ·
+  **proptest** — [github.com/proptest-rs/proptest](https://github.com/proptest-rs/proptest) ·
+  **fast-check** — [fast-check.dev](https://fast-check.dev/) ·
+  **jqwik** — [jqwik.net](https://jqwik.net/)
+- **Kani** — [github.com/model-checking/kani](https://github.com/model-checking/kani) ·
+  [Kani book](https://model-checking.github.io/kani/) — `cargo kani`, `#[kani::proof]`, `kani::any()`
+- **CBMC** — [cbmc-documentation.readthedocs.io](https://cbmc-documentation.readthedocs.io/) — the
+  bounded model checker Kani is built on.
+- **Lamport, L.** *Specifying Systems.* [Free online](https://lamport.azurewebsites.net/tla/book.html) ·
+  [TLA+ video course](https://lamport.azurewebsites.net/video/videos.html) ·
+  [learntla.com](https://learntla.com/) — the fastest route to a first spec.
+- **Wayne, H.** *Practical TLA+.* Apress, 2018 — the engineer-oriented book.
+- **Apalache** — [apalache-mc.org](https://apalache-mc.org/)
+- **Newcombe, C. et al.** *Use of Formal Methods at Amazon Web Services.* 2014/2015 — the
+  "exhaustively testable pseudo-code" framing, and the start-from-an-incident lesson.
+- **Amazon Science.** *How we built Cedar with automated reasoning and differential testing.*
+  [Link](https://www.amazon.science/blog/how-we-built-cedar-with-automated-reasoning-and-differential-testing) —
+  the prove-a-model-then-differentially-test pattern.

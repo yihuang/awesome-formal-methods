@@ -77,6 +77,7 @@ export default defineConfig({
           { text: 'Fundamentals', link: '/01-fundamentals/' },
           { text: 'History', link: '/02-history/' },
           { text: 'Applications', link: '/03-applications/' },
+          { text: 'Blockchain & EVM', link: '/03-applications/blockchain' },
           { text: 'AI era', link: '/04-ai-era/' }
         ]
       },
@@ -87,6 +88,7 @@ export default defineConfig({
           { text: 'Choosing a tool', link: '/05-tools/choosing' },
           { text: 'Adoption playbook', link: '/06-practice/adoption-playbook' },
           { text: 'Objections & answers', link: '/06-practice/objections' },
+          { text: 'AI proof engineering', link: '/04-ai-era/llm-proof-engineering' },
           { text: 'Demos', link: '/demos' },
           { text: 'Presenting (appendix)', link: '/appendix/presenting' }
         ]
@@ -94,6 +96,7 @@ export default defineConfig({
       {
         text: 'Reference',
         items: [
+          { text: 'Citation conventions', link: '/references/' },
           { text: 'Glossary', link: '/references/glossary' },
           { text: 'Bibliography', link: '/references/bibliography' },
           { text: 'Quote bank', link: '/references/quote-bank' },
@@ -120,6 +123,7 @@ export default defineConfig({
           { text: 'Index', link: '/01-fundamentals/' },
           { text: 'Specifications', link: '/01-fundamentals/specifications' },
           { text: 'Logics', link: '/01-fundamentals/logics' },
+          { text: 'Semantics (small-step, big-step, …)', link: '/01-fundamentals/semantics' },
           { text: 'Techniques', link: '/01-fundamentals/techniques' },
           { text: 'Automated reasoning', link: '/01-fundamentals/automated-reasoning' },
           { text: 'Limits', link: '/01-fundamentals/limits' }
@@ -140,6 +144,7 @@ export default defineConfig({
         items: [
           { text: 'Index', link: '/03-applications/' },
           { text: 'Case studies', link: '/03-applications/case-studies' },
+          { text: 'Blockchain, EVM & zk', link: '/03-applications/blockchain' },
           { text: 'Distributed systems', link: '/03-applications/distributed-systems' },
           { text: 'Hardware & cryptography', link: '/03-applications/hardware-crypto' },
           { text: 'Safety-critical', link: '/03-applications/safety-critical' },
@@ -153,6 +158,7 @@ export default defineConfig({
         items: [
           { text: 'Index — the bidirectional map', link: '/04-ai-era/' },
           { text: 'AI → FM (accelerator)', link: '/04-ai-era/ai-for-fm' },
+          { text: 'AI proof engineering (Lean 4)', link: '/04-ai-era/llm-proof-engineering' },
           { text: 'FM → AI (guardrails)', link: '/04-ai-era/fm-for-ai' },
           { text: 'The verification bottleneck', link: '/04-ai-era/verification-bottleneck' }
         ]
@@ -187,6 +193,7 @@ export default defineConfig({
         text: 'Reference',
         collapsed: false,
         items: [
+          { text: 'Citation conventions', link: '/references/' },
           { text: 'Glossary', link: '/references/glossary' },
           { text: 'Bibliography', link: '/references/bibliography' },
           { text: 'Quote bank', link: '/references/quote-bank' },

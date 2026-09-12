@@ -165,3 +165,27 @@ teams almost never write one down, and that's where the surprises live
 [DO-333 project notes](https://loonwerks.com/projects/do333.html).
 
 Return to [applications index](index.md).
+
+## References
+
+- **RTCA DO-178C** — *Software Considerations in Airborne Systems and Equipment Certification.*
+  [rtca.org](https://www.rtca.org/do-178/)
+- **RTCA DO-333** — *Formal Methods Supplement to DO-178C and DO-278A.*
+  [Project notes](https://loonwerks.com/projects/do333.html)
+- **RTCA DO-330** — *Software Tool Qualification Considerations* — the "who verifies the verifier"
+  problem in regulatory form.
+- **RTCA DO-331** (model-based development) and **DO-332** (object-oriented technology).
+  [RTCA standards](https://www.rtca.org/standards/)
+- **ISO 26262** — *Road vehicles — Functional safety.* [iso.org](https://www.iso.org/standard/68383.html)
+- **IEC 61508** — *Functional safety of electrical/electronic/programmable electronic safety-related
+  systems.* [iec.ch](https://www.iec.ch/functionalsafety/)
+- **EN 50128** — *Railway applications — Software for railway control and protection systems.*
+- **IEC 62304** — *Medical device software — Software life cycle processes.*
+- **Common Criteria** — [commoncriteriaportal.org](https://www.commoncriteriaportal.org/)
+- **Cousot, P. et al.** *The ASTRÉE Analyzer.* ESOP 2005.
+  [PDF](https://pcousot.github.io/publications/CousotEtAl-ESOP05.pdf) — the A340 fly-by-wire result.
+- **Leroy, X.** *Formal Verification of a Realistic Compiler.* CACM 2009 — CompCert under DO-178C.
+- **Newcombe, C. et al.** *Use of Formal Methods at Amazon Web Services.* 2014/2015 — the
+  "safety-critical only" stereotype, and why it is out of date.
+- **Bloomfield, R. & Craigen, D.** and the wider assurance-case literature for **Goal Structuring
+  Notation**: **Kelly, T.** *Arguing Safety.* DPhil thesis, University of York, 1998.

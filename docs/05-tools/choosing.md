@@ -158,3 +158,26 @@ property-based tests for the function that last broke production. See
 
 > **"Pick the cheapest tool that can check the property you actually care about, and put it in
 > CI. If it can't produce a counterexample, your team will abandon it in a sprint."**
+
+## References
+
+- **Install and getting-started documentation** for the tools named on this page:
+  [Lean/elan](https://leanprover-community.github.io/get_started.html) ·
+  [TLA+ Toolbox and VS Code extension](https://lamport.azurewebsites.net/tla/tla.html) ·
+  [Dafny](https://dafny.org/dafny/Installation) ·
+  [Kani](https://model-checking.github.io/kani/install-guide.html) ·
+  [CBMC](https://www.cprover.org/cbmc/) · [Z3](https://github.com/Z3Prover/z3) ·
+  [Hypothesis](https://hypothesis.readthedocs.io/) ·
+  [proptest](https://github.com/proptest-rs/proptest) ·
+  [fast-check](https://fast-check.dev/) · [Rocq](https://rocq-prover.org/) ·
+  [Isabelle](https://isabelle.in.tum.de/) · [Alloy](https://alloytools.org/)
+  ⚠️ Install commands change; always check the project's own site.
+- **Newcombe, C. et al.** *Use of Formal Methods at Amazon Web Services.* 2014/2015 — the
+  "exhaustively testable pseudo-code" framing, and the argument that a tool must produce
+  counterexamples to be adopted.
+- **Lamport, L.** *Specifying Systems.* [Free online](https://lamport.azurewebsites.net/tla/book.html)
+- **Kani** — [github.com/model-checking/kani](https://github.com/model-checking/kani) ·
+  **CBMC** — [cbmc-documentation.readthedocs.io](https://cbmc-documentation.readthedocs.io/)
+- **Alt, L.** *Ethereum formal verification overview* —
+  [github.com/leonardoalt/ethereum_formal_verification_overview](https://github.com/leonardoalt/ethereum_formal_verification_overview) —
+  a good model for how to write a tool *decision guide* rather than a tool list.

@@ -64,6 +64,7 @@ prover. The two fields did not converge recently; they started entangled. See
 |---|---|
 | [Specifications](./01-fundamentals/specifications.md) | What is a specification, and why is writing one the hard part? |
 | [Logics](./01-fundamentals/logics.md) | Hoare, separation, temporal, type theory, μ-calculus. |
+| [Semantics](./01-fundamentals/semantics.md) | Small-step, big-step, functional vs relational, denotational, axiomatic — and how to mechanise a language definition. |
 | [Techniques](./01-fundamentals/techniques.md) | The five families of verification, and how each one fails. |
 | [Automated reasoning](./01-fundamentals/automated-reasoning.md) | SAT, SMT, CDCL, DRAT — the engine under everything. |
 | [Limits](./01-fundamentals/limits.md) | Gödel, undecidability, Rice's theorem, the specification gap. |
@@ -80,6 +81,7 @@ prover. The two fields did not converge recently; they started entangled. See
 | Page | What it answers |
 |---|---|
 | [Case studies](./03-applications/case-studies.md) | seL4, CompCert, AWS TLA+, Cedar, SymCrypt, Veil, VNN-COMP — with numbers and caveats. |
+| [Blockchain, EVM & zk](./03-applications/blockchain.md) | The EVM's Lean semantics, verified compilers, zkVM verification, and why verification is a licence to optimise. |
 | [Distributed systems](./03-applications/distributed-systems.md) | The best ROI in the field, and why. |
 | [Hardware & cryptography](./03-applications/hardware-crypto.md) | Where FM is already standard practice. |
 | [Safety-critical](./03-applications/safety-critical.md) | DO-178C/DO-333, certification credit, and the stereotype to dismantle. |
@@ -92,6 +94,7 @@ prover. The two fields did not converge recently; they started entangled. See
 |---|---|
 | [The bidirectional map](./04-ai-era/index.md) | Both directions in one page. |
 | [AI → FM](./04-ai-era/ai-for-fm.md) | AlphaProof, autoformalization, the 2026 machine-checked results, and what doesn't work. |
+| [AI proof engineering](./04-ai-era/llm-proof-engineering.md) | Generic frontier models now write Lean 4 — benchmarks, the spec-is-the-review workflow, and how it fails. |
 | [FM → AI](./04-ai-era/fm-for-ai.md) | Agent guardrails, NN verification, LLM-code verification, runtime monitors. |
 | [The verification bottleneck](./04-ai-era/verification-bottleneck.md) | The economics: generation got cheap, verification didn't. |
 
@@ -110,6 +113,7 @@ prover. The two fields did not converge recently; they started entangled. See
 
 | Page | Contents |
 |---|---|
+| [Citation conventions](./references/index.md) | How references and confidence marking work in this wiki. |
 | [Glossary](./references/glossary.md) | Every term, defined once. |
 | [Bibliography](./references/bibliography.md) | Papers, books, courses, tools. |
 | [Quote bank](./references/quote-bank.md) | Sourced, quotable lines. |
@@ -137,6 +141,8 @@ This repo is verified, not just asserted. Everything below runs:
 ```bash
 npm run docs:build                 # VitePress site build (fails on dead links)
 python3 tools/check-links.py       # internal link checker
+python3 tools/check-refs.py        # every page has references; ratcheted at 0 gaps
+python3 tools/check-site.py        # links in the BUILT site (base paths, anchors, assets)
 cd demos/lean && lake build        # Lean 4.32.0 — builds clean
 cd demos/lean && ./scripts/check-no-sorry.sh   # exits 1 by design (catches Planted.lean)
 python3 demos/python/dpll_sat.py

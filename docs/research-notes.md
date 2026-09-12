@@ -130,6 +130,8 @@ honest possible evidence for this wiki's central claim.
 
 | Gap | Why it matters | Next step |
 |---|---|---|
+| **Tool deep dives** | `05-tools/` is a catalog plus a decision tree. Tools that deserve their own page with theory / tutorial / reference (the structure used by [semantics.md](01-fundamentals/semantics.md) and [blockchain.md](03-applications/blockchain.md)) do not have one: **TLA+**, **Dafny**, **Kani**, **Rocq**, **Isabelle** | Write one per tool, starting with TLA+ and Kani |
+| **Thin theory pages** | Some fundamentals are still a section rather than a page: SAT/SMT internals (currently inside [automated-reasoning.md](01-fundamentals/automated-reasoning.md)), refinement types, hyperproperties/non-interference, bisimulation | Split into dedicated pages as they grow |
 | **No diagrams/images** | Good diagrams are missing: the five-families map, the propose/check loop, the four AI-risk layers, the specification ladder, the inversion chart. All exist only as ASCII art. | Convert to SVG and check them into `docs/public/`. |
 | **No recorded demo** | Live demos fail live. | Record `lake build` + `check-no-sorry.sh` + `pbt_spec_gap.py`. |
 | **Only DuckDuckGo search available** | Narrower sourcing than ideal. | Re-run discovery with a funded provider; especially for the adoption-gap studies. |
@@ -229,24 +231,99 @@ adoption-gap studies in §5.
 
 ---
 
-## 9. Why there are two link checkers
+## 9. Why there are three checkers
 
-They catch different bugs, and the second one was not optional — it found real breakage that
-looked fine everywhere else:
+They catch different bugs, and the second and third were not optional — each found real breakage
+that looked fine everywhere else:
 
-| Script | Checks | Found |
+| Script | Checks | Notable catches |
 |---|---|---|
-| `tools/check-links.py` | relative links in Markdown source, GitHub-style heading anchors | 191 links; broke repeatedly during the `docs/` restructure |
-| `tools/check-site.py` | links in the **built** HTML: base-path rewriting, VitePress-resolved anchors, hashed assets | **51 broken links that the Markdown checker could not see** |
+| `tools/check-links.py` | relative links in Markdown source, GitHub-style anchors, **and links that escape `docs/`** | broke repeatedly during the restructure; the escape guard (links above the VitePress srcDir are on disk but 404 on the site) was added after VitePress caught one |
+| `tools/check-site.py` | links in the **built** HTML: base-path rewriting, VitePress-resolved anchors, hashed assets | **51 broken links the Markdown checker could not see**, plus an 81-link breakage from a single bad sidebar entry |
+| `tools/check-refs.py` | reference coverage: every page has a `## References` section, and reports source density | found **33 pages with no references and many with zero external sources** |
 
-What the site checker caught:
+What the site checker caught, and what is worth remembering:
 
 1. **VitePress slugs numbered headings differently from GitHub.** `## 1. Foo` became `_1-foo` on the
    site but `1-foo` on GitHub, silently breaking 14 cross-page anchors. Fixed by forcing one
    GitHub-compatible slugifier in `docs/.vitepress/config.mts`, so the same anchor works in both
-   renderers. **This is the bug worth remembering** — every link looked correct in the source.
+   renderers. **Every link looked correct in the source.**
 2. A footer link missing its `.html` suffix (36 occurrences across pages).
-3. Base-path and asset-resolution problems that only exist post-build.
+3. `/references/` as a sidebar link while the page was `references/README.md` — one entry, 81 broken
+   links across every page. Renamed to `index.md`.
 
-Final state: 2,462 internal links verified clean in the built site, plus a wget mirror of the
-**deployed** site re-checked against the same script (2,458 links, clean).
+`check-refs.py` is deliberately a **ratchet**: `--max-missing` starts at the current number of pages
+lacking references and may only go down. It is now **0**.
+
+Final state: 41 pages, 3,041 internal links verified clean in the built site, 29/29 checkable pages
+carrying a `## References` section, ~370 unique external sources across ~129 domains.
+
+---
+
+## 10. How references are managed
+
+Prompted by the observation that many pages had few or no external references. The convention is
+defined in [references/index.md](references/index.md) and rests on three layers:
+
+1. **inline link** at every checkable claim — numbers, quotations, attributions;
+2. **`## References`** at the foot of each page — the sources that page actually uses;
+3. **[bibliography.md](references/bibliography.md)** — the master catalogue.
+
+Confidence marking is separate from citation: `⚠️` means *needs verification before you rely on it*
+(vendor-published, secondary, or single-source), and every `⚠️` should appear in
+[§4](#4-confidence-ledger). The distinction matters because a wiki that states an unverified vendor
+number with the same confidence as a machine-checked theorem launders uncertainty into authority —
+which is precisely the failure mode the subject matter is about.
+
+**Known weaknesses in the current references:**
+
+- Several entries are ⚠️ **secondary-source**. The OpenAI "~$2,000" figure, the DARPA CLARA
+  programme, Cedar's check volume, and the Lepton/IMU endorsement claim in particular.
+- The **adoption-gap empirical study is still unpinned.** This is the single most-cited claim in the
+  wiki that rests on no specific source — see the table in §4.
+- **Reference *quality* varies.** A GitHub repository link is not the same evidence as a
+  peer-reviewed paper, and the tool catalog leans heavily on project self-description. Where a
+  project makes a performance or correctness claim, prefer the associated paper.
+- **No link-rot checking**, deliberately: external hosts are too flaky to gate CI on. If you find a
+  dead link, replace it with a DOI or an archived copy.
+
+---
+
+## References
+
+This page documents *this wiki's* provenance, so most of its content is about the wiki itself.
+The external sources it depends on:
+
+- **Newcombe, C. et al.** *Use of Formal Methods at Amazon Web Services.* 2014/2015.
+  [PDF](https://lamport.azurewebsites.net/tla/formal-methods-amazon.pdf) — quotations were taken from
+  the paper and a detailed reading note of it.
+- **Amazon Science.** *How we built Cedar with automated reasoning and differential testing.*
+  [Link](https://www.amazon.science/blog/how-we-built-cedar-with-automated-reasoning-and-differential-testing)
+- **Hubert, T. et al.** *Olympiad-level formal mathematical reasoning with reinforcement learning.*
+  *Nature*, 2025. [Link](https://www.nature.com/articles/s41586-025-09833-y)
+- **Klingner, T. et al.** *A comparison of LLMs' effectiveness in producing formal proofs in Lean 4.*
+  [arXiv:2606.05632](https://arxiv.org/abs/2606.05632)
+- **OpenAI.** *Ten Advances in Mathematics and Theoretical Computer Science.* 2026.
+  [openai/ten-proofs](https://github.com/openai/ten-proofs)
+- **Nethermind Research.** *A Trustworthy Semantics of the EVM and Yul in Lean for Cancun.*
+  [Blog](https://www.nethermind.io/blog/a-trustworthy-formal-model-of-evm-yul-in-lean)
+- **powdr.** *Formally Verified Autoprecompiles.*
+  [Link](https://powdr.org/blog/formally-verified-autoprecompiles) · **Alt, L.** *Performant Verified
+  Software.* [Link](https://leoalt.de/performant-verified-software)
+- **Lean FRO.** *Comparator* — [github.com/leanprover/comparator](https://github.com/leanprover/comparator)
+- **Kani** — [github.com/model-checking/kani](https://github.com/model-checking/kani)
+- **Rocq 9.0** — [rocq-prover.org/releases/9.0.0](https://rocq-prover.org/releases/9.0.0)
+- [mathlib statistics](https://leanprover-community.github.io/mathlib_stats.html)
+- **VitePress** — [vitepress.dev](https://vitepress.dev/) — the site generator, and the source of the
+  slug behaviour described in §9.
+- **Woodcock, J. et al.** *Formal Methods: Practice and Experience.* ACM CSUR 41(4), 2009.
+  [ACM](https://dl.acm.org/doi/10.1145/1592434.1592436) — the adoption-gap study that still needs
+  pinning precisely (§4).
+- **Alt, L.** *Ethereum formal verification overview* —
+  [github.com/leonardoalt/ethereum_formal_verification_overview](https://github.com/leonardoalt/ethereum_formal_verification_overview)
+- **Creative Commons.** *Attribution 4.0 International* —
+  [creativecommons.org/licenses/by/4.0/legalcode](https://creativecommons.org/licenses/by/4.0/legalcode)
+- [Plotkin, G.](https://www.sciencedirect.com/science/article/pii/S1567832604000268) ·
+  [Kahn, G.](https://link.springer.com/chapter/10.1007/BFb0039592) ·
+  [Owens, S. et al., *Functional Big-Step Semantics*](https://www.cl.cam.ac.uk/~mom22/papers/functional-big-step.pdf)
+  — the semantics references behind [semantics.md](01-fundamentals/semantics.md).

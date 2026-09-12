@@ -192,3 +192,74 @@ Plus one to *not* use: **roll-your-own crypto**. Use HACL*/EverCrypt or SymCrypt
 ---
 
 Next → [choosing.md](choosing.md): the decision tree.
+
+## References
+
+Entry points for the tools catalogued above. Grouped as in the catalog.
+
+**Proof assistants**
+[Lean 4](https://lean-lang.org/) · [mathlib](https://leanprover-community.github.io/) ·
+[Rocq (Coq)](https://rocq-prover.org/) · [Isabelle](https://isabelle.in.tum.de/) ·
+[HOL4](https://hol-theorem-prover.org/) · [PVS](https://pvs.csl.sri.com/) ·
+[ACL2](https://www.cs.utexas.edu/~moore/acl2/) · [Agda](https://wiki.portal.chalmers.se/agda/) ·
+[Mizar](https://mizar.uwb.edu.pl/)
+
+**Model checkers**
+[TLA+](https://lamport.azurewebsites.net/tla/tla.html) · [Apalache](https://apalache-mc.org/) ·
+[Alloy](https://alloytools.org/) · [SPIN](https://spinroot.com/) ·
+[NuSMV](https://nusmv.fbk.eu/) · [mCRL2](https://www.mcrl2.org/) ·
+[P](https://github.com/p-org/P) · [Stateright](https://github.com/stateright/stateright) ·
+[PRISM](https://www.prismmodelchecker.org/) · [UPPAAL](https://uppaal.org/)
+
+**Deductive verifiers**
+[Dafny](https://dafny.org/) · [F*](https://fstar-lang.org/) · [Why3](https://why3.lri.fr/) ·
+[Verus](https://verus-lang.github.io/verus/guide/) · [Creusot](https://github.com/creusot-rs/creusot) ·
+[Prusti](https://github.com/viperproject/prusti-dev) · [Kani](https://github.com/model-checking/kani) ·
+[CBMC](https://www.cprover.org/cbmc/) · [SPARK](https://www.adacore.com/sparkpro) ·
+[OpenJML](https://www.openjml.org/) · [KeY](https://www.key-project.org/) ·
+[Stainless](https://github.com/epfl-lara/stainless) · [Viper](https://viperproject.github.io/) ·
+[Boogie](https://github.com/boogie-org/boogie) · [Frama-C](https://frama-c.com/)
+
+**Abstract interpretation and sound static analysis**
+[Astrée](https://www.absint.com/astree/) · [Polyspace](https://www.mathworks.com/products/polyspace.html) ·
+[Frama-C/Eva](https://frama-c.com/fc-plugins/eva.html) · [CPAchecker](https://cpachecker.sosy-lab.org/) ·
+[Infer](https://fbinfer.com/) · [MIRAI](https://github.com/facebookexperimental/MIRAI) ·
+[IKOS](https://github.com/NASA-SW-VnV/ikos)
+
+**Solvers**
+[Z3](https://github.com/Z3Prover/z3) · [cvc5](https://cvc5.github.io/) ·
+[Yices](https://yices.csl.sri.com/) · [MathSAT](https://mathsat.fbk.eu/) ·
+[Bitwuzla](https://bitwuzla.github.io/) · [Alt-Ergo](https://alt-ergo.ocamlpro.com/) ·
+[Vampire](https://vprover.github.io/) · [E](https://wwwlehre.dhbw-stuttgart.de/~sschulz/E/E.html) ·
+[CaDiCaL](https://github.com/arminbiere/cadical) · [Kissat](https://github.com/arminbiere/kissat)
+
+**Neural network verification**
+[α,β-CROWN](https://github.com/Verified-Intelligence/alpha-beta-CROWN) ·
+[Marabou](https://github.com/NeuralNetworkVerification/Marabou) ·
+[ERAN](https://github.com/eth-sri/eran) · [VNN-COMP](https://vnn-comp.github.io/)
+
+**Protocol and cryptographic verification**
+[ProVerif](https://bblanche.gitlabpages.inria.fr/proverif/) ·
+[Tamarin](https://tamarin-prover.github.io/) ·
+[EasyCrypt](https://easycrypt.gitlabpages.inria.fr/) ·
+[CryptoVerif](https://bblanche.gitlabpages.inria.fr/cryptoverif/) ·
+[ct-verif / FaCT](https://github.com/PLSysSec/FaCT) ·
+[HACL\* / EverCrypt](https://hacl-star.github.io/HaclValeEverCrypt.html) ·
+[Cedar](https://www.cedarpolicy.com/)
+
+**Agent and runtime enforcement**
+[AgentSpec](https://github.com/haoyuwang99/AgentSpec) ·
+[AWS Bedrock automated reasoning checks](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-automated-reasoning-checks.html) ·
+[Comparator](https://github.com/leanprover/comparator)
+
+**Lightweight and property-based**
+[Hypothesis](https://hypothesis.readthedocs.io/) ·
+[proptest](https://github.com/proptest-rs/proptest) · [fast-check](https://fast-check.dev/) ·
+[jqwik](https://jqwik.net/) · [QuickCheck](https://hackage.haskell.org/package/QuickCheck) ·
+[AFL++](https://github.com/AFLplusplus/AFLplusplus) · [OSS-Fuzz](https://github.com/google/oss-fuzz) ·
+[KLEE](https://klee-se.org/) · [angr](https://angr.io/) ·
+[Echidna](https://github.com/crytic/echidna) · [Foundry](https://book.getfoundry.sh/)
+
+**AI for formal methods**
+[lean-lsp-mcp](https://github.com/oOo0oOo/lean-lsp-mcp) · [LeanDojo](https://leandojo.org/) ·
+[Goedel-Prover](https://arxiv.org/abs/2502.07640)

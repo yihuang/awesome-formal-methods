@@ -259,3 +259,38 @@ anything where performance/emergence is the actual risk. Users of FM need to be 
 
 **The practical ask:** pick pattern 1 or 2. You are almost certainly not going to do pattern 3 this
 quarter, and pretending otherwise loses credibility.
+
+## References
+
+- **Klein, G. et al.** *seL4: Formal Verification of an OS Kernel.* SOSP 2009.
+  [PDF](https://sel4.systems/Research/pdfs/sel4-sosp2009.pdf) ·
+  [sel4.systems](https://sel4.systems/) — the 8,700 / 200,000 / ~20 person-year figures, and the
+  assumptions section.
+  [verifiedsoftware.dev](https://verifiedsoftware.dev/case-studies/) collects the same numbers
+  with the caveats.
+- **Leroy, X.** *Formal Verification of a Realistic Compiler.* CACM 2009.
+  [PDF](https://xavierleroy.org/publi/compcert-CACM.pdf) · [compcert.org](https://compcert.org/)
+- **Yang, X., Chen, Y., Eide, E., Regehr, J.** *Finding and Understanding Bugs in C Compilers.*
+  PLDI 2011. [PDF](https://users.cs.utah.edu/~regehr/papers/pldi11-preprint.pdf) — the Csmith study
+  behind the "zero vs hundreds" comparison.
+- **Newcombe, C. et al.** *Use of Formal Methods at Amazon Web Services.* 2014/2015.
+  [PDF](https://lamport.azurewebsites.net/tla/formal-methods-amazon.pdf) ·
+  *How Amazon Web Services Uses Formal Methods*, CACM 2015.
+- **Amazon Science.** *How we built Cedar with automated reasoning and differential testing.*
+  [Link](https://www.amazon.science/blog/how-we-built-cedar-with-automated-reasoning-and-differential-testing) ·
+  [cedarpolicy.com](https://www.cedarpolicy.com/) — the Dafny model, the two proved properties, and
+  the differential random testing of the Rust implementation. ⚠️ The ~1 billion checks/day figure is
+  from AWS material; verify the current number.
+- **Microsoft SymCrypt** — [github.com/microsoft/SymCrypt](https://github.com/microsoft/SymCrypt)
+  ⚠️ Vendor-published; the Lean 4 verification programme is described in Microsoft engineering
+  material rather than a peer-reviewed paper.
+- **Protzenko, J. et al.** *EverCrypt: A Fast, Verified, Cross-Platform Cryptographic Provider.*
+  IEEE S&P 2020. [hacl-star.github.io](https://hacl-star.github.io/HaclValeEverCrypt.html) —
+  deployment in Firefox, the Linux kernel, nginx, and WireGuard.
+- **Veil** — [github.com/verse-lab/veil](https://github.com/verse-lab/veil); the "found bugs in
+  previously verified protocols" claim comes from
+  [verifiedsoftware.dev](https://verifiedsoftware.dev/case-studies/). ⚠️ Verify against the Veil
+  paper before citing.
+- **VNN-COMP** — [vnn-comp.github.io](https://vnn-comp.github.io/) ·
+  **α,β-CROWN** — [github.com/Verified-Intelligence/alpha-beta-CROWN](https://github.com/Verified-Intelligence/alpha-beta-CROWN)
+- **Kani** — [github.com/model-checking/kani](https://github.com/model-checking/kani)

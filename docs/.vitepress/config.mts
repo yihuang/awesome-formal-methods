@@ -39,6 +39,10 @@ export default defineConfig({
   lastUpdated: true,
   ignoreDeadLinks: false,
 
+  sitemap: {
+    hostname: 'https://yihuang.github.io/awesome-formal-methods/'
+  },
+
   head: [
     ['meta', { name: 'theme-color', content: '#3451b2' }],
     ['meta', { property: 'og:type', content: 'website' }],

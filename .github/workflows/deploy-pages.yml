@@ -34,55 +34,26 @@ jobs:
           node-version: 22
           cache: npm
 
-      - name: Diagnose registry connectivity
+      - name: Verify lockfile resolves from the public npm registry
         run: |
-          node -e "console.log('node', process.version)"
-          npm --version
-          for u in \
-            https://registry.npmjs.org/vitepress \
-            https://registry.npmjs.org/-/npm/v1/security/advisories/bulk \
-            https://registry.npmjs.org/@esbuild%2flinux-x64 ; do
-            printf '%-62s -> ' "$u"
-            curl -s -o /dev/null -w '%{http_code} %{time_total}s\n' --max-time 30 "$u" || echo FAIL
-          done
+          # A developer-level registry mirror (corporate proxy, regional mirror)
+          # gets baked into package-lock.json as absolute "resolved" URLs. Those
+          # then fail in CI — confusingly — as unreachable hosts or, with
+          # npm >= 12, as EALLOWREMOTE refusals to fetch over http://.
+          # This guard turns a 70-second mystery failure into a one-line error.
+          if grep -oE '"resolved": "[^"]+"' package-lock.json \
+             | grep -qv 'https://registry.npmjs.org/'; then
+            echo '::error::package-lock.json resolves packages from a non-official registry:'
+            grep -oE '"resolved": "[^"]+"' package-lock.json \
+              | grep -v 'https://registry.npmjs.org/' | head -5
+            echo 'Fix: rm -rf node_modules package-lock.json && npm install'
+            echo '     (the repo .npmrc pins registry=https://registry.npmjs.org/)'
+            exit 1
+          fi
+          echo '✓ lockfile resolves only from https://registry.npmjs.org'
 
       - name: Install dependencies
-        run: |
-          npm config set fund false
-          npm config set audit false
-          npm config set fetch-retries 5
-          npm config set fetch-retry-maxtimeout 120000
-          npm config set fetch-timeout 600000
-
-          # The runner's bundled npm (10.x on Node 22) has been dying with
-          # "Exit handler never called!" — an npm-internal error it tells you to
-          # report to github.com/npm/cli/issues. Upgrade npm first, then fall
-          # back through progressively more defensive installs.
-          echo '=== upgrading npm ==='
-          npm install -g npm@latest || echo '::warning::npm self-upgrade failed'
-          hash -r
-          npm --version
-
-          attempt() {
-            echo "=== attempting: $* ==="
-            rm -rf node_modules
-            if "$@"; then return 0; fi
-            echo "::warning::failed: $*"
-            echo '--- npm debug log tail ---'
-            tail -40 /home/runner/.npm/_logs/*debug-0.log 2>/dev/null || true
-            return 1
-          }
-
-          attempt npm ci --no-audit --no-fund && exit 0
-          attempt npm install --no-audit --no-fund && exit 0
-          # Last resort: some npm versions only die on the platform-specific
-          # optional deps; try with a fresh cache and long timeouts.
-          npm cache clean --force || true
-          attempt npm install --no-audit --no-fund --prefer-online && exit 0
-          exit 1
-
-      - name: Confirm vitepress is installed
-        run: npx vitepress --version || npx --yes vitepress@1.6.4 --version
+        run: npm ci --no-audit --no-fund
 
       # ---- Markdown-level checks (no toolchain needed) ----------------------
       - name: Check internal Markdown links

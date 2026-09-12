@@ -69,7 +69,7 @@ as a mature field rather than a fad. **Risk:** less actionable; you must still l
 |---|---|---|---|---|
 | 1 | Title | 0.5 | "AI Made Code Cheap. Trust Is Still Expensive." | — |
 | 2 | **The hook** | 1 | Logic Theorist, 1956: the first AI program was a theorem prover | "AI and formal methods share an origin." |
-| 3 | **The inversion** | 2 | generation $$ → ¢; verification unchanged; the 60%/0–20% gap | "Verification is the bottleneck." |
+| 3 | **The inversion** | 2 | generation: expensive → nearly free; verification: unchanged; the 60%/0–20% gap | "Verification is the bottleneck." |
 | 4 | **What it is** | 3 | The map: 5 families. The four dials. | "Five ways to establish a guarantee." |
 | 5 | **The key asymmetry** | 2 | find = hard, check = cheap | "AI proposes; the kernel disposes." |
 | 6 | **Case: AWS TLA+** | 3 | "Debugging Designs", "exhaustively testable pseudo-code", the two quotes | "FM is an enabler, not insurance." |

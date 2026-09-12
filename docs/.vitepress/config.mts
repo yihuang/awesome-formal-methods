@@ -75,6 +75,11 @@ export default defineConfig({
   ],
 
   markdown: {
+    // MathJax, via the optional `markdown-it-mathjax3` dependency. VitePress defaults
+    // `math` to true but silently does nothing unless that package is installed —
+    // which is why `$...$` used to render as literal text here. Stated explicitly so
+    // the dependency is not a mystery when it is missing.
+    math: true,
     lineNumbers: false,
     theme: { light: 'github-light', dark: 'github-dark' },
     anchor: {

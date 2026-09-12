@@ -1,0 +1,106 @@
+name: Build, verify, and deploy the wiki
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# Allow GITHUB_TOKEN to deploy to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time; don't cancel an in-flight publish
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # Verify the artifacts the wiki makes claims about, then build the site.
+  # ---------------------------------------------------------------------------
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # full history so VitePress `lastUpdated` reports real dates
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # ---- Markdown-level checks (no toolchain needed) ----------------------
+      - name: Check internal Markdown links
+        run: python3 tools/check-links.py
+
+      - name: Run zero-dependency Python demos
+        run: |
+          python3 demos/python/dpll_sat.py
+          python3 demos/python/pbt_spec_gap.py
+          python3 demos/python/temporal_monitor.py
+
+      # ---- Lean: build the proofs and test the proof gate -------------------
+      - name: Install Lean toolchain (elan)
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Build Lean proofs
+        working-directory: demos/lean
+        run: lake build
+
+      - name: "Proof gate: must reject Planted.lean, must accept the honest proof"
+        working-directory: demos/lean
+        run: |
+          # 1. The gate MUST fail on the intentionally-unsound file.
+          if ./scripts/check-no-sorry.sh > /tmp/gate.log 2>&1; then
+            echo "::error::check-no-sorry.sh passed but Planted.lean contains sorry+axiom"
+            cat /tmp/gate.log
+            exit 1
+          fi
+          echo "✓ gate correctly rejected sorry / axiom smuggling"
+
+          # 2. The gate MUST pass on the honest proof.
+          mkdir -p /tmp/clean-check
+          cp Demo.lean /tmp/clean-check/
+          ./scripts/check-no-sorry.sh /tmp/clean-check
+          echo "✓ gate correctly accepted the honest proof"
+
+      # ---- Build the site --------------------------------------------------
+      - name: Build VitePress site
+        run: npm run docs:build
+
+      - name: Verify built site has no broken internal links
+        run: python3 tools/check-site.py
+
+      # ---- Publish ---------------------------------------------------------
+      - name: Configure Pages
+        if: github.event_name != 'pull_request'
+        uses: actions/configure-pages@v5
+
+      - name: Upload site artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/.vitepress/dist
+
+  deploy:
+    needs: build
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

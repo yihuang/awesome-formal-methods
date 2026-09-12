@@ -124,13 +124,13 @@ speed argument, not a safety argument.
 ## The AI-era thesis (in one line each)
 
 > "**AI is a search amplifier. Formal verification is a cheap, sound filter.**"
-> — this wiki, [automated-reasoning.md](../docs/01-fundamentals/automated-reasoning.md)
+> — this wiki, [automated-reasoning.md](../01-fundamentals/automated-reasoning.md)
 
 > "**AI made code cheap and trust expensive.**"
-> — this wiki, [verification-bottleneck.md](../docs/04-ai-era/verification-bottleneck.md)
+> — this wiki, [verification-bottleneck.md](../04-ai-era/verification-bottleneck.md)
 
 > "**Let the LLM propose; let the machine dispose.**"
-> — this wiki, [ai-for-fm.md](../docs/04-ai-era/ai-for-fm.md)
+> — this wiki, [ai-for-fm.md](../04-ai-era/ai-for-fm.md)
 
 > "**The proof is machine-checked. That's not the same as the result being accepted.**"
 > — on the 2026 disputes over attribution and process, not correctness

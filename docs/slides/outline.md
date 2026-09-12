@@ -81,11 +81,11 @@ Same as the 30-minute version, with these additions:
 | +9b | **Autoformalization & the judging layer** | 3 | the 1M→80M pipeline; **statement mismatch**; Comparator + nanoda (independent kernel) |
 | +11b | **Demonstration** | 4 | live: property-based test finding a shrunk counterexample, and/or a Lean proof compiling |
 | +12b | **Adoption playbook** | 3 | rungs 0–3, metrics that work, when to stop |
-| +12c | **Objection handling** | 3 | pick the top 4 from [objections.md](../docs/06-practice/objections.md) |
+| +12c | **Objection handling** | 3 | pick the top 4 from [objections.md](../06-practice/objections.md) |
 | +13b | **Q&A pre-empt** | — | put the limitations slide *before* Q&A, not after |
 
 **Timing warning:** the demo is the riskiest segment. Rehearse it, pre-run it, and have a recorded
-backup. See [`demos/`](../demos/).
+backup. See [`demos/`](../demos.md).
 
 ---
 
@@ -121,7 +121,7 @@ Add to the 45-minute version:
 
 ### Slide 4 — The map
 - **Visual:** the five-families diagram from
-  [techniques.md](../docs/01-fundamentals/techniques.md), or the simpler decision tree.
+  [techniques.md](../01-fundamentals/techniques.md), or the simpler decision tree.
 - **Say:** "Five ways to establish a guarantee. They differ in who supplies the ingenuity and how
   they fail. You'll never need more than two of them."
 - **Do not** enumerate all 40 tools. Name five.
@@ -148,7 +148,7 @@ Add to the 45-minute version:
   about attribution and process — because the correctness argument is largely settled by the
   kernel. That's a remarkable place for a field to be."
 - **Caveats slide or speaker note:** not peer-reviewed at announcement; internal model;
-  [Leiden Declaration](../docs/04-ai-era/ai-for-fm.md#4-2026-new-mathematics-with-machine-checked-certificates).
+  [Leiden Declaration](../04-ai-era/ai-for-fm.md#4-2026-new-mathematics-with-machine-checked-certificates).
 
 ### Slide 10 — FM → AI
 - **Visual:** the four-layer table (model / output / action / system).
@@ -175,7 +175,7 @@ Add to the 45-minute version:
 - **Say:** the 5 things, ending with: "Write one TLA+ spec of a design you're currently arguing
   about in review comments. Two hours. Bring the counterexample to the design meeting. That's the
   step that converts your team."
-- **Give them the checklist page** ([adoption-playbook.md](../docs/06-practice/adoption-playbook.md)).
+- **Give them the checklist page** ([adoption-playbook.md](../06-practice/adoption-playbook.md)).
 
 ---
 
@@ -239,7 +239,7 @@ Add to the 45-minute version:
 
 ## Related material
 
-- Narrative with hooks and delivery cues: [docs/02-history/narrative.md](../docs/02-history/narrative.md)
+- Narrative with hooks and delivery cues: [docs/02-history/narrative.md](../02-history/narrative.md)
 - Quote bank: [references/quote-bank.md](../references/quote-bank.md)
-- Q&A prep: [docs/06-practice/objections.md](../docs/06-practice/objections.md)
-- Demos: [demos/](../demos/)
+- Q&A prep: [docs/06-practice/objections.md](../06-practice/objections.md)
+- Demos: [demos/](../demos.md)

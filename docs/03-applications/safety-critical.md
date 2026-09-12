@@ -164,4 +164,4 @@ teams almost never write one down, and that's where the surprises live
 [verifiedsoftware.dev](https://verifiedsoftware.dev/case-studies/);
 [DO-333 project notes](https://loonwerks.com/projects/do333.html).
 
-Return to [applications index](README.md).
+Return to [applications index](index.md).

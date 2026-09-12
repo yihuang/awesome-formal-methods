@@ -128,14 +128,14 @@ C-to-binary step was outside the original proof.
 | Static analysis / linters | both "check code automatically" | many static analyses are *unsound* heuristics; abstract interpretation is the sound version |
 | Theorem proving as in "math proofs" only | the name | industrial FM is mostly about protocols and code, not theorems |
 | A silver bullet | vendor marketing | see [`limits.md`](../01-fundamentals/limits.md) — the spec gap never closes |
-| The opposite of AI | "AI can't do math" | they are now mutually reinforcing ([`04-ai-era/`](../04-ai-era/)) |
+| The opposite of AI | "AI can't do math" | they are now mutually reinforcing ([`04-ai-era/`](../04-ai-era/index.md)) |
 
 ---
 
 ## Vocabulary the talk should fix early
 
 Fix these six terms in the first five minutes so the audience isn't lost later. Full definitions
-in [`references/glossary.md`](../../references/glossary.md).
+in [`references/glossary.md`](../references/glossary.md).
 
 1. **Specification** — the precise statement of what the system must do.
 2. **Property** — a specification fragment, usually *safety* ("nothing bad happens") or

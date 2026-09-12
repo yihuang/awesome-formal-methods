@@ -34,4 +34,4 @@ strangers.
 - Cousot et al., *The ASTRÉE Analyzer*, ESOP (2005).
 
 ⚠️ *Items flagged in the timeline still need a final source check before they go on a slide; see
-[RESEARCH-NOTES.md](../../RESEARCH-NOTES.md).*
+[RESEARCH-NOTES.md](../research-notes.md).*

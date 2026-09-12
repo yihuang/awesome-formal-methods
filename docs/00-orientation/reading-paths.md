@@ -13,7 +13,7 @@ Different readers need different routes. Pick the one that matches why you're he
 5. [03-applications/lightweight-fm.md](../03-applications/lightweight-fm.md) — get the actionable ask.
 6. [04-ai-era/ai-for-fm.md](../04-ai-era/ai-for-fm.md) + [fm-for-ai.md](../04-ai-era/fm-for-ai.md) — get the timeliness.
 7. [03-applications/adoption-gap.md](../03-applications/adoption-gap.md) — get the honesty.
-8. [slides/outline.md](../../slides/outline.md) — assemble.
+8. [slides/outline.md](../slides/outline.md) — assemble.
 
 Skip on first pass: logics.md, automated-reasoning.md, hardware-crypto.md, safety-critical.md.
 
@@ -23,7 +23,7 @@ Skip on first pass: logics.md, automated-reasoning.md, hardware-crypto.md, safet
 2. [01-fundamentals/specifications.md](../01-fundamentals/specifications.md) — the actual skill.
 3. [05-tools/choosing.md](../05-tools/choosing.md) — pick one tool.
 4. [06-practice/adoption-playbook.md](../06-practice/adoption-playbook.md) — the rollout plan.
-5. [demos/lean/](../../demos/lean/) — read a real proof that compiles here.
+5. [demos/lean/](../demos.md) — read a real proof that compiles here.
 6. [06-practice/objections.md](../06-practice/objections.md) — so you can answer your tech lead.
 
 ## Path C — "I'm an AI/ML engineer" (≈1 hour)
@@ -40,7 +40,7 @@ Skip on first pass: logics.md, automated-reasoning.md, hardware-crypto.md, safet
 2. [01-fundamentals/techniques.md](../01-fundamentals/techniques.md)
 3. [01-fundamentals/automated-reasoning.md](../01-fundamentals/automated-reasoning.md)
 4. [01-fundamentals/limits.md](../01-fundamentals/limits.md)
-5. [references/bibliography.md](../../references/bibliography.md) — then the real textbooks.
+5. [references/bibliography.md](../references/bibliography.md) — then the real textbooks.
 
 ## Path E — "I'm sceptical and want the strongest counter-arguments"
 
@@ -60,4 +60,4 @@ Skip on first pass: logics.md, automated-reasoning.md, hardware-crypto.md, safet
 | **45 min** | Above + history arc + limits section + a live demo | Safety-critical detail, tool catalog depth |
 | **60 min** | Everything, plus the adoption playbook and objection handling | Nothing, but move reference material to appendix slides |
 
-See [`slides/outline.md`](../../slides/outline.md) for minute-by-minute scripts.
+See [`slides/outline.md`](../slides/outline.md) for minute-by-minute scripts.

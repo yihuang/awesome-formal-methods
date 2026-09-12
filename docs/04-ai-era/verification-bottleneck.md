@@ -165,6 +165,6 @@ has already done this work. Formal methods just make the argument decidable.
 
 ---
 
-Continue → [README.md](README.md) for the bidirectional map, or
+Continue → [README.md](index.md) for the bidirectional map, or
 [../03-applications/lightweight-fm.md](../03-applications/lightweight-fm.md) for the actionable
 ladder.

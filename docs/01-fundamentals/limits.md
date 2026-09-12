@@ -110,7 +110,7 @@ theorem everything_is_easy : 1 = 2 := by sorry   -- compiles, proves nothing
 ```
 
 Real proof engineering requires CI that rejects `sorry`/`admit`/`axiom` (see
-[`demos/lean/`](../../demos/lean/)). Proof assistants *have* had soundness bugs historically —
+[`demos/lean/`](../demos.md)). Proof assistants *have* had soundness bugs historically —
 a famous class of incidents is a faulty termination/guard checker accepting a circular proof.
 ⚠️ *If you cite a specific incident on a slide, verify the version and date — these are usually
 fixed quickly and precisely scoped, so precision matters.*

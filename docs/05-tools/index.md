@@ -37,5 +37,5 @@
 ## Environment note
 
 In this repo's environment (Sept 2026): **Lean 4.32.0 + `lake` are installed and the demos in
-[`demos/lean/`](../../demos/lean/) are runnable.** TLA+, Dafny, Z3, Rocq, and Alloy are *not*
+[`demos/lean/`](../demos.md) are runnable.** TLA+, Dafny, Z3, Rocq, and Alloy are *not*
 installed; TLA+ and Python demos are provided as readable artifacts with install instructions.

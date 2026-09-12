@@ -5,6 +5,14 @@
 *.trace
 /build/
 
+# Node / VitePress
+node_modules/
+docs/.vitepress/dist/
+docs/.vitepress/cache/
+.vitepress/cache/
+*.log
+npm-debug.log*
+
 # Python
 __pycache__/
 *.py[cod]

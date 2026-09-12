@@ -480,3 +480,36 @@
 .diagram .ts.left { text-anchor: start; }
 .diagram .t.stop-t { fill: var(--cyan); font-size: 16px; }
 .diagram.regress { max-width: 640px; margin: 1.2rem auto 0.6rem; }
+
+/* ============================================================================
+   Part V · Under the hood — the mechanics slides
+
+   Denser than the rest of the deck on purpose: these slides exist to add
+   information rather than restate the thesis, so they get tables, trace
+   listings, and less air.
+   ========================================================================= */
+
+/* a solver / verification trace, colour-coded by step type */
+.trace { line-height: 1.85; }
+.trace span[class^="tr-"] {
+  display: inline-block; min-width: 5.4rem;
+  font-size: 0.66rem; letter-spacing: 0.09em; text-transform: uppercase;
+  vertical-align: baseline;
+}
+.tr-d  { color: var(--indigo); }
+.tr-p  { color: var(--ink-faint); }
+.tr-c  { color: var(--rose); font-weight: 700; }
+.tr-l  { color: var(--amber); }
+.tr-b  { color: var(--indigo); }
+.tr-ok { color: var(--green); font-weight: 700; }
+
+/* a generated verification condition */
+.vc {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--indigo);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  line-height: 1.75;
+  font-size: 0.88rem;
+}

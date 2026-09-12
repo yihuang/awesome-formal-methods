@@ -27,7 +27,8 @@ and will check out if the deck opens on Aristotle.
 | **II · History** | Aristotle → Euclid → the fifth postulate → Boole/Frege/Russell → Hilbert → the three schools → what formalism is *for* → where the regress of trust stops; then Gödel, Turing, Rice |
 | **III · Methodology** | the asymmetry, the propose/check architecture, Hoare logic, Curry–Howard, the spec gap, **LTL basics → safety/liveness → fairness → stuttering invariance**, the frame rule |
 | **IV · The AI era** | AWS's 2014 precedent, 2024 → 2026 state of the art, the ten results, the proof is the review, blockchain |
-| **V · Practice** | the honest limits, the adoption gap, the ladder, the five things |
+| **V · Under the hood** | the five families; why sampling cannot work, in arithmetic; a CDCL trace; how a verifier turns code into SMT queries; what `unknown` means; **the CTI loop for finding an invariant**; state explosion with numbers; how the kernel decides; the trusted base itemised; the bill |
+| **VI · Practice** | the honest limits, verified systems that failed, the ladder, the five things |
 
 The deck is deliberately *not* a tool tour. It is built on the wiki's strongest material:
 
@@ -73,7 +74,7 @@ thinks the philosophy is decoration.
 
 ## Pacing
 
-62 slides is a lot for 45 minutes — roughly 43 seconds each. That works because the philosophy
+67 slides is a lot for 45 minutes — roughly 40 seconds each. That works because the philosophy
 slides are statement slides you *say* rather than read, and because three slides at the end are
 explicitly backups.
 
@@ -83,7 +84,7 @@ explicitly backups.
 2. *What AlphaProof actually required* — keep the milestone, drop the training detail
 3. the *two rules, memorised* slide — it repeats the stuttering theorem
 4. the *2025 → 2026* pair collapse into one slide
-5. *The objections, answered briefly* — it is already a backup
+5. *How the kernel decides* — the trusted-base slide carries the same point
 
 **Never cut:** the asymmetry, the four-mistakes slide, *Why this is your problem*, or the ask.
 The history section is safe to trim *only* if Part I stays intact — it is what earns the detour.
@@ -93,6 +94,35 @@ before explaining the stakes, and both times it read as a non-sequitur. If you w
 opener, earn it — or use the closing slide's reveal, which is where the 1956 fact now lives.
 
 ## Revision history
+
+**v6** — the tail was restating the thesis instead of adding information. A reviewer's critique: after
+Part IV the deck became repetitive and read like marketing. Cut the four slides that said "start
+small" again (*The three sentences*, *Backup slides*, the *five families* backup, and *The objections,
+answered briefly*) and replaced them with a **new Part V · Under the hood** — nine slides of mechanics:
+
+- **Why sampling cannot work, in arithmetic.** 2⁶⁴ inputs; 10⁶ exec/s for a year covers **0.00017%**;
+  584,000 years to exhaust; 292,000 if you double the speed. The persuasive slide of the deck is a
+  division, not an argument.
+- **A CDCL trace**, walked step by step: decide → propagate → conflict → **learn** → backjump → SAT.
+  Verified against brute force before it went on a slide.
+- **How a verifier turns annotated code into SMT queries**, with the actual generated verification
+  condition for `myMax` and the three outcomes (`unsat` / `sat` / `unknown`).
+- **What `unknown` means and what you do about it** — the annotation burden, stated honestly. The part
+  no product page mentions.
+- **The CTI loop**, which is the actual craft and is never demonstrated: here is the invariant that
+  fails, here is the counterexample to induction, here is the one clause that fixes it. Verified
+  exhaustively over a finite model.
+- **State explosion with numbers** — 4²⁰ = 1.1 × 10¹² for twenty processes, and why that makes scoping
+  the method rather than a limitation of it.
+- **How the kernel decides** — reduce, compare, assign — and why decidable definitional equality is
+  what makes the Part III asymmetry true.
+- **The trusted base, itemised** — a kernel-checked proof trusts ~10³ lines; an SMT-backed one trusts
+  ~10⁵ plus your encoding. A 100× difference in what the claim rests on.
+- **The bill** — the 23× proof-to-code ratio, the ~20 person-years, and the third number that gets
+  left out: re-verification is cheap, which is what makes it an asset rather than an expense.
+
+The *five families* slide was promoted out of the backups into Part V. It was the deck's organising
+taxonomy and was never actually shown.
 
 **v5** — two fixes.
 

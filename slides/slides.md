@@ -1550,8 +1550,518 @@ layout: section
 ---
 
 <div class="part">Part V</div>
-# Practice: the honest limits, and your first week
-<div class="partsub">What it can't do, why it didn't reach you, and the one step that works</div>
+# Under the hood
+<div class="partsub">What these tools actually do when you press the button</div>
+
+---
+layout: center
+---
+
+# What the five families actually are
+
+<div class="lead">Every verification tool is one of five things. This is the map.</div>
+
+<table class="clean small">
+<thead><tr><th>Family</th><th>Who supplies the ingenuity</th><th>It gives you</th><th>It fails by</th></tr></thead>
+<tr><td><b>Theorem proving</b></td><td>the human (or the AI)</td><td>a proof, checked by a small kernel</td><td>effort — the proof-to-code ratio</td></tr>
+<tr><td><b>Model checking</b></td><td>the machine</td><td>a counterexample trace</td><td>state explosion</td></tr>
+<tr><td><b>Deductive verification</b></td><td>both, split</td><td>real code, verified against a spec</td><td><code>unknown</code>, annotations</td></tr>
+<tr><td><b>Abstract interpretation</b></td><td>the machine</td><td>whole-codebase soundness</td><td>false alarms</td></tr>
+<tr><td><b>Types</b></td><td>nobody — it's automatic</td><td>a decidable fragment, free</td><td>rejecting correct programs</td></tr>
+</table>
+
+<div class="grid2">
+<div>
+<div class="h3">Pick by the artifact</div>
+<table class="clean small mono">
+<tr><td>a protocol design</td><td>TLA+</td></tr>
+<tr><td>one critical function</td><td>Kani · Dafny</td></tr>
+<tr><td>a whole codebase's UB</td><td>Astrée · Infer</td></tr>
+<tr><td>a kernel or compiler</td><td>Lean · Isabelle</td></tr>
+</table>
+</div>
+<div>
+<div class="h3 accent">And note the shape of the trade</div>
+<div class="small">
+Automation and expressiveness pull against each other, and <b>decidability is what you're spending</b>
+to buy automation. Types are fully automatic because they say almost nothing. Theorem proving says
+anything, and does nothing for you.
+</div>
+</div>
+</div>
+
+---
+layout: center
+---
+
+# Why sampling cannot work — the arithmetic
+
+<div class="lead">Not an opinion. A division.</div>
+
+<div class="grid2">
+<div>
+<div class="h3">A single 64-bit input</div>
+<div class="small">
+The space is <span class="mono">2⁶⁴ ≈ 1.8 × 10¹⁹</span> inputs.
+</div>
+</div>
+<div>
+<div class="h3 accent">A very good fuzzer</div>
+<div class="small">
+<span class="mono">10⁶</span> executions per second, sustained.
+</div>
+</div>
+</div>
+
+<table class="clean small">
+<tr><td>Executions in a <b>year</b></td><td class="mono">3.2 × 10¹³</td></tr>
+<tr class="hl"><td><b>Fraction of the input space covered</b></td><td class="mono"><b>0.00017%</b></td></tr>
+<tr><td>Years to exhaust it</td><td class="mono">584,000</td></tr>
+<tr><td>…if you make the fuzzer <b>twice</b> as fast</td><td class="mono">292,000</td></tr>
+<tr class="hl"><td><b>Add a second 64-bit argument</b></td><td class="mono"><b>10⁻²⁶</b></td></tr>
+</table>
+
+<div class="callout">
+This is the argument for the whole field, and it does not depend on how good your tests are.
+<b>Doubling your fuzzing throughput buys you a 2× improvement on a number with 19 digits.</b> The
+exponent is the problem, and hardware does not touch exponents.
+</div>
+
+<div class="muted small centered">
+And this is the <i>optimistic</i> case: it assumes bugs are spread uniformly across the input space.
+They are not. They cluster in the corners nobody samples.
+</div>
+
+<!--
+The single most persuasive quantitative slide in the deck. Everything else is philosophy; this is a
+division. Pause on 0.00017%.
+-->
+
+---
+layout: center
+---
+
+# How a SAT solver decides
+
+<div class="lead">The engine under every SMT solver, verifier, and bounded model checker. Four clauses:</div>
+
+<div class="grid2">
+<div>
+<div class="mono small">
+C1: (x₁ ∨ x₂)<br>
+C2: (¬x₁ ∨ x₃)<br>
+C3: (¬x₃ ∨ ¬x₂)<br>
+C4: (¬x₁ ∨ ¬x₃)
+</div>
+<div class="muted small" style="margin-top:1rem">
+No unit clauses, so nothing is forced yet. There is exactly one satisfying assignment.
+</div>
+</div>
+<div>
+<div class="h3">The trace</div>
+<div class="mono small trace">
+<span class="tr-d">decide</span>     x₁ := true<br>
+<span class="tr-p">propagate</span>  C2 → x₃ := true<br>
+<span class="tr-p">propagate</span>  C4 → x₃ := false<br>
+<span class="tr-c">CONFLICT</span>   on x₃<br>
+<span class="tr-l">learn</span>      (¬x₁)<br>
+<span class="tr-b">backjump</span>   x₁ := false<br>
+<span class="tr-p">propagate</span>  C1 → x₂ := true<br>
+<span class="tr-p">propagate</span>  C3 → x₃ := false<br>
+<span class="tr-ok">SAT</span>        x₁=F, x₂=T, x₃=F
+</div>
+</div>
+</div>
+
+<v-click>
+
+<div class="callout">
+<b>The learning step is the whole idea.</b> The conflict depended only on the decision <span class="mono">x₁</span>,
+so the solver writes down <span class="mono">(¬x₁)</span> permanently and <b>never tries that branch again</b>.
+That is why modern solvers handle millions of clauses: they accumulate knowledge about their own
+mistakes, and they only appear to be doing exhaustive search.
+</div>
+
+</v-click>
+
+<div class="muted small centered">
+Three engineering tricks turn this into an industrial tool: <b>watched literals</b> (unit propagation in
+~constant time), <b>VSIDS</b> (branch on the variables that recently caused conflicts), and
+<b>restarts</b>. None of them change the logic. All of them are why it is fast.
+</div>
+
+<!--
+Verified by brute force before going on the slide: the unique satisfying assignment is
+x1=F, x2=T, x3=F, and the trace reaches it.
+-->
+
+---
+layout: center
+---
+
+# How a program verifier decides
+
+<div class="lead">Annotated code → verification conditions → SMT query. Three outcomes, no magic.</div>
+
+```lean
+def myMax (a b : Int) : Int := if a ≤ b then b else a
+
+theorem spec : ∀ a b, a ≤ myMax a b ∧ b ≤ myMax a b
+```
+
+<div class="grid2">
+<div>
+<div class="h3">The tool generates this</div>
+<div class="mono small vc">
+∀ a b : Int,<br>
+&nbsp;&nbsp;(a ≤ b &nbsp;→&nbsp; a ≤ b ∧ b ≤ b)<br>
+&nbsp;&nbsp;∧<br>
+&nbsp;&nbsp;(¬(a ≤ b) → a ≤ a ∧ b ≤ a)
+</div>
+<div class="muted small" style="margin-top:0.6rem">
+One branch per path through the <span class="mono">if</span>. This is <b>weakest-precondition</b>
+generation, and it is mechanical.
+</div>
+</div>
+<div>
+<div class="h3 accent">Then it asks the solver</div>
+<div class="small">
+"Sit the <b>negation</b> of this. Is it unsatisfiable?"
+</div>
+<table class="clean small">
+<tr><td class="mono yes">unsat</td><td>no counterexample exists → <b>verified</b></td></tr>
+<tr><td class="mono no">sat</td><td>here is a model → <b>counterexample</b></td></tr>
+<tr><td class="mono">unknown</td><td>it gave up → <b>your problem</b></td></tr>
+</table>
+</div>
+</div>
+
+<v-click>
+
+<div class="callout">
+<b>Change the spec to something false and watch what the tool gives you.</b>
+Ask for <span class="mono">a &lt; myMax a b</span> and the solver returns <span class="mono">sat</span> with the
+model <span class="mono">a = b = 5</span>. That is not an error message — <b>it is the failing input</b>.
+Counterexamples are the product, not the consolation prize.
+</div>
+
+</v-click>
+
+<!--
+The myMax obligation is the same one in demos/lean/Demo.lean, where omega discharges it — same
+pipeline, smaller package. The point of the slide: verification is VC generation plus a solver, and
+the solver is a black box you can reason about.
+-->
+
+---
+layout: center
+---
+
+# When the solver says `unknown`
+
+<div class="lead">The part nobody puts in a product page. It happens constantly, and it is not a bug.</div>
+
+<div class="grid2">
+<div>
+<div class="h3">Why it happens</div>
+<ul class="small">
+<li><b>Nonlinear arithmetic</b> — <span class="mono">x·y &lt; z</span> is undecidable over the integers</li>
+<li><b>Quantifiers</b> — needs instantiation heuristics; the wrong trigger and it flounders</li>
+<li><b>Floating point and transcendentals</b></li>
+<li><b>Strings and regexes</b> beyond the supported fragment</li>
+<li><b>Sheer size</b> — the timeout, not the logic</li>
+</ul>
+</div>
+<div>
+<div class="h3 accent">What you actually do</div>
+<ul class="small">
+<li>Add an <b>intermediate assertion</b> so the solver can take two small steps instead of one leap</li>
+<li>Supply a <b>lemma</b> that captures the fact it can't derive</li>
+<li><b>Restructure the encoding</b> — bit-vectors instead of integers, or the reverse</li>
+<li><b>Weaken the property</b> and prove the rest by hand</li>
+<li>Give it a <b>different solver</b> — this works surprisingly often</li>
+</ul>
+</div>
+</div>
+
+<div class="callout">
+<b>This is the annotation burden, and it is the real cost of deductive verification.</b> Not the
+solver's speed — the human hours spent turning one unprovable goal into five provable ones.
+It is also exactly the work AI is now good at, which is why
+<span class="mono">llm-proof-engineering</span> is the page to read next.
+</div>
+
+<div class="muted small centered">
+And the honest framing: <span class="mono">unknown</span> is <b>Rice's theorem arriving at the tool
+boundary</b>. Somebody has to supply the insight the machine cannot compute. The tool's job is to make
+sure that whatever they supply gets <i>checked</i>.
+</div>
+
+---
+layout: center
+---
+
+# How an invariant is actually found
+
+<div class="lead">The skill nobody demonstrates. Start with the property you want:</div>
+
+<div class="syllogism" style="margin:0.8rem 0">
+<div class="syl">
+<div class="syl-line mono">MutualExclusion &nbsp;≡&nbsp; ¬(pc₁ = crit ∧ pc₂ = crit)</div>
+</div>
+</div>
+
+<div class="lead">
+Ask the tool to prove it by induction. <b>It fails</b> — and it hands you a
+<b>counterexample to induction</b>: not a bug, a state that satisfies your property whose successor
+violates it.
+</div>
+
+<div class="grid2">
+<div>
+<div class="h3">The CTI it gives you</div>
+<div class="mono small vc">
+pc = [p₁ ↦ <b>idle</b>, p₂ ↦ <b>crit</b>]<br>
+owner = <b>0</b>
+</div>
+<div class="muted small" style="margin-top:0.5rem">
+This satisfies <span class="mono">MutualExclusion</span> — only p₂ is critical.<br>
+But <span class="mono">Acquire(p₁)</span> is <b>enabled</b> (owner = 0), and it produces
+<span class="mono">pc₁ = crit ∧ pc₂ = crit</span>.
+</div>
+</div>
+<div>
+<div class="h3 accent">Read the CTI, generalise it</div>
+<div class="muted small">
+The state is legitimate — nothing in my invariant says <span class="mono">owner</span> has to agree with
+the program counters. That's the missing fact, and the CTI points straight at it:
+</div>
+<div class="mono small vc" style="margin-top:0.6rem">
+<b>∀ i.&nbsp; pcᵢ = crit &nbsp;→&nbsp; owner = i</b>
+</div>
+</div>
+</div>
+
+<v-click>
+
+<div class="callout">
+One clause. Now the three obligations close: <span class="mono">Init ⇒ I</span> ✓,
+<span class="mono">I ∧ Next ⇒ I′</span> ✓, <span class="mono">I ⇒ Mutex</span> ✓ — and the middle one is
+true because a process can only enter the critical section while <span class="mono">owner = 0</span>,
+which the invariant says is impossible if anyone else is in there.
+</div>
+
+</v-click>
+
+<div class="muted small centered">
+<b>This loop — CTI, read it, strengthen by one clause — is the entire craft.</b> Ivy makes it decidable so
+the CTI is always explainable. Veil generates the CTI for you. Neither finds the clause for you.
+</div>
+
+<!--
+Verified exhaustively over a finite model before putting it on the slide: the naive invariant has
+exactly this counterexample to induction, and the strengthened one satisfies all three obligations.
+-->
+
+---
+layout: center
+---
+
+# State explosion, with numbers
+
+<div class="lead">Why model checking needs a protocol-sized target, not your application.</div>
+
+<table class="clean small">
+<thead><tr><th></th><th>Global states (4 local states each)</th><th>Explicit-state checking</th></tr></thead>
+<tr><td>5 processes</td><td class="mono">4⁵ = 1.0 × 10³</td><td class="yes">instant</td></tr>
+<tr><td>10 processes</td><td class="mono">4¹⁰ = 1.0 × 10⁶</td><td class="yes">seconds</td></tr>
+<tr><td>15 processes</td><td class="mono">4¹⁵ = 1.1 × 10⁹</td><td>minutes to hours</td></tr>
+<tr class="hl"><td><b>20 processes</b></td><td class="mono"><b>4²⁰ = 1.1 × 10¹²</b></td><td class="no">out of reach</td></tr>
+<tr><td>25 processes</td><td class="mono">4²⁵ = 1.1 × 10¹⁵</td><td class="no">no</td></tr>
+</table>
+
+<div class="grid2">
+<div>
+<div class="h3">And that's the <i>generous</i> model</div>
+<div class="small">
+It counts only process state. Add <b>message channels</b> — a queue of capacity <span class="mono">c</span>
+between every pair — and each channel multiplies the space by <span class="mono">c+1</span>. With
+<span class="mono">n²</span> channels, the exponent <b>itself</b> becomes quadratic in your process count.
+</div>
+</div>
+<div>
+<div class="h3 accent">What the mitigations actually cost</div>
+<table class="clean small">
+<tr><td>Symmetry reduction</td><td class="dim">need symmetric processes</td></tr>
+<tr><td>Partial-order reduction</td><td class="dim">need independence</td></tr>
+<tr><td>Symbolic (BDD/SMT)</td><td class="dim">changes the failure mode</td></tr>
+<tr><td>Bounded checking</td><td class="dim">not a proof past depth k</td></tr>
+<tr><td>Abstraction (CEGAR)</td><td class="dim">needs refinement effort</td></tr>
+</table>
+</div>
+</div>
+
+<div class="callout">
+<b>The practical rule that follows:</b> model-check the <i>protocol</i> — a few hundred lines of design with
+a small number of participants — and never the application. The exponent is why scoping is not a
+weakness of the method. It is the method.
+</div>
+
+---
+layout: center
+---
+
+# How the kernel decides
+
+<div class="lead">The trusted part of Lean is a <b>reduction machine plus a type checker</b>. Nothing else.</div>
+
+```lean
+-- closes by computation: both sides reduce to the same term
+example : 2 + 2 = 4 := rfl
+
+-- does NOT close by computation: the two sides are different normal forms
+example (m n : Nat) : m + n = n + m := Nat.add_comm m n
+```
+
+<div class="grid3">
+<div class="stat">
+<div class="sn">1</div>
+<div class="sl"><b>Reduce</b><br><span class="dim">normalise both sides</span></div>
+</div>
+<div class="stat">
+<div class="sn">2</div>
+<div class="sl"><b>Compare</b><br><span class="dim">definitional equality</span></div>
+</div>
+<div class="stat">
+<div class="sn">3</div>
+<div class="sl"><b>Assign</b><br><span class="dim">the term gets the type</span></div>
+</div>
+</div>
+
+<v-click>
+
+<div class="callout">
+That is the whole kernel, and <b>definitional equality is decidable</b> — which is what makes checking
+cheap, which is what makes the asymmetry in Part III true. When <span class="mono">rfl</span>,
+<span class="mono">simp</span> or <span class="mono">omega</span> close a goal, they are exploiting
+<i>computation</i>, not reasoning.
+</div>
+
+</v-click>
+
+<div class="callout">
+<b>And the audit is one command.</b> <span class="mono">#print axioms my_theorem</span> lists exactly what
+a proof depends on. A constructive proof says <i>"does not depend on any axioms"</i>. Use a classical
+argument and it says <span class="mono">[propext, Classical.choice, Quot.sound]</span> — the 1912
+philosophy argument from Part II, surfacing in your build output.
+</div>
+
+<div class="muted small centered">
+Every tactic, macro, elaborator and AI agent above the kernel is <b>untrusted by design</b>. They propose
+terms; the kernel checks them. A thousand lines of buggy tactic code cannot make a false theorem true.
+</div>
+
+---
+layout: center
+---
+
+# The trusted base, itemised
+
+<div class="lead centered">Every verified claim rests on something nobody verified. Say what it is.</div>
+
+<table class="clean small">
+<thead><tr><th>Claim</th><th>What you are actually trusting</th><th>Rough size</th></tr></thead>
+<tr><td>"Lean accepted this theorem"</td><td>the Lean kernel + the axioms <span class="mono">#print axioms</span> reports</td><td class="mono">~10³ lines</td></tr>
+<tr><td>"Z3 says unsat"</td><td>the solver <b>and</b> your encoding of the problem into it</td><td class="mono">~10⁵ lines</td></tr>
+<tr><td>"TLC found no violation"</td><td>the checker + your model + the config bounds</td><td class="mono">—</td></tr>
+<tr><td>"the C is correct"</td><td>also the compiler, unless you re-verified the binary</td><td class="mono">—</td></tr>
+<tr><td>"it runs correctly"</td><td>the CPU, the OS, the network, the operator</td><td class="mono">—</td></tr>
+</table>
+
+<div class="grid2">
+<div>
+<div class="h3">What this means in practice</div>
+<div class="small">
+A <b>100× difference</b> in trusted-base size between a kernel-checked proof and an SMT-backed one.
+Both are legitimate. They are not the same claim, and a verification report that doesn't say which
+one it is hasn't told you anything you can use.
+</div>
+</div>
+<div>
+<div class="h3 accent">The highest-value habit in this field</div>
+<div class="small">
+<b>Every serious verification project publishes an assumptions section.</b> Ordinary engineering
+projects almost never write one down. That is free to adopt tomorrow, and it is where
+<a href="https://yihuang.github.io/awesome-formal-methods/01-fundamentals/limits.html">most real
+failures live</a> — not in the proof.
+</div>
+</div>
+</div>
+
+<div class="muted small centered">
+Sizes are order-of-magnitude. The exact figures belong in the
+<a href="https://yihuang.github.io/awesome-formal-methods/01-fundamentals/limits.html#the-trusted-base">wiki</a>,
+with sources.
+</div>
+
+---
+layout: center
+---
+
+# The bill
+
+<div class="lead">What it costs, measured rather than promised.</div>
+
+<div class="grid3">
+<div class="stat">
+<div class="sn">23×</div>
+<div class="sl">proof lines per line of code<br><span class="dim">seL4: 200,000 Isabelle vs 8,700 C</span></div>
+</div>
+<div class="stat">
+<div class="sn">~20</div>
+<div class="sl">person-years<br><span class="dim">the original seL4 effort</span></div>
+</div>
+<div class="stat">
+<div class="sn">↓</div>
+<div class="sl">re-verification cost<br><span class="dim">the proof infrastructure already exists</span></div>
+</div>
+</div>
+
+<div class="grid2">
+<div>
+<div class="h3">Why the third number is the one that matters</div>
+<div class="small">
+The 23× and the 20 person-years are <b>initial</b> costs, and quoting them without the third number is
+how this field gets dismissed. Once the proof exists, changing the code costs a re-check, not a
+re-proof. That is the difference between an expense and an asset — and it is why the verified core has
+to be <b>small and stable</b>.
+</div>
+</div>
+<div>
+<div class="h3 accent">And the failure mode to plan for</div>
+<div class="small">
+Proofs are code with no specification of their own, so they rot. When mathlib moved from Lean 3 to
+Lean 4, a language change invalidated a very large body of proofs at once, and repairing it took
+years of community effort. Budget for re-verification, and keep the verified surface small enough to
+re-do.
+</div>
+</div>
+</div>
+
+<div class="callout">
+<b>The scoping rule, stated as economics:</b> verification is worth it when
+<span class="mono">(cost of failure) × (probability)</span> exceeds
+<span class="mono">(cost of the proof) + (cost of re-proving it every time the code changes)</span>.
+The second term is what people forget, and it is the reason <i>small and stable</i> is the whole game.
+</div>
+
+---
+layout: section
+---
+
+<div class="part">Part VI</div>
+# Practice: the limits, and one thing to do
+<div class="partsub">The honest boundaries — then the smallest useful step</div>
 
 ---
 layout: center
@@ -1612,31 +2122,6 @@ The bug is almost never in the proof.<br>
 Hence the highest-value habit you can steal from this field: <b>document your assumptions explicitly</b>.
 Every serious verification project has an assumptions section. Ordinary teams almost never write one down.
 </div>
-
----
-layout: center
----
-
-# And it mostly didn't reach you
-
-<div class="lead centered">That's the honest part too, and it has reasons.</div>
-
-<table class="clean small">
-<tr><td>The specification gap</td><td class="dim">never closes; product requirements churn weekly</td></tr>
-<tr><td>Cost is upfront and lumpy</td><td class="dim">the benefit is a bug that didn't happen</td></tr>
-<tr><td>Expertise tax</td><td class="dim">weeks of ramp-up, concentrated in a small community</td></tr>
-<tr><td>Tools that aren't in CI</td><td class="dim">are not adopted, regardless of quality</td></tr>
-<tr class="hl"><td><b>Selection effects</b></td><td class="dim"><b>we publish successes, never abandoned verification projects</b></td></tr>
-</table>
-
-<v-click>
-
-<div class="punch">
-It delivered where failure was catastrophic and the artifact was small —<br>
-and <span class="accent">nowhere else</span>.
-</div>
-
-</v-click>
 
 ---
 layout: center
@@ -1703,29 +2188,6 @@ layout: center
 class: text-center
 ---
 
-# The three sentences
-
-<div class="three">
-<div class="three-item"><span class="tn">1</span> AI made code cheap and trust expensive.</div>
-<div class="three-item"><span class="tn">2</span> Checking is cheap; searching is hard — so AI proposes and kernels dispose.</div>
-<div class="three-item"><span class="tn">3</span> The engineer's new core skill is stating precisely what must be true — and picking the cheapest sound check for it.</div>
-</div>
-
-<v-click>
-
-<div class="quote-block big">
-> Formal methods cannot tell you what to want.<br>
-> They can tell you, with certainty, whether what you asked for is what you'll get —<br>
-> and show you the exact input where it isn't.
-</div>
-
-</v-click>
-
----
-layout: center
-class: text-center
----
-
 <div class="huge accent">The first AI program was a theorem prover.</div>
 
 <div class="lead">
@@ -1772,64 +2234,4 @@ layout: center
 The wiki flags every unverified number with <span class="mono">⚠️</span> and keeps a
 <a href="https://yihuang.github.io/awesome-formal-methods/research-notes.html">confidence ledger</a>.
 If you catch a wrong claim, that's the most valuable contribution you can make.
-</div>
-
----
-layout: center
-class: text-center
----
-
-# Backup slides
-
-<div class="muted">The five families · the tool map · the objection answers</div>
-
----
-layout: center
----
-
-# The five families of verification
-
-<div class="grid2 small">
-<div>
-<div class="h3">Who supplies the ingenuity?</div>
-<table class="clean small">
-<tr><td>The human</td><td>theorem proving — Lean, Rocq, Isabelle</td></tr>
-<tr><td>The machine</td><td>model checking — TLA+, SPIN, Alloy</td></tr>
-<tr><td>Both, split</td><td>deductive verification — Dafny, Kani, Verus</td></tr>
-<tr><td>Over-approximate</td><td>abstract interpretation — Astrée, Infer</td></tr>
-<tr><td>Decidable fragment</td><td>types — Rust, TypeScript, refinement types</td></tr>
-</table>
-</div>
-<div>
-<div class="h3">Pick by what you're reasoning about</div>
-<table class="clean small">
-<tr><td>a protocol design</td><td class="mono">TLA+</td></tr>
-<tr><td>one critical function</td><td class="mono">Kani · Dafny</td></tr>
-<tr><td>a whole codebase's UB</td><td class="mono">Astrée · Infer</td></tr>
-<tr><td>a compiler or kernel</td><td class="mono">Lean · Isabelle</td></tr>
-<tr><td>a policy engine</td><td class="mono">Cedar + SMT</td></tr>
-<tr><td>an agent's actions</td><td class="mono">runtime monitors</td></tr>
-</table>
-</div>
-</div>
-
-<div class="muted small centered">Full catalog and decision tree: <span class="mono">/05-tools/choosing</span></div>
-
----
-layout: center
----
-
-# The objections, answered briefly
-
-<table class="clean small">
-<tr><td>"10 years away for 50 years"</td><td>Ask what <i>did</i> happen: silicon, avionics, crypto, cloud control planes.</td></tr>
-<tr><td>"You can't verify the spec"</td><td>Correct, and it's permanent. That's why we say <b>precision, not omniscience</b>.</td></tr>
-<tr><td>"AI can just verify things"</td><td>AI <i>proposes</i>; a kernel <i>disposes</i>. And RL needs the verifier.</td></tr>
-<tr><td>"Too expensive"</td><td>Rung 1 is one day. Use HACL*, don't write your own crypto.</td></tr>
-<tr><td>"Gödel makes it futile"</td><td>Gödel and Rice are <b>why the tools look like this</b>, not why they fail.</td></tr>
-<tr><td>"Who maintains the proofs?"</td><td>Real risk. Keep the verified core small, frozen, owned, and in CI.</td></tr>
-</table>
-
-<div class="muted small centered">
-Longer versions, with sources: <span class="mono">/06-practice/objections</span>
 </div>

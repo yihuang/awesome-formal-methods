@@ -130,15 +130,15 @@ honest possible evidence for the talk's central claim.
 
 | Gap | Why it matters | Next step |
 |---|---|---|
-| **No slides** | Only `slides/outline.md` exists (with minute-by-minute timing). | Build the deck from the outline; the outline is deliberately detailed enough to be transcribable. |
-| **No diagrams/images** | The talk needs ~5 visuals: the five-families map, the propose/check loop, the four AI-risk layers, the ladder, the inversion chart. | All are described in text; convert to SVG (mermaid or hand-drawn) and check them into `slides/assets/`. |
+| **No slides** | Only [the slide outline](slides/outline.md) exists (with minute-by-minute timing), not a deck. | Build the deck from the outline; it is deliberately detailed enough to be transcribable. |
+| **No diagrams/images** | The talk needs ~5 visuals: the five-families map, the propose/check loop, the four AI-risk layers, the ladder, the inversion chart. | All are described in text; convert to SVG and check them into `docs/public/`. |
 | **No recorded demo** | Live demos fail live. | Record `lake build` + `check-no-sorry.sh` + `pbt_spec_gap.py`. |
-| **No speaker notes with timings rehearsed** | The outline has timing estimates, not measured ones. | Rehearse and adjust. |
+| **No speaker notes with measured timings** | The outline has estimates, not measured ones. | Rehearse and adjust. |
 | **Only DuckDuckGo search available** | Narrower sourcing than ideal. | Re-run discovery with a funded provider; especially for the adoption-gap studies. |
-| **TLA+ specs unexecuted** | Syntax is hand-verified. | Install the TLA+ Toolbox and run `RetryIdempotency.tla` + `Mutex.tla`; paste the real TLC output into the files. |
+| **TLA+ specs unexecuted** | Syntax is hand-verified, not machine-verified. | Install the TLA+ Toolbox and run `RetryIdempotency.tla` + `Mutex.tla`; paste the real TLC output into the files. |
 | **No verified-code demo in Rust** | Kani is the most likely-to-be-adopted tool for this audience and has no demo. | Add `demos/rust/` with a `cargo kani` example. |
 | **No Chinese-language version** | If the audience is a Chinese big-tech org, artifacts may need translation. | Ask; this is an open question (§7). |
-| **No quiz/exercise** | A hands-on component would strengthen adoption. | Consider a 20-minute "write one property" exercise. |
+| **No quiz/exercise** | A hands-on component would strengthen adoption. | Consider a 20-minute “write one property” exercise. |
 
 ---
 
@@ -187,18 +187,69 @@ These determine the final shape and are **not** answerable from research:
 
 ## 8. Reproducing / extending this research
 
+### Everything that runs
+
 ```bash
-# Everything that runs
+# The published wiki site (VitePress -> GitHub Pages)
+npm ci                              # uses the repo .npmrc (public registry)
+npm run docs:dev                    # local preview at /awesome-formal-methods/
+npm run docs:build                  # static site -> docs/.vitepress/dist
+python3 tools/check-site.py         # links in the BUILT site (see §9)
+
+# The demos
 cd demos/lean && lake build && ./scripts/check-no-sorry.sh
 python3 demos/python/dpll_sat.py
 python3 demos/python/pbt_spec_gap.py
 python3 demos/python/temporal_monitor.py
-```
 
-```bash
-# Check internal links (there is a small script for this)
+# Markdown-level link check
 python3 tools/check-links.py
 ```
 
-**To widen the sourcing:** re-run discovery with a funded search provider, prioritising the 🟡 and
-🔴 items in §4 and the adoption-gap studies in §5.
+All of the above run in CI on every push — see
+[`.github/workflows/deploy-pages.yml`](https://github.com/yihuang/awesome-formal-methods/blob/main/.github/workflows/deploy-pages.yml) — and CI gates the
+Pages deployment on them.
+
+### Infrastructure gotchas worth knowing
+
+1. **Never let a developer-level npm registry mirror reach `package-lock.json`.** This bit us hard.
+   The machine that generated the lockfile had `~/.npmrc` pointing at a regional mirror, so all 173
+   `resolved` URLs became plain-HTTP mirror URLs. In CI that surfaced as a 71-second hang followed
+   by npm's deeply misleading `Exit handler never called!` (npm 10), and later as
+   `EALLOWREMOTE: Fetching packages of type "remote" have been disabled` (npm 12). The fix is the
+   project-level `.npmrc` pinning `registry=https://registry.npmjs.org/`, plus a CI guard that
+   fails fast if the lockfile ever resolves elsewhere. **Regenerate with
+   `rm -rf node_modules package-lock.json && npm install`.**
+2. **`pip` is unavailable and PyPI is blocked in the authoring environment**, but the npm registry
+   is reachable — hence zero-dependency Python demos and a Node-based site generator.
+3. **Local and CI VitePress builds produce different asset hashes** (build-time data is included),
+   so you cannot verify a deployed chunk by its local filename. Verify against the live URL instead.
+
+### To widen the sourcing
+
+Re-run discovery with a funded search provider, prioritising the 🟡 and 🔴 items in §4 and the
+adoption-gap studies in §5.
+
+---
+
+## 9. Why there are two link checkers
+
+They catch different bugs, and the second one was not optional — it found real breakage that
+looked fine everywhere else:
+
+| Script | Checks | Found |
+|---|---|---|
+| `tools/check-links.py` | relative links in Markdown source, GitHub-style heading anchors | 191 links; broke repeatedly during the `docs/` restructure |
+| `tools/check-site.py` | links in the **built** HTML: base-path rewriting, VitePress-resolved anchors, hashed assets | **51 broken links that the Markdown checker could not see** |
+
+What the site checker caught:
+
+1. **VitePress slugs numbered headings differently from GitHub.** `## 1. Foo` became `_1-foo` on the
+   site but `1-foo` on GitHub, silently breaking 14 cross-page anchors. Fixed by forcing one
+   GitHub-compatible slugifier in `docs/.vitepress/config.mts`, so the same anchor works in both
+   renderers. **This is the bug worth remembering** — every link looked correct in the source.
+2. A footer link missing its `.html` suffix (36 occurrences across pages).
+3. Base-path and asset-resolution problems that only exist post-build.
+
+Final state: 2,462 internal links verified clean in the built site, plus a wget mirror of the
+**deployed** site re-checked against the same script (2,458 links, clean).

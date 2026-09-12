@@ -24,18 +24,29 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           # full history so VitePress `lastUpdated` reports real dates
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm config set fund false
+          npm config set audit false
+          # npm intermittently dies on CI runners with "Exit handler never called!".
+          # Retrying after clearing the (shared, cached) npm cache is the
+          # standard workaround for a corrupted cache entry.
+          npm ci --no-audit --no-fund || {
+            echo "::warning::npm ci failed; clearing cache and retrying once"
+            npm cache clean --force
+            rm -rf node_modules
+            npm ci --no-audit --no-fund
+          }
 
       # ---- Markdown-level checks (no toolchain needed) ----------------------
       - name: Check internal Markdown links
@@ -85,11 +96,11 @@ jobs:
       # ---- Publish ---------------------------------------------------------
       - name: Configure Pages
         if: github.event_name != 'pull_request'
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Upload site artifact
         if: github.event_name != 'pull_request'
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: docs/.vitepress/dist
 
@@ -103,4 +114,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

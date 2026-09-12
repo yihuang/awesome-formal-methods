@@ -6,6 +6,8 @@ The durable ideas. These pages don't go stale; the AI-era chapter does.
 |---|---|---|
 | [specifications.md](specifications.md) | What does "correct" even mean, and who writes it down? | you want the one skill that formal methods actually demands of you |
 | [logics.md](logics.md) | What language are specs written in? | you want to know what a given tool can and cannot express |
+| [type-theory.md](type-theory.md) | What *is* a type, and what does a type system buy you? | you want to know why `Vec α n` can state a theorem, or what `rfl` is really doing |
+| [curry-howard.md](curry-howard.md) | Why are proofs programs? | you want to understand why proof checking is cheap — and where classical logic costs you |
 | [techniques.md](techniques.md) | How is a claim checked? | you need to pick an approach for a real problem |
 | [automated-reasoning.md](automated-reasoning.md) | What makes automation work? | you want to understand why any of this became practical — the key AI-era bridge |
 | [limits.md](limits.md) | What is impossible? | you are about to trust, or sell, a verification claim |

@@ -4,6 +4,10 @@
 |---|---|
 | [catalog.md](catalog.md) | ~40 tools in nine families, with maturity, learning curve, and "pick this if" |
 | [choosing.md](choosing.md) | Decision tree, selection heuristics, install commands, selection anti-patterns |
+| [model-verifiers.md](model-verifiers.md) | TLA+, Ivy, Veil in depth: specs, toolchains, CTI-driven invariant discovery |
+| [lean4.md](lean4.md) | The Lean 4 kernel, elaborator, metaprogramming, and a runnable tour |
+| [mathlib.md](mathlib.md) | The library: conventions, discovery tools, workflow, coverage |
+| [proof-tactics.md](proof-tactics.md) | The goal state, the automation ladder, debugging, best practices |
 
 ## The short version
 

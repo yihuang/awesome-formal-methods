@@ -115,6 +115,9 @@ export default defineConfig({
           { text: 'Choosing a tool', link: '/05-tools/choosing' },
           { text: 'Model verifiers: TLA+ / Ivy / Veil', link: '/05-tools/model-verifiers' },
           { text: 'Model verifiers (TLA+, Ivy, Veil)', link: '/05-tools/model-verifiers' },
+          { text: 'Lean 4', link: '/05-tools/lean4' },
+          { text: 'Mathlib', link: '/05-tools/mathlib' },
+          { text: 'Proof tactics', link: '/05-tools/proof-tactics' },
           { text: 'Adoption playbook', link: '/06-practice/adoption-playbook' },
           { text: 'Objections & answers', link: '/06-practice/objections' },
           { text: 'AI proof engineering', link: '/04-ai-era/llm-proof-engineering' },
@@ -152,6 +155,8 @@ export default defineConfig({
           { text: 'Index', link: '/01-fundamentals/' },
           { text: 'Specifications', link: '/01-fundamentals/specifications' },
           { text: 'Logics', link: '/01-fundamentals/logics' },
+          { text: 'Type theory & dependent types', link: '/01-fundamentals/type-theory' },
+          { text: 'Curry–Howard correspondence', link: '/01-fundamentals/curry-howard' },
           { text: 'Semantics (small-step, big-step, …)', link: '/01-fundamentals/semantics' },
           { text: 'Temporal logic (safety, liveness, stuttering)', link: '/01-fundamentals/temporal-logic' },
           { text: 'Techniques', link: '/01-fundamentals/techniques' },
@@ -201,7 +206,10 @@ export default defineConfig({
           { text: 'Tool catalog', link: '/05-tools/catalog' },
           { text: 'Choosing a tool', link: '/05-tools/choosing' },
           { text: 'Model verifiers: TLA+ / Ivy / Veil', link: '/05-tools/model-verifiers' },
-          { text: 'Model verifiers (TLA+, Ivy, Veil)', link: '/05-tools/model-verifiers' }
+          { text: 'Model verifiers (TLA+, Ivy, Veil)', link: '/05-tools/model-verifiers' },
+          { text: 'Lean 4', link: '/05-tools/lean4' },
+          { text: 'Mathlib', link: '/05-tools/mathlib' },
+          { text: 'Proof tactics', link: '/05-tools/proof-tactics' }
         ]
       },
       {

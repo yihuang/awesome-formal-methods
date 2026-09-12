@@ -64,6 +64,8 @@ prover. The two fields did not converge recently; they started entangled. See
 |---|---|
 | [Specifications](./01-fundamentals/specifications.md) | What is a specification, and why is writing one the hard part? |
 | [Logics](./01-fundamentals/logics.md) | Hoare, separation, temporal, type theory, μ-calculus. |
+| [Type theory & dependent types](./01-fundamentals/type-theory.md) | Judgements, Π/Σ, universes, definitional vs propositional equality — and the paradox that forced the hierarchy. |
+| [Curry–Howard](./01-fundamentals/curry-howard.md) | Propositions are types, proofs are programs — including what it does *not* give you (classical logic is an axiom). |
 | [Semantics](./01-fundamentals/semantics.md) | Small-step, big-step, functional vs relational, denotational, axiomatic — and how to mechanise a language definition. |
 | [Temporal logic](./01-fundamentals/temporal-logic.md) | LTL, safety vs liveness, fairness, **stuttering invariance**, refinement, and the proof rules — with worked examples. |
 | [Techniques](./01-fundamentals/techniques.md) | The five families of verification, and how each one fails. |
@@ -105,6 +107,9 @@ prover. The two fields did not converge recently; they started entangled. See
 |---|---|
 | [Tool catalog](./05-tools/catalog.md) | ~40 tools in nine families, with "pick this if". |
 | [Choosing a tool](./05-tools/choosing.md) | Decision tree, heuristics, install commands. |
+| [Lean 4](./05-tools/lean4.md) | The kernel and trusted base, the elaborator, metaprogramming in Lean itself, and a runnable tour. |
+| [Mathlib](./05-tools/mathlib.md) | The library: naming conventions, discovery tools (`exact?`, `simp?`, Loogle), and how to use it instead of re-proving things. |
+| [Proof tactics](./05-tools/proof-tactics.md) | The goal state, the automation ladder, and when to stop fighting the automation. |
 | [Model verifiers](./05-tools/model-verifiers.md) | **TLA+ / Ivy / Veil** in depth: specs, toolchains, CTI-driven invariant discovery, and when to use which. |
 | [Adoption playbook](./06-practice/adoption-playbook.md) | The 0→3 ladder, with cost and payoff at each rung. |
 | [Objections & answers](./06-practice/objections.md) | Ten objections, answered honestly. |

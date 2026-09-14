@@ -1,7 +1,6 @@
 # Formal Methods in the AI Era
 
 **📖 Read the wiki: <https://yihuang.github.io/awesome-formal-methods/>**
-**▶ Watch the talk: <https://yihuang.github.io/awesome-formal-methods/slides/>**
 
 A research-backed knowledge wiki that introduces **formal methods to engineers**, framed in the
 **AI era**. Built to be read, linked, and cited.
@@ -30,7 +29,6 @@ and formal methods share an origin. This wiki is about the loop between them.
 | **[Practice](docs/06-practice/)** | Adoption playbook (0→3 ladder) · objection handling |
 | **[Reference](docs/references/)** | Citation conventions · glossary · bibliography · sourced quote bank |
 | **[Demos](docs/demos.md)** | Runnable Lean, Python, and TLA+ artifacts |
-| **[Slides](slides/)** | A 45-minute [Slidev](https://sli.dev/) deck distilled from this wiki |
 | **[Presenting](docs/appendix/presenting.md)** | *Optional appendix* — timings and narrative spines |
 
 Plus **[Research notes](docs/research-notes.md)** — the confidence ledger: what's verified, what's

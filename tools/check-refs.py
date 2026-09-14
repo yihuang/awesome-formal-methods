@@ -80,9 +80,8 @@ def audit() -> tuple[list[dict], Counter]:
     domains: Counter = Counter()
     for path in sorted(DOCS.rglob("*.md")):
         # .vitepress/ is build configuration and docs/public/ is verbatim static
-        # assets (it holds the built slide deck). Neither is published wiki
-        # content, so a markdown file there is an engineering note, not a page
-        # that needs a References section.
+        # assets. Neither is published wiki content, so a markdown file there is
+        # an engineering note, not a page that needs a References section.
         if ".vitepress" in path.parts or "public" in path.parts:
             continue
         rel = path.relative_to(Path.cwd()).as_posix() if path.is_absolute() else path.as_posix()

@@ -96,7 +96,6 @@ export default defineConfig({
     siteTitle: 'Formal Methods in the AI Era',
 
     nav: [
-      { text: 'Slides', link: '/slides/' },
       { text: 'Why now', link: '/00-orientation/why-now' },
       {
         text: 'Learn',

@@ -5,16 +5,13 @@
 > different.** It is for readers who want to *present* the material: a tech talk, a brown-bag
 > session, a reading group, or an internal training slot. Skip it if that isn't you.
 
-**A built deck exists:** ▶ [AI Made Code Cheap. Trust Is Still Expensive.](https://yihuang.github.io/awesome-formal-methods/slides/) —
-built with [Slidev](https://sli.dev/) from [`slides/slides.md`](https://github.com/yihuang/awesome-formal-methods/tree/main/slides),
-and it deploys as part of this site.
-
-The rest of this appendix is the outline behind it: the same material reorganised into a narrative
-with timings. Two things to know before you use it:
+This appendix reorganises the wiki into a narrative with timings. There is no built deck.
+This is a plan you can turn into slides, or use to structure a workshop or reading group. Two things to know
+before you use it:
 
 - **Pick one spine and commit.** Mixing them produces a survey, not a talk.
 - **Every claim traces back to a wiki page.** If a slide needs more depth than the outline gives,
-  follow the link — that is the point of having the wiki behind the deck.
+  follow the link — that is the point of having the wiki behind the presentation.
 
 ---
 
